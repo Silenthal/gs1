@@ -522,12 +522,12 @@
 	mov	r0, r8
 	mul	r0, r5
 	mov	r1, r7
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r1, r7
 	mov	r8, r0
 	mov	r0, r10
 	mul	r0, r5
-	bl	Func_af0_from_thumb
+	bl	div
 	ldr	r1, [r6, #8]
 	ldr	r3, [r6, #0x10]
 	add	r1, r8

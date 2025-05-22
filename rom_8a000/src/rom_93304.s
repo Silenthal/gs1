@@ -386,7 +386,7 @@
 	mov	r3, r8
 	mov	r2, #0
 	ldrsh	r1, [r3, r2]
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r2, r0
 	mov	r0, #0xd2
 	ldr	r1, [r6]
@@ -831,13 +831,13 @@
 	blt	.L939f8
 	lsl	r0, r5, #20
 	mov	r1, r7
-	bl	Func_af0_from_thumb
+	bl	div
 	ldr	r5, [r6, #8]
 	mov	r3, r8
 	add	r5, r0
 	mov	r1, r7
 	lsl	r0, r3, #20
-	bl	Func_af0_from_thumb
+	bl	div
 	ldr	r3, [r6, #0x10]
 	mov	r1, r5
 	add	r3, r0

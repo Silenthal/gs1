@@ -18,7 +18,7 @@
 .Lf909c:
 	ldr	r0, =ewram_4290
 	mov	r1, #7
-	bl	Func_fa4bc
+	bl	m4aMPlayFadeOut
 	ldrb	r3, [r5]
 	ldr	r2, =ewram_303c
 	add	r3, #1
@@ -34,18 +34,18 @@
 	strh	r2, [r3, #6]
 	ldr	r0, =ewram_4360
 	mov	r1, #3
-	bl	Func_fa4bc
+	bl	m4aMPlayFadeOut
 	b	.Lf91e0
 .Lf90c6:
 	cmp	r6, #0x63
 	ble	.Lf9108
-	ldr	r7, =Data_fc684
+	ldr	r7, =gSongTable
 	lsl	r4, r6, #3
 	add	r3, r4, #4
 	ldrh	r2, [r7, r3]
 	cmp	r2, #7
 	bne	.Lf90f2
-	ldr	r1, =Data_fc624
+	ldr	r1, =gMPlayTable
 .Lf90d8:
 	lsl	r5, r2, #1
 	add	r3, r5, r2
@@ -61,14 +61,14 @@
 	mov	r5, #0xe
 	b	.Lf90f6
 .Lf90f2:
-	ldr	r1, =Data_fc624
+	ldr	r1, =gMPlayTable
 	lsl	r5, r2, #1
 .Lf90f6:
 	add	r3, r5, r2
 	lsl	r3, #2
 	ldr	r0, [r1, r3]
 	ldr	r1, [r7, r4]
-	bl	Func_faa58
+	bl	MPlayStart
 	ldr	r3, =ewram_3020
 	strh	r6, [r3, r5]
 	b	.Lf91e0
@@ -78,7 +78,7 @@
 	ldr	r0, =ewram_4290
 	mov	r1, #0xff
 	mov	r2, #0
-	bl	Func_fb2cc
+	bl	m4aMPlayVolumeControl
 	ldr	r2, .Lf9130	@ 0
 	ldr	r3, =ewram_3034
 	strh	r2, [r3]
@@ -86,7 +86,7 @@
 	lsl	r0, r6, #16
 	strh	r2, [r3]
 	lsr	r0, #16
-	bl	Func_fa324
+	bl	m4aSongNumStart
 	ldr	r2, =ewram_3000
 	mov	r3, #0xa
 	b	.Lf91c2
@@ -117,7 +117,7 @@
 	bl	Func_37d4
 	lsl	r0, r6, #16
 	lsr	r0, #16
-	bl	Func_fa324
+	bl	m4aSongNumStart
 	mov	r3, #0x80
 	lsl	r3, #5
 	and	r3, r5
@@ -228,7 +228,7 @@
 	ldrh	r2, [r1]
 	ldr	r0, =ewram_4290
 	mov	r1, #0xff
-	bl	Func_fb2cc
+	bl	m4aMPlayVolumeControl
 .Lf9272:
 	ldr	r3, =ewram_3030
 	ldr	r1, =ewram_3038
@@ -268,7 +268,7 @@
 	ldr	r5, =ewram_4290
 	ldrh	r1, [r6]
 	mov	r0, r5
-	bl	Func_fb2a4
+	bl	m4aMPlayTempoControl
 	mov	r0, #0
 	ldrsh	r3, [r6, r0]
 	lsl	r2, r3, #1
@@ -280,9 +280,9 @@
 	asr	r2, #16
 	mov	r0, r5
 	mov	r1, #0xff
-	bl	Func_fb334
+	bl	m4aMPlayPitchControl
 .Lf92d6:
-	bl	Func_f9c44
+	bl	m4aSoundVSync
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -447,7 +447,7 @@
 
 .thumb_func_start Func_f9438
 	push	{lr}
-	bl	Func_fa2a0
+	bl	m4aSoundInit
 	ldr	r2, =ewram_303c
 	mov	r3, #0xff
 	strb	r3, [r2]
@@ -504,7 +504,7 @@
 	lsl	r1, #16
 	ldr	r0, =ewram_4290
 	lsr	r1, #16
-	bl	Func_fb2a4
+	bl	m4aMPlayTempoControl
 	pop	{r0}
 	bx	r0
 .func_end Func_f94c8
@@ -516,7 +516,7 @@
 	ldr	r0, =ewram_4290
 	asr	r2, #16
 	mov	r1, #0xff
-	bl	Func_fb334
+	bl	m4aMPlayPitchControl
 	pop	{r0}
 	bx	r0
 .func_end Func_f94e0
@@ -537,7 +537,7 @@
 	ldr	r0, =ewram_4290
 	lsr	r2, #16
 	mov	r1, #0xff
-	bl	Func_fb2cc
+	bl	m4aMPlayVolumeControl
 	ldr	r3, =ewram_3034
 	strh	r5, [r3]
 	ldr	r3, =ewram_3008
@@ -563,14 +563,14 @@
 
 .thumb_func_start Func_f9558
 	push	{lr}
-	bl	Func_fa458
+	bl	m4aMPlayAllStop
 	pop	{r0}
 	bx	r0
 .func_end Func_f9558
 
 .thumb_func_start Func_f9564
 	push	{lr}
-	bl	Func_fa490
+	bl	m4aMPlayAllContinue
 	pop	{r0}
 	bx	r0
 .func_end Func_f9564

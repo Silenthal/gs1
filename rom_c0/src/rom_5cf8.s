@@ -1347,7 +1347,7 @@
 	str	r3, [r0]
 	ldr	r1, =ewram_10000
 	ldr	r2, =0x5000100
-	bl	Func_6864
+	bl	SWI_CpuSet
 	mov	r0, #3
 	bl	Func_6384
 .L67d0:

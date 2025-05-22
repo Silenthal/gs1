@@ -1,18 +1,18 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_6864
+.thumb_func_start SWI_CpuSet
 	swi	0xb
 	bx	lr
-.func_end Func_6864
+.func_end SWI_CpuSet
 
-.thumb_func_start Func_6868
+.thumb_func_start SWI_SoundBias_Down
 	mov	r0, #0
 	swi	0x19
 	bx	lr
-.func_end Func_6868
+.func_end SWI_SoundBias_Down
 
-.thumb_func_start Func_6870
+.thumb_func_start SWI_SoundBias_Up
 	mov	r0, #1
 	swi	0x19
 	bx	lr
-.func_end Func_6870
+.func_end SWI_SoundBias_Up

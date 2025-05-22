@@ -459,7 +459,7 @@
 .Lc956a:
 	mov	r1, #3
 	str	r2, [sp, #0xc]
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r1, r0
 	lsl	r1, #10
 	mov	r3, #0x80
@@ -1530,7 +1530,7 @@
 	ldr	r0, [r1, #8]
 	mov	r1, #0x18
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	div
 	str	r0, [r7, #0xc]
 	mov	r2, r8
 	ldr	r0, [r2, #0xc]
@@ -1539,13 +1539,13 @@
 	add	r0, r3
 	mov	r1, #0x18
 	sub	r0, r5
-	bl	Func_af0_from_thumb
+	bl	div
 	str	r0, [r7, #0x10]
 	mov	r4, r8
 	ldr	r0, [r4, #0x10]
 	mov	r1, #0x18
 	sub	r0, r6
-	bl	Func_af0_from_thumb
+	bl	div
 	str	r0, [r7, #0x14]
 	mov	r0, #1
 	add	r11, r0

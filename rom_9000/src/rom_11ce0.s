@@ -130,7 +130,7 @@
 	mov	r0, r1
 	mul	r0, r3
 	mov	r1, #0xf
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r0, r6, r0
 	b	.L11dd6
 .L11dc6:
@@ -139,7 +139,7 @@
 	mov	r0, r1
 	mul	r0, r3
 	mov	r1, #0xf
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r0, r5, r0
 .L11dd6:
 	pop	{r5, r6}

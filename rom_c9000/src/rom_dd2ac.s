@@ -2208,7 +2208,7 @@
 	ldr	r0, [r5]
 	mov	r1, #0x28
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	div
 	ldr	r7, [sp, #0xc]
 	str	r0, [r7]
 	mov	r1, r11
@@ -2216,14 +2216,14 @@
 	ldr	r0, [r5, #4]
 	mov	r1, #0x28
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	div
 	str	r0, [r7, #4]
 	mov	r2, r11
 	ldr	r3, [r2, #8]
 	ldr	r0, [r5, #8]
 	mov	r1, #0x28
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	div
 	str	r0, [r7, #8]
 	ldr	r4, [sp, #0x14]
 	mov	r3, #0

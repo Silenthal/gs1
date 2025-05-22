@@ -575,7 +575,7 @@
 	add	r0, r5
 	lsl	r0, #1
 	mov	r1, #0xd
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r5, r0
 .L8deb2:
 	cmp	r5, r11
@@ -744,7 +744,7 @@
 	beq	.L8e006
 	lsl	r0, r5, #1
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r5, r0
 .L8e006:
 	ldr	r1, [sp]
@@ -3616,12 +3616,12 @@
 	str	r2, [sp, #8]
 	str	r3, [sp, #4]
 	str	r4, [sp]
-	bl	Func_af0_from_thumb
+	bl	div
 	ldr	r2, [sp, #8]
 	mov	r5, r0
 	mov	r1, r7
 	mov	r0, r2
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r5, r11
 	add	r0, r6, r0
 	ldr	r4, [sp]
@@ -6023,7 +6023,7 @@
 	mov	r1, #3
 	mov	r0, r7
 	sub	r6, r3
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r6, #0xa
 	sub	r7, r0
 	mov	r0, r6
@@ -6173,7 +6173,7 @@
 	mov	r3, #2
 	add	r0, r5
 	add	r10, r3
-	bl	Func_af0_from_thumb
+	bl	div
 	bl	Func_91294
 	asr	r3, r6, #1
 	add	r6, r3, r0
@@ -6242,11 +6242,11 @@
 	mov	r1, #3
 	mov	r6, r0
 	mov	r0, r7
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r1, #3
 	sub	r7, r0
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	div
 	ldr	r1, =.L9e92e
 	sub	r5, r0
 	lsl	r3, r5, #1
@@ -6299,7 +6299,7 @@
 	mov	r1, #3
 	and	r5, r2
 	sub	r6, r3
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r6, #6
 	sub	r7, r0
 	mov	r0, r6

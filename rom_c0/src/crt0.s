@@ -278,7 +278,7 @@
 .L760:	.word	0x350
 	.word	REG_VCOUNT
 .L768:	.word	0x68736d53
-.L76c:	.word	iwram_7ff0
+.L76c:	.word	SOUND_INFO_PTR
 .func_end Func_6fc
 
 .Lintr_main:

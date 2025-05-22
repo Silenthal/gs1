@@ -409,14 +409,14 @@
 	blt	.Lf632a
 	mov	r1, r5
 	str	r4, [sp]
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r12, r0
 	ldr	r4, [sp]
 	b	.Lf6336
 .Lf632a:
 	sub	r1, r7, r4
 	str	r4, [sp]
-	bl	Func_af0_from_thumb
+	bl	div
 	ldr	r4, [sp]
 	mov	r12, r0
 .Lf6336:
@@ -502,7 +502,7 @@
 	mov	r6, r10
 	sub	r1, r3, r6
 .Lf63c6:
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r12, r0
 	mov	r0, r8
 	mov	r1, r7
@@ -3396,7 +3396,7 @@
 	blt	.Lf7b5c
 	mov	r1, #0xc
 	asr	r5, r3, #16
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r0, #1
 	lsl	r4, r0, #1
 	mov	r3, r8

@@ -1,20 +1,20 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_f95e0
-	adr	r2, .Lf95e4
+.thumb_func_start umul3232H32
+	adr	r2, .__umul3232H32
 	bx	r2
 
 	.align	2, 0
 	.arm
-.Lf95e4:
+.__umul3232H32:
 	umull	r2, r3, r0, r1
 	add	r0, r3, #0
 	bx	lr
-.func_end Func_f95e0
+.func_end umul3232H32
 
-.thumb_func_start Func_f95f0
-	ldr	r0, .Lf965c	@ iwram_7ff0
+.thumb_func_start SoundMain
+	ldr	r0, .Lf965c	@ SOUND_INFO_PTR
 	ldr	r0, [r0]
 	ldr	r2, .Lf9660	@ 0x68736d53
 	ldr	r3, [r0]
@@ -73,7 +73,7 @@
 
 	.align	2, 0
 .Lf965c:
-	.word	iwram_7ff0
+	.word	SOUND_INFO_PTR
 .Lf9660:
 	.word	0x68736d53
 .Lf9664:
@@ -84,9 +84,9 @@
 	.word	0x350
 .Lf9670:
 	.word	0x630
-.func_end Func_f95f0
+.func_end SoundMain
 
-.thumb_func_start Func_f9674
+.thumb_func_start SoundMainRAM
 	ldrb	r3, [r0, #5]
 	cmp	r3, #0
 	beq	.Lf96d4
@@ -462,9 +462,9 @@
 
 .Lf9a14:
 	.word	0x68736d53
-.func_end Func_f9674
+.func_end SoundMainRAM
 
-.thumb_func_start Func_f9a18
+.thumb_func_start SoundMainBTM
 	mov	r12, r4
 	mov	r1, #0
 	mov	r2, #0
@@ -476,9 +476,9 @@
 	stmia	r0!, {r1, r2, r3, r4}
 	mov	r4, r12
 	bx	lr
-.func_end Func_f9a18
+.func_end SoundMainBTM
 
-.thumb_func_start Func_f9a30
+.thumb_func_start RealClearChain
 	ldr	r3, [r0, #0x2c]
 	cmp	r3, #0
 	beq	.Lf9a4e
@@ -499,9 +499,9 @@
 	str	r1, [r0, #0x2c]
 .Lf9a4e:
 	bx	lr
-.func_end Func_f9a30
+.func_end RealClearChain
 
-.thumb_func_start Func_f9a50
+.thumb_func_start ply_fine
 	push	{r4, r5, lr}
 	mov	r5, r1
 	ldr	r4, [r5, #0x20]
@@ -517,7 +517,7 @@
 	strb	r1, [r4]
 .Lf9a68:
 	mov	r0, r4
-	bl	Func_f9a30
+	bl	RealClearChain
 	ldr	r4, [r4, #0x34]
 	cmp	r4, #0
 	bne	.Lf9a5a
@@ -527,29 +527,29 @@
 	pop	{r4, r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_f9a50
+.func_end ply_fine
 
-.thumb_func_start Func_f9a80
+.thumb_func_start MPlayJumpTableCopy
 	mov	r12, lr
 	mov	r1, #0x24
-	ldr	r2, .Lf9ab0	@ .Lfb7a0
+	ldr	r2, .Lf9ab0	@ gMPlayJumpTableTemplate
 .Lf9a86:
 	ldr	r3, [r2]
-	bl	.Lf9a9a
+	bl	.chk_adr_r2
 	stmia	r0!, {r3}
 	add	r2, #4
 	sub	r1, #1
 	bgt	.Lf9a86
 	bx	r12
-.func_end Func_f9a80
+.func_end MPlayJumpTableCopy
 
-.thumb_func_start Func_f9a98
+.thumb_func_start ldrb_r3_r2
 	ldrb	r3, [r2]
-.Lf9a9a:
+.chk_adr_r2:
 	push	{r0}
 	lsr	r0, r2, #25
 	bne	.Lf9aac
-	ldr	r0, .Lf9ab0	@ .Lfb7a0
+	ldr	r0, .Lf9ab0	@ gMPlayJumpTableTemplate
 	cmp	r2, r0
 	bcc	.Lf9aaa
 	lsr	r0, r2, #14
@@ -559,23 +559,23 @@
 .Lf9aac:
 	pop	{r0}
 	bx	lr
-.func_end Func_f9a98
+.func_end ldrb_r3_r2
 
 .Lf9ab0:
-	.word	.Lfb7a0
+	.word	gMPlayJumpTableTemplate
 
-.thumb_func_start Func_f9ab4
+.thumb_func_start ld_r3_tp_adr_i
 	ldr	r2, [r1, #0x40]
 .Lf9ab6:
 	add	r3, r2, #1
 	str	r3, [r1, #0x40]
 	ldrb	r3, [r2]
-	b	.Lf9a9a
-.func_end Func_f9ab4
+	b	.chk_adr_r2
+.func_end ld_r3_tp_adr_i
 
-.thumb_func_start Func_f9ac0
+.thumb_func_start ply_goto
 	push	{lr}
-.Lf9ac2:
+.ply_goto_1:
 	ldr	r2, [r1, #0x40]
 	ldrb	r0, [r2, #3]
 	lsl	r0, #8
@@ -585,14 +585,14 @@
 	ldrb	r3, [r2, #1]
 	orr	r0, r3
 	lsl	r0, #8
-	bl	Func_f9a98
+	bl	ldrb_r3_r2
 	orr	r0, r3
 	str	r0, [r1, #0x40]
 	pop	{r0}
 	bx	r0
-.func_end Func_f9ac0
+.func_end ply_goto
 
-.thumb_func_start Func_f9ae0
+.thumb_func_start ply_patt
 	ldrb	r2, [r1, #2]
 	cmp	r2, #3
 	bcs	.Lf9af8
@@ -604,12 +604,12 @@
 	ldrb	r2, [r1, #2]
 	add	r2, #1
 	strb	r2, [r1, #2]
-	b	Func_f9ac0
+	b	ply_goto
 .Lf9af8:
-	b	Func_f9a50
-.func_end Func_f9ae0
+	b	ply_fine
+.func_end ply_patt
 
-.thumb_func_start Func_f9afc
+.thumb_func_start ply_pend
 	ldrb	r2, [r1, #2]
 	cmp	r2, #0
 	beq	.Lf9b0e
@@ -621,9 +621,9 @@
 	str	r2, [r1, #0x40]
 .Lf9b0e:
 	bx	lr
-.func_end Func_f9afc
+.func_end ply_pend
 
-.thumb_func_start Func_f9b10
+.thumb_func_start ply_rept
 	push	{lr}
 	ldr	r2, [r1, #0x40]
 	ldrb	r3, [r2]
@@ -631,16 +631,16 @@
 	bne	.Lf9b20
 	add	r2, #1
 	str	r2, [r1, #0x40]
-	b	.Lf9ac2
+	b	.ply_goto_1
 .Lf9b20:
 	ldrb	r3, [r1, #3]
 	add	r3, #1
 	strb	r3, [r1, #3]
 	mov	r12, r3
-	bl	Func_f9ab4
+	bl	ld_r3_tp_adr_i
 	cmp	r12, r3
 	bcs	.Lf9b32
-	b	.Lf9ac2
+	b	.ply_goto_1
 .Lf9b32:
 	mov	r3, #0
 	strb	r3, [r1, #3]
@@ -648,18 +648,18 @@
 	str	r2, [r1, #0x40]
 	pop	{r0}
 	bx	r0
-.func_end Func_f9b10
+.func_end ply_rept
 
-.thumb_func_start Func_f9b40
+.thumb_func_start ply_prio
 	mov	r12, lr
-	bl	Func_f9ab4
+	bl	ld_r3_tp_adr_i
 	strb	r3, [r1, #0x1d]
 	bx	r12
-.func_end Func_f9b40
+.func_end ply_prio
 
-.thumb_func_start Func_f9b4c
+.thumb_func_start ply_tempo
 	mov	r12, lr
-	bl	Func_f9ab4
+	bl	ld_r3_tp_adr_i
 	lsl	r3, #1
 	strh	r3, [r0, #0x1c]
 	ldrh	r2, [r0, #0x1e]
@@ -667,20 +667,20 @@
 	lsr	r3, #8
 	strh	r3, [r0, #0x20]
 	bx	r12
-.func_end Func_f9b4c
+.func_end ply_tempo
 
-.thumb_func_start Func_f9b60
+.thumb_func_start ply_keysh
 	mov	r12, lr
-	bl	Func_f9ab4
+	bl	ld_r3_tp_adr_i
 	strb	r3, [r1, #0xa]
 	ldrb	r3, [r1]
 	mov	r2, #0xc
 	orr	r3, r2
 	strb	r3, [r1]
 	bx	r12
-.func_end Func_f9b60
+.func_end ply_keysh
 
-.thumb_func_start Func_f9b74
+.thumb_func_start ply_voice
 	mov	r12, lr
 	ldr	r2, [r1, #0x40]
 	ldrb	r3, [r2]
@@ -692,31 +692,31 @@
 	ldr	r3, [r0, #0x30]
 	add	r2, r3
 	ldr	r3, [r2]
-	bl	.Lf9a9a
+	bl	.chk_adr_r2
 	str	r3, [r1, #0x24]
 	ldr	r3, [r2, #4]
-	bl	.Lf9a9a
+	bl	.chk_adr_r2
 	str	r3, [r1, #0x28]
 	ldr	r3, [r2, #8]
-	bl	.Lf9a9a
+	bl	.chk_adr_r2
 	str	r3, [r1, #0x2c]
 	bx	r12
-.func_end Func_f9b74
+.func_end ply_voice
 
-.thumb_func_start Func_f9ba4
+.thumb_func_start ply_vol
 	mov	r12, lr
-	bl	Func_f9ab4
+	bl	ld_r3_tp_adr_i
 	strb	r3, [r1, #0x12]
 	ldrb	r3, [r1]
 	mov	r2, #3
 	orr	r3, r2
 	strb	r3, [r1]
 	bx	r12
-.func_end Func_f9ba4
+.func_end ply_vol
 
-.thumb_func_start Func_f9bb8
+.thumb_func_start ply_pan
 	mov	r12, lr
-	bl	Func_f9ab4
+	bl	ld_r3_tp_adr_i
 	sub	r3, #0x40
 	strb	r3, [r1, #0x14]
 	ldrb	r3, [r1]
@@ -724,11 +724,11 @@
 	orr	r3, r2
 	strb	r3, [r1]
 	bx	r12
-.func_end Func_f9bb8
+.func_end ply_pan
 
-.thumb_func_start Func_f9bcc
+.thumb_func_start ply_bend
 	mov	r12, lr
-	bl	Func_f9ab4
+	bl	ld_r3_tp_adr_i
 	sub	r3, #0x40
 	strb	r3, [r1, #0xe]
 	ldrb	r3, [r1]
@@ -736,29 +736,29 @@
 	orr	r3, r2
 	strb	r3, [r1]
 	bx	r12
-.func_end Func_f9bcc
+.func_end ply_bend
 
-.thumb_func_start Func_f9be0
+.thumb_func_start ply_bendr
 	mov	r12, lr
-	bl	Func_f9ab4
+	bl	ld_r3_tp_adr_i
 	strb	r3, [r1, #0xf]
 	ldrb	r3, [r1]
 	mov	r2, #0xc
 	orr	r3, r2
 	strb	r3, [r1]
 	bx	r12
-.func_end Func_f9be0
+.func_end ply_bendr
 
-.thumb_func_start Func_f9bf4
+.thumb_func_start ply_lfodl
 	mov	r12, lr
-	bl	Func_f9ab4
+	bl	ld_r3_tp_adr_i
 	strb	r3, [r1, #0x1b]
 	bx	r12
-.func_end Func_f9bf4
+.func_end ply_lfodl
 
-.thumb_func_start Func_f9c00
+.thumb_func_start ply_modt
 	mov	r12, lr
-	bl	Func_f9ab4
+	bl	ld_r3_tp_adr_i
 	ldrb	r0, [r1, #0x18]
 	cmp	r0, r3
 	beq	.Lf9c16
@@ -769,11 +769,11 @@
 	strb	r3, [r1]
 .Lf9c16:
 	bx	r12
-.func_end Func_f9c00
+.func_end ply_modt
 
-.thumb_func_start Func_f9c18
+.thumb_func_start ply_tune
 	mov	r12, lr
-	bl	Func_f9ab4
+	bl	ld_r3_tp_adr_i
 	sub	r3, #0x40
 	strb	r3, [r1, #0xc]
 	ldrb	r3, [r1]
@@ -781,9 +781,9 @@
 	orr	r3, r2
 	strb	r3, [r1]
 	bx	r12
-.func_end Func_f9c18
+.func_end ply_tune
 
-.thumb_func_start Func_f9c2c
+.thumb_func_start ply_port
 	mov	r12, lr
 	ldr	r2, [r1, #0x40]
 	ldrb	r3, [r2]
@@ -793,10 +793,10 @@
 	bl	.Lf9ab6
 	strb	r3, [r0]
 	bx	r12
-.func_end Func_f9c2c
+.func_end ply_port
 
-.thumb_func_start Func_f9c44
-	ldr	r0, .Lf9ef0	@ iwram_7ff0
+.thumb_func_start m4aSoundVSync
+	ldr	r0, .Lf9ef0	@ SOUND_INFO_PTR
 	ldr	r0, [r0]
 	ldr	r2, .Lf9ef4	@ 0x68736d53
 	ldr	r3, [r0]
@@ -832,9 +832,9 @@
 	strh	r1, [r2, #0x16]
 .Lf9c84:
 	bx	lr
-.func_end Func_f9c44
+.func_end m4aSoundVSync
 
-.thumb_func_start Func_f9c90
+.thumb_func_start MPlayMain
 	ldr	r2, .Lf9ef4	@ 0x68736d53
 	ldr	r3, [r0, #0x34]
 	cmp	r2, r3
@@ -848,7 +848,7 @@
 	cmp	r3, #0
 	beq	.Lf9cac
 	ldr	r0, [r0, #0x3c]
-	bl	Func_f9ee8
+	bl	call_r3_f9ee8
 .Lf9cac:
 	pop	{r0}
 	push	{r4, r5, r6, r7}
@@ -863,11 +863,11 @@
 	bge	.Lf9cc4
 	b	.Lf9ed8
 .Lf9cc4:
-	ldr	r0, .Lf9ef0	@ iwram_7ff0
+	ldr	r0, .Lf9ef0	@ SOUND_INFO_PTR
 	ldr	r0, [r0]
 	mov	r8, r0
 	mov	r0, r7
-	bl	Func_fab7c
+	bl	FadeOutBody
 	ldr	r0, [r7, #4]
 	cmp	r0, #0
 	bge	.Lf9cd8
@@ -912,7 +912,7 @@
 	b	.Lf9d20
 .Lf9d1a:
 	mov	r0, r4
-	bl	Func_fa678
+	bl	ClearSoundChannelTracks
 .Lf9d20:
 	ldr	r4, [r4, #0x34]
 	cmp	r4, #0
@@ -923,7 +923,7 @@
 	tst	r0, r3
 	beq	.Lf9da4
 	mov	r0, r5
-	bl	Func_fa68c
+	bl	Clear64byte
 	mov	r0, #0x80
 	strb	r0, [r5]
 	mov	r0, #2
@@ -958,7 +958,7 @@
 	sub	r0, #0xcf
 	mov	r1, r7
 	mov	r2, r5
-	bl	Func_f9ee8
+	bl	call_r3_f9ee8
 	b	.Lf9da4
 .Lf9d78:
 	cmp	r1, #0xb0
@@ -972,13 +972,13 @@
 	ldr	r3, [r3, r0]
 	mov	r0, r7
 	mov	r1, r5
-	bl	Func_f9ee8
+	bl	call_r3_f9ee8
 	ldrb	r0, [r5]
 	cmp	r0, #0
 	beq	.Lf9e00
 	b	.Lf9da4
 .Lf9d9a:
-	ldr	r0, .Lf9eec	@ Data_fba14
+	ldr	r0, .Lf9eec	@ gClockTable
 	sub	r1, #0x80
 	add	r1, r0
 	ldrb	r0, [r1]
@@ -1078,7 +1078,7 @@
 	mov	r9, r2
 	mov	r0, r7
 	mov	r1, r5
-	bl	Func_fac44
+	bl	TrkVolPitSet
 	ldr	r4, [r5, #0x20]
 	cmp	r4, #0
 	beq	.Lf9ec4
@@ -1088,7 +1088,7 @@
 	tst	r0, r1
 	bne	.Lf9e62
 	mov	r0, r4
-	bl	Func_fa678
+	bl	ClearSoundChannelTracks
 	b	.Lf9ebe
 .Lf9e62:
 	ldrb	r0, [r4, #1]
@@ -1098,7 +1098,7 @@
 	mov	r0, #3
 	tst	r0, r3
 	beq	.Lf9e80
-	bl	Func_f9f3c
+	bl	ChnVolSetAsm
 	cmp	r6, #0
 	beq	.Lf9e80
 	ldrb	r0, [r4, #0x1d]
@@ -1124,7 +1124,7 @@
 	mov	r1, r2
 	ldrb	r2, [r5, #9]
 	mov	r0, r6
-	bl	Func_f9ee8
+	bl	call_r3_f9ee8
 	str	r0, [r4, #0x20]
 	ldrb	r0, [r4, #0x1d]
 	mov	r1, #2
@@ -1135,7 +1135,7 @@
 	mov	r1, r2
 	ldrb	r2, [r5, #9]
 	ldr	r0, [r4, #0x24]
-	bl	Func_fa1fc
+	bl	MidiKeyToFreq
 	str	r0, [r4, #0x20]
 .Lf9ebe:
 	ldr	r4, [r4, #0x34]
@@ -1162,20 +1162,56 @@
 	mov	r10, r2
 	mov	r11, r3
 	pop	{r3}
-.func_end Func_f9c90
+.func_end MPlayMain
 
-.thumb_func_start Func_f9ee8
+.thumb_func_start call_r3_f9ee8
 	bx	r3
-.func_end Func_f9ee8
+.func_end call_r3_f9ee8
 
 .Lf9eec:
-	.word	Data_fba14
+	.word	gClockTable
 .Lf9ef0:
-	.word	iwram_7ff0
+	.word	SOUND_INFO_PTR
 .Lf9ef4:
 	.word	0x68736d53
 
 	.section .rodata
 
-.Lfb7a0:
-	.incrom 0xfb7a0, 0xfb830
+
+global_label gMPlayJumpTableTemplate
+    .word ply_fine
+    .word ply_goto
+    .word ply_patt
+    .word ply_pend
+    .word ply_rept
+    .word ply_fine
+    .word ply_fine
+    .word ply_fine
+    .word ply_fine
+    .word ply_prio
+    .word ply_tempo
+    .word ply_keysh
+    .word ply_voice
+    .word ply_vol
+    .word ply_pan
+    .word ply_bend
+    .word ply_bendr
+    .word ply_lfos
+    .word ply_lfodl
+    .word ply_mod
+    .word ply_modt
+    .word ply_fine
+    .word ply_fine
+    .word ply_tune
+    .word ply_fine
+    .word ply_fine
+    .word ply_fine
+    .word ply_port
+    .word ply_fine
+    .word ply_endtie
+    .word SampleFreqSet
+    .word TrackStop
+    .word FadeOutBody
+    .word TrkVolPitSet
+    .word RealClearChain
+    .word SoundMainBTM

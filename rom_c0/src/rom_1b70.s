@@ -550,7 +550,7 @@
 	b	.L22a4
 .func_end Func_2298
 
-.thumb_stub Func_af0_from_thumb, Func_af0, r3
+.thumb_stub div, Func_af0, r3
 .thumb_stub Func_b60_from_thumb, Func_b60, r3
 .thumb_stub Func_b1c_from_thumb, Func_b1c, r3
 .thumb_stub Func_b50_from_thumb, Func_b50, r3

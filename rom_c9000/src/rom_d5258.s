@@ -737,19 +737,19 @@
 	ldr	r5, [r7]
 	mov	r1, r10
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	div
 	sub	r5, r0
 	str	r5, [r7]
 	ldr	r5, [r7, #4]
 	mov	r1, r10
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	div
 	sub	r5, r0
 	str	r5, [r7, #4]
 	ldr	r5, [r7, #8]
 	mov	r1, r10
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	div
 	sub	r5, r0
 	str	r5, [r7, #8]
 	b	.Ld5870
@@ -1369,7 +1369,7 @@
 	sub	r0, r1, r6
 	add	r0, r3
 	mov	r1, #6
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r1, #9
 	bl	Func_b1c_from_thumb
 	lsl	r1, r0, #1
@@ -1571,7 +1571,7 @@
 	ldr	r3, [r1]
 	mov	r1, #0x28
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	div
 	str	r0, [r5]
 	ldr	r2, [sp, #0x34]
 	mov	r5, r11
@@ -1579,7 +1579,7 @@
 	ldr	r0, [r2, #4]
 	mov	r1, #0x28
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	div
 	ldr	r1, [sp, #0x30]
 	str	r0, [r1, #4]
 	ldr	r2, [sp, #0x34]
@@ -1587,7 +1587,7 @@
 	ldr	r0, [r2, #8]
 	mov	r1, #0x28
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	div
 	ldr	r3, [sp, #0x30]
 	mov	r5, #0
 	str	r0, [r3, #8]
@@ -2145,19 +2145,19 @@
 	ldr	r5, [r6]
 	mov	r1, r7
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	div
 	sub	r5, r0
 	str	r5, [r6]
 	ldr	r5, [r6, #4]
 	mov	r1, r7
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	div
 	sub	r5, r0
 	str	r5, [r6, #4]
 	ldr	r5, [r6, #8]
 	mov	r1, r7
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	div
 	sub	r5, r0
 	str	r5, [r6, #8]
 .Ld6456:

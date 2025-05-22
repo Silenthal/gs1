@@ -405,7 +405,7 @@
 	sub	r0, r5
 	mov	r1, #2
 	add	r0, #1
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r3, r8
 	mov	r11, r0
 	lsl	r6, #4
@@ -413,7 +413,7 @@
 	sub	r0, r6
 	add	r0, #1
 	mov	r1, #2
-	bl	Func_af0_from_thumb
+	bl	div
 	ldr	r4, .La1b88	@ 0xffff
 	mov	r8, r0
 .La1b56:
@@ -548,7 +548,7 @@
 	ldr	r1, [sp, #0x14]
 	ldr	r5, [r0]
 	mov	r0, r6
-	bl	Func_af0_from_thumb
+	bl	div
 	lsl	r0, #4
 	add	r0, r7
 	strh	r0, [r5, #8]
@@ -581,7 +581,7 @@
 	ldr	r1, [sp, #0x14]
 	ldr	r5, [r0]
 	mov	r0, r6
-	bl	Func_af0_from_thumb
+	bl	div
 	lsl	r0, #4
 	add	r0, r7
 	strh	r0, [r5, #8]
@@ -1044,7 +1044,7 @@
 	bl	_Func_219c8
 	mov	r1, r7
 	mov	r0, r8
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r1, r7
 	mov	r9, r0
 	mov	r0, r8
@@ -1284,7 +1284,7 @@
 	mov	r3, #0x31
 	ldr	r7, [sp, #0x24]
 	mov	r10, r3
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r1, r6
 	mov	r8, r0
 	mov	r0, r5
@@ -5165,7 +5165,7 @@
 	asr	r7, r0, #24
 	mov	r1, #3
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	div
 	lsl	r0, #24
 	asr	r0, #24
 	mov	r8, r0

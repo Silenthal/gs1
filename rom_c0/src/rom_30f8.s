@@ -342,9 +342,9 @@
 	ldr	r5, =REG_KEYCNT
 	lsl	r3, #8
 	strh	r3, [r5]
-	bl	Func_6868
+	bl	SWI_SoundBias_Down
 	swi	3
-	bl	Func_6870
+	bl	SWI_SoundBias_Up
 	ldr	r3, =0xc00f
 	strh	r3, [r5]
 	ldr	r3, .L341c	@ 0

@@ -74,22 +74,22 @@
 	bl	Func_231c
 	mov	r1, r8
 	mov	r6, r0
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r1, r8
 	strh	r0, [r7]
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r7, #2
 	neg	r5, r5
 	strh	r0, [r7]
 	mov	r1, r10
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r7, #2
 	strh	r0, [r7]
 	mov	r1, r10
 	mov	r0, r6
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r7, #2
 	strh	r0, [r7]
 .L3dc8:

@@ -601,7 +601,7 @@
 	ldr	r3, [r5]
 	mov	r1, r10
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r1, r8
 	str	r0, [r5, #0xc]
 	cmp	r1, #7
@@ -711,14 +711,14 @@
 	mov	r1, r10
 	sub	r0, r3
 .Ldef00:
-	bl	Func_af0_from_thumb
+	bl	div
 	str	r0, [r5, #0x10]
 .Ldef06:
 	ldr	r3, [r5, #8]
 	ldr	r0, [r7, #0x10]
 	mov	r1, r10
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r3, #0
 	str	r0, [r5, #0x14]
 	str	r3, [r5, #0x18]
@@ -1951,7 +1951,7 @@
 	mov	r0, r10
 	mul	r0, r3
 	mov	r9, r2
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r2, r8
 	ldr	r3, [r2, #0x10]
 	ldr	r2, [r6, #0x10]
@@ -1961,7 +1961,7 @@
 	mov	r0, r10
 	mul	r0, r3
 	mov	r8, r2
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r9, r5
 	add	r8, r0
 	asr	r5, #8
@@ -1976,7 +1976,7 @@
 	bl	_call_via_r2
 	mov	r1, r11
 	lsl	r0, #8
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r3, r6
 	mov	r1, #1
 	add	r3, #0x58

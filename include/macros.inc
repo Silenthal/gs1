@@ -59,3 +59,10 @@
 	mov	r12, pc
 	bx	\reg
 	.endm
+
+    .macro global_label labelName
+    .global \labelName
+\labelName:
+    .endm
+
+	.include "m4a.inc"

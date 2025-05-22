@@ -2249,7 +2249,7 @@
 	add	r5, r6, r1
 	mov	r0, r5
 	mov	r1, #0x14
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r1, #0x14
 	mov	r8, r0
 	mov	r0, r5
@@ -3509,7 +3509,7 @@
 	mov	r1, #0x18
 	strh	r3, [r2]
 	lsl	r0, r7, #16
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r3, r6
 	add	r3, #0x66
 	strh	r0, [r3]

@@ -58,7 +58,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x10
@@ -127,7 +127,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x10
@@ -168,7 +168,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x20
@@ -241,7 +241,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x10
@@ -310,7 +310,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x10
@@ -381,7 +381,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x20
@@ -2156,7 +2156,7 @@
 	lsr	r3, r7, #1
 	sub	r7, r3
 	add	r10, r2
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r7, #6
 	sub	r6, r0
 	mov	r0, r7
@@ -2300,7 +2300,7 @@
 	mov	r3, #2
 	add	r0, r5
 	add	r10, r3
-	bl	Func_af0_from_thumb
+	bl	div
 	bl	Func_f3898
 	asr	r3, r7, #1
 	add	r7, r3, r0
@@ -2369,11 +2369,11 @@
 	mov	r1, #3
 	mov	r7, r0
 	mov	r0, r6
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r1, #3
 	sub	r6, r0
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	div
 	ldr	r1, =.Lf39ee
 	sub	r5, r0
 	lsl	r3, r5, #1
@@ -2426,7 +2426,7 @@
 	mov	r1, #3
 	and	r5, r2
 	sub	r7, r3
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r7, #6
 	sub	r6, r0
 	mov	r0, r7

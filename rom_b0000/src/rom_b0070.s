@@ -787,7 +787,7 @@
 	bl	Func_b06ec
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Lb07f2
@@ -798,7 +798,7 @@
 	bl	Func_b06ec
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Lb07f2
@@ -809,7 +809,7 @@
 	bl	Func_b06ec
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Lb07f2
@@ -820,7 +820,7 @@
 	bl	Func_b06ec
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	div
 	cmp	r0, #0
 	beq	.Lb07f2
 	mov	r1, #0xa
@@ -934,7 +934,7 @@
 	mov	r0, r6
 	mul	r0, r3
 	mov	r1, r10
-	bl	Func_af0_from_thumb
+	bl	div
 	ldrh	r5, [r7, #4]
 	mov	r3, r8
 	add	r5, r0
@@ -958,7 +958,7 @@
 	mov	r0, r6
 	mul	r0, r3
 	mov	r1, r10
-	bl	Func_af0_from_thumb
+	bl	div
 	ldrh	r5, [r7, #6]
 	mov	r2, r8
 	add	r5, r0
@@ -1354,7 +1354,7 @@
 	mov	r0, r9
 	add	r0, #6
 	mov	r1, #7
-	bl	Func_af0_from_thumb
+	bl	div
 	lsl	r3, r0, #3
 	add	r5, r7, #7
 	sub	r3, r0
@@ -3281,7 +3281,7 @@
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, r7
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r2, r0
 	lsl	r5, #4
 	lsl	r2, #4
@@ -3922,7 +3922,7 @@
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, r7
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r2, r0
 	lsl	r5, #4
 	lsl	r2, #4
@@ -6360,7 +6360,7 @@
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, r7
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r2, r0
 	lsl	r5, #4
 	lsl	r2, #4

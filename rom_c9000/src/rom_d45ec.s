@@ -591,7 +591,7 @@
 	cmp	r0, #0x11
 	bhi	.Ld4ade
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	div
 	ldr	r2, =.Lee294
 	ldrb	r1, [r2, r0]
 	mov	r0, #0x20
@@ -702,7 +702,7 @@
 	mov	r1, #5
 	mov	r0, r3
 	mov	r8, r2
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r0, #1
 	mov	r2, r10
 	mov	r4, #1

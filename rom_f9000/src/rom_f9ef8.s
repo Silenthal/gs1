@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_f9ef8
+.thumb_func_start TrackStop
 	push	{r4, r5, r6, lr}
 	mov	r5, r1
 	ldrb	r1, [r5]
@@ -20,10 +20,10 @@
 	mov	r3, #7
 	and	r0, r3
 	beq	.Lf9f24
-	ldr	r3, =iwram_7ff0
+	ldr	r3, =SOUND_INFO_PTR
 	ldr	r3, [r3]
 	ldr	r3, [r3, #0x2c]
-	bl	Func_f9ee8
+	bl	call_r3_f9ee8
 .Lf9f24:
 	strb	r6, [r4]
 .Lf9f26:
@@ -37,9 +37,9 @@
 	pop	{r4, r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_f9ef8
+.func_end TrackStop
 
-.thumb_func_start Func_f9f3c
+.thumb_func_start ChnVolSetAsm
 	ldrb	r1, [r4, #0x12]
 	mov	r0, #0x14
 	ldrsb	r2, [r4, r0]
@@ -66,9 +66,9 @@
 .Lf9f68:
 	strb	r0, [r4, #3]
 	bx	lr
-.func_end Func_f9f3c
+.func_end ChnVolSetAsm
 
-.thumb_func_start Func_f9f6c
+.thumb_func_start ply_note
 	push	{r4, r5, r6, r7, lr}
 	mov	r4, r8
 	mov	r5, r9
@@ -78,10 +78,10 @@
 	sub	sp, #0x18
 	str	r1, [sp]
 	mov	r5, r2
-	ldr	r1, =iwram_7ff0
+	ldr	r1, =SOUND_INFO_PTR
 	ldr	r1, [r1]
 	str	r1, [sp, #4]
-	ldr	r1, =Data_fba14
+	ldr	r1, =gClockTable
 	add	r0, r1
 	ldrb	r0, [r0]
 	strb	r0, [r5, #4]
@@ -250,7 +250,7 @@
 	beq	.Lfa152
 .Lfa0ac:
 	mov	r0, r4
-	bl	Func_fa678
+	bl	ClearSoundChannelTracks
 	mov	r1, #0
 	str	r1, [r4, #0x30]
 	ldr	r3, [r5, #0x20]
@@ -266,11 +266,11 @@
 	cmp	r0, r1
 	beq	.Lfa0d2
 	mov	r1, r5
-	bl	Func_fa1ac
+	bl	clear_modM
 .Lfa0d2:
 	ldr	r0, [sp]
 	mov	r1, r5
-	bl	Func_fac44
+	bl	TrkVolPitSet
 	ldr	r0, [r5, #4]
 	str	r0, [r4, #0x10]
 	ldr	r0, [sp, #0x10]
@@ -288,7 +288,7 @@
 	str	r0, [r4, #4]
 	ldrh	r0, [r5, #0x1e]
 	strh	r0, [r4, #0xc]
-	bl	Func_f9f3c
+	bl	ChnVolSetAsm
 	ldrb	r1, [r4, #8]
 	mov	r0, #8
 	ldrsb	r0, [r5, r0]
@@ -318,13 +318,13 @@
 	ldr	r0, [sp, #0xc]
 	ldr	r3, [sp, #4]
 	ldr	r3, [r3, #0x30]
-	bl	Func_f9ee8
+	bl	call_r3_f9ee8
 	b	.Lfa144
 .Lfa13a:
 	ldrb	r2, [r5, #9]
 	mov	r1, r3
 	mov	r0, r7
-	bl	Func_fa1fc
+	bl	MidiKeyToFreq
 .Lfa144:
 	str	r0, [r4, #0x20]
 	mov	r0, #0x80
@@ -342,9 +342,9 @@
 	mov	r11, r3
 	pop	{r0}
 	bx	r0
-.func_end Func_f9f6c
+.func_end ply_note
 
-.thumb_func_start Func_fa16c
+.thumb_func_start ply_endtie
 	push	{r4, r5}
 	ldr	r2, [r1, #0x40]
 	ldrb	r3, [r2]
@@ -382,9 +382,9 @@
 .Lfa1a8:
 	pop	{r4, r5}
 	bx	lr
-.func_end Func_fa16c
+.func_end ply_endtie
 
-.thumb_func_start Func_fa1ac
+.thumb_func_start clear_modM
 	mov	r2, #0
 	strb	r2, [r1, #0x16]
 	strb	r2, [r1, #0x1a]
@@ -400,39 +400,39 @@
 	orr	r3, r2
 	strb	r3, [r1]
 	bx	lr
-.func_end Func_fa1ac
+.func_end clear_modM
 
-.thumb_func_start Func_fa1c8
+.thumb_func_start ld_r3_tp_adr_i_unchecked
 	ldr	r2, [r1, #0x40]
 	add	r3, r2, #1
 	str	r3, [r1, #0x40]
 	ldrb	r3, [r2]
 	bx	lr
-.func_end Func_fa1c8
+.func_end ld_r3_tp_adr_i_unchecked
 
-.thumb_func_start Func_fa1d4
+.thumb_func_start ply_lfos
 	mov	r12, lr
-	bl	Func_fa1c8
+	bl	ld_r3_tp_adr_i_unchecked
 	strb	r3, [r1, #0x19]
 	cmp	r3, #0
 	bne	.Lfa1e4
-	bl	Func_fa1ac
+	bl	clear_modM
 .Lfa1e4:
 	bx	r12
-.func_end Func_fa1d4
+.func_end ply_lfos
 
-.thumb_func_start Func_fa1e8
+.thumb_func_start ply_mod
 	mov	r12, lr
-	bl	Func_fa1c8
+	bl	ld_r3_tp_adr_i_unchecked
 	strb	r3, [r1, #0x17]
 	cmp	r3, #0
 	bne	.Lfa1f8
-	bl	Func_fa1ac
+	bl	clear_modM
 .Lfa1f8:
 	bx	r12
-.func_end Func_fa1e8
+.func_end ply_mod
 
-.thumb_func_start Func_fa1fc
+.thumb_func_start MidiKeyToFreq
 	push	{r4, r5, r6, r7, lr}
 	mov	r12, r0
 	lsl	r1, #24
@@ -444,10 +444,10 @@
 	mov	r7, #0xff
 	lsl	r7, #24
 .Lfa210:
-	ldr	r3, =.Lfb830
+	ldr	r3, =gScaleTable
 	add	r0, r6, r3
 	ldrb	r5, [r0]
-	ldr	r4, =.Lfb8e4
+	ldr	r4, =gFreqTable
 	mov	r2, #0xf
 	mov	r0, r5
 	and	r0, r2
@@ -470,21 +470,21 @@
 	ldr	r4, [r1, #4]
 	sub	r0, r5
 	mov	r1, r7
-	bl	Func_f95e0
+	bl	umul3232H32
 	mov	r1, r0
 	add	r1, r5, r1
 	mov	r0, r4
-	bl	Func_f95e0
+	bl	umul3232H32
 	pop	{r4, r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_fa1fc
+.func_end MidiKeyToFreq
 
 .thumb_func_start Func_fa260
 	bx	lr
 .func_end Func_fa260
 
-.thumb_func_start Func_fa264
+.thumb_func_start MPlayContinue
 	mov	r2, r0
 	ldr	r3, [r2, #0x34]
 	ldr	r0, =0x68736d53
@@ -496,9 +496,9 @@
 	str	r0, [r2, #4]
 .Lfa276:
 	bx	lr
-.func_end Func_fa264
+.func_end MPlayContinue
 
-.thumb_func_start Func_fa280
+.thumb_func_start MPlayFadeOut
 	mov	r2, r0
 	lsl	r1, #16
 	lsr	r1, #16
@@ -513,36 +513,36 @@
 	strh	r0, [r2, #0x28]
 .Lfa298:
 	bx	lr
-.func_end Func_fa280
+.func_end MPlayFadeOut
 
-.thumb_func_start Func_fa2a0
+.thumb_func_start m4aSoundInit
 	push	{r4, r5, r6, lr}
-	ldr	r0, =Func_f9674
+	ldr	r0, =SoundMainRAM
 	mov	r1, #2
 	neg	r1, r1
 	and	r0, r1
 	ldr	r1, =iwram_7000
 	ldr	r2, =0x4000100
-	bl	Func_6864
+	bl	SWI_CpuSet
 	ldr	r0, =ewram_3050
-	bl	Func_fa6a0
+	bl	SoundInit
 	ldr	r0, =ewram_4090
-	bl	Func_fa55c
+	bl	MPlayExtender
 	ldr	r0, =0x97f800
-	bl	Func_fa83c
+	bl	m4aSoundMode
 	ldr	r0, =8
 	lsl	r0, #16
 	lsr	r0, #16
 	cmp	r0, #0
 	beq	.Lfa2ee
-	ldr	r5, =Data_fc624
+	ldr	r5, =gMPlayTable
 	mov	r6, r0
 .Lfa2d2:
 	ldr	r4, [r5]
 	ldr	r1, [r5, #4]
 	ldrb	r2, [r5, #8]
 	mov	r0, r4
-	bl	Func_fa9e0
+	bl	MPlayOpen
 	ldrh	r0, [r5, #0xa]
 	strb	r0, [r4, #0xb]
 	ldr	r0, =ewram_4350
@@ -555,20 +555,20 @@
 	pop	{r4, r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_fa2a0
+.func_end m4aSoundInit
 
-.thumb_func_start Func_fa318
+.thumb_func_start m4aSoundMain
 	push	{lr}
-	bl	Func_f95f0
+	bl	SoundMain
 	pop	{r0}
 	bx	r0
-.func_end Func_fa318
+.func_end m4aSoundMain
 
-.thumb_func_start Func_fa324
+.thumb_func_start m4aSongNumStart
 	push	{lr}
 	lsl	r0, #16
-	ldr	r2, =Data_fc624
-	ldr	r1, =Data_fc684
+	ldr	r2, =gMPlayTable
+	ldr	r1, =gSongTable
 	lsr	r0, #13
 	add	r0, r1
 	ldrh	r3, [r0, #4]
@@ -579,16 +579,16 @@
 	ldr	r2, [r1]
 	ldr	r1, [r0]
 	mov	r0, r2
-	bl	Func_faa58
+	bl	MPlayStart
 	pop	{r0}
 	bx	r0
-.func_end Func_fa324
+.func_end m4aSongNumStart
 
-.thumb_func_start Func_fa350
+.thumb_func_start m4aSongNumStartOrChange
 	push	{lr}
 	lsl	r0, #16
-	ldr	r2, =Data_fc624
-	ldr	r1, =Data_fc684
+	ldr	r2, =gMPlayTable
+	ldr	r1, =gSongTable
 	lsr	r0, #13
 	add	r0, r1
 	ldrh	r3, [r0, #4]
@@ -603,7 +603,7 @@
 	beq	.Lfa384
 	mov	r0, r1
 	mov	r1, r2
-	bl	Func_faa58
+	bl	MPlayStart
 	b	.Lfa398
 
 	.pool_aligned
@@ -618,17 +618,17 @@
 .Lfa390:
 	mov	r0, r1
 	mov	r1, r3
-	bl	Func_faa58
+	bl	MPlayStart
 .Lfa398:
 	pop	{r0}
 	bx	r0
-.func_end Func_fa350
+.func_end m4aSongNumStartOrChange
 
-.thumb_func_start Func_fa39c
+.thumb_func_start m4aSongNumStartOrContinue
 	push	{lr}
 	lsl	r0, #16
-	ldr	r2, =Data_fc624
-	ldr	r1, =Data_fc684
+	ldr	r2, =gMPlayTable
+	ldr	r1, =gSongTable
 	lsr	r0, #13
 	add	r0, r1
 	ldrh	r3, [r0, #4]
@@ -643,7 +643,7 @@
 	beq	.Lfa3d0
 	mov	r0, r1
 	mov	r1, r2
-	bl	Func_faa58
+	bl	MPlayStart
 	b	.Lfa3ec
 
 	.pool_aligned
@@ -655,23 +655,23 @@
 	bne	.Lfa3e2
 	mov	r0, r1
 	mov	r1, r3
-	bl	Func_faa58
+	bl	MPlayStart
 	b	.Lfa3ec
 .Lfa3e2:
 	cmp	r2, #0
 	bge	.Lfa3ec
 	mov	r0, r1
-	bl	Func_fa264
+	bl	MPlayContinue
 .Lfa3ec:
 	pop	{r0}
 	bx	r0
-.func_end Func_fa39c
+.func_end m4aSongNumStartOrContinue
 
-.thumb_func_start Func_fa3f0
+.thumb_func_start m4aSongNumStop
 	push	{lr}
 	lsl	r0, #16
-	ldr	r2, =Data_fc624
-	ldr	r1, =Data_fc684
+	ldr	r2, =gMPlayTable
+	ldr	r1, =gSongTable
 	lsr	r0, #13
 	add	r0, r1
 	ldrh	r3, [r0, #4]
@@ -685,17 +685,17 @@
 	cmp	r1, r0
 	bne	.Lfa416
 	mov	r0, r2
-	bl	Func_fab3c
+	bl	m4aMPlayStop
 .Lfa416:
 	pop	{r0}
 	bx	r0
-.func_end Func_fa3f0
+.func_end m4aSongNumStop
 
-.thumb_func_start Func_fa424
+.thumb_func_start m4aSongNumContinue
 	push	{lr}
 	lsl	r0, #16
-	ldr	r2, =Data_fc624
-	ldr	r1, =Data_fc684
+	ldr	r2, =gMPlayTable
+	ldr	r1, =gSongTable
 	lsr	r0, #13
 	add	r0, r1
 	ldrh	r3, [r0, #4]
@@ -709,24 +709,24 @@
 	cmp	r1, r0
 	bne	.Lfa44a
 	mov	r0, r2
-	bl	Func_fa264
+	bl	MPlayContinue
 .Lfa44a:
 	pop	{r0}
 	bx	r0
-.func_end Func_fa424
+.func_end m4aSongNumContinue
 
-.thumb_func_start Func_fa458
+.thumb_func_start m4aMPlayAllStop
 	push	{r4, r5, lr}
 	ldr	r0, =8
 	lsl	r0, #16
 	lsr	r0, #16
 	cmp	r0, #0
 	beq	.Lfa476
-	ldr	r5, =Data_fc624
+	ldr	r5, =gMPlayTable
 	mov	r4, r0
 .Lfa468:
 	ldr	r0, [r5]
-	bl	Func_fab3c
+	bl	m4aMPlayStop
 	add	r5, #0xc
 	sub	r4, #1
 	cmp	r4, #0
@@ -735,27 +735,27 @@
 	pop	{r4, r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_fa458
+.func_end m4aMPlayAllStop
 
-.thumb_func_start Func_fa484
+.thumb_func_start m4aMPlayContinue
 	push	{lr}
-	bl	Func_fa264
+	bl	MPlayContinue
 	pop	{r0}
 	bx	r0
-.func_end Func_fa484
+.func_end m4aMPlayContinue
 
-.thumb_func_start Func_fa490
+.thumb_func_start m4aMPlayAllContinue
 	push	{r4, r5, lr}
 	ldr	r0, =8
 	lsl	r0, #16
 	lsr	r0, #16
 	cmp	r0, #0
 	beq	.Lfa4ae
-	ldr	r5, =Data_fc624
+	ldr	r5, =gMPlayTable
 	mov	r4, r0
 .Lfa4a0:
 	ldr	r0, [r5]
-	bl	Func_fa264
+	bl	MPlayContinue
 	add	r5, #0xc
 	sub	r4, #1
 	cmp	r4, #0
@@ -764,18 +764,18 @@
 	pop	{r4, r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_fa490
+.func_end m4aMPlayAllContinue
 
-.thumb_func_start Func_fa4bc
+.thumb_func_start m4aMPlayFadeOut
 	push	{lr}
 	lsl	r1, #16
 	lsr	r1, #16
-	bl	Func_fa280
+	bl	MPlayFadeOut
 	pop	{r0}
 	bx	r0
-.func_end Func_fa4bc
+.func_end m4aMPlayFadeOut
 
-.thumb_func_start Func_fa4cc
+.thumb_func_start m4aMPlayFadeOutTemporarily
 	mov	r2, r0
 	lsl	r1, #16
 	lsr	r1, #16
@@ -789,9 +789,9 @@
 	strh	r0, [r2, #0x28]
 .Lfa4e2:
 	bx	lr
-.func_end Func_fa4cc
+.func_end m4aMPlayFadeOutTemporarily
 
-.thumb_func_start Func_fa4ec
+.thumb_func_start m4aMPlayFadeIn
 	mov	r2, r0
 	lsl	r1, #16
 	lsr	r1, #16
@@ -809,9 +809,9 @@
 	str	r0, [r2, #4]
 .Lfa50a:
 	bx	lr
-.func_end Func_fa4ec
+.func_end m4aMPlayFadeIn
 
-.thumb_func_start Func_fa514
+.thumb_func_start m4aMPlayImmInit
 	push	{r4, r5, r6, r7, lr}
 	ldrb	r5, [r0, #8]
 	ldr	r4, [r0, #0x2c]
@@ -830,7 +830,7 @@
 	cmp	r0, #0
 	beq	.Lfa54e
 	mov	r0, r4
-	bl	Func_fa68c
+	bl	Clear64byte
 	strb	r7, [r4]
 	mov	r0, #2
 	strb	r0, [r4, #0xf]
@@ -850,9 +850,9 @@
 	pop	{r4, r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_fa514
+.func_end m4aMPlayImmInit
 
-.thumb_func_start Func_fa55c
+.thumb_func_start MPlayExtender
 	push	{r4, r5, r6, lr}
 	sub	sp, #4
 	mov	r5, r0
@@ -880,7 +880,7 @@
 	strb	r2, [r0]
 	mov	r0, #0x77
 	strb	r0, [r3]
-	ldr	r0, =iwram_7ff0
+	ldr	r0, =SOUND_INFO_PTR
 	ldr	r4, [r0]
 	ldr	r6, [r4]
 	ldr	r0, =0x68736d53
@@ -888,34 +888,34 @@
 	bne	.Lfa61c
 	add	r0, r6, #1
 	str	r0, [r4]
-	ldr	r1, =ewram_4000
-	ldr	r0, =Func_fb518
+	ldr	r1, =gMPlayJumpTable
+	ldr	r0, =ply_memacc
 	str	r0, [r1, #0x20]
-	ldr	r0, =Func_fa1d4
+	ldr	r0, =ply_lfos
 	str	r0, [r1, #0x44]
-	ldr	r0, =Func_fa1e8
+	ldr	r0, =ply_mod
 	str	r0, [r1, #0x4c]
-	ldr	r0, =Func_fb670
+	ldr	r0, =ply_xcmd
 	str	r0, [r1, #0x70]
-	ldr	r0, =Func_fa16c
+	ldr	r0, =ply_endtie
 	str	r0, [r1, #0x74]
-	ldr	r0, =Func_fa798
+	ldr	r0, =SampleFreqSet
 	str	r0, [r1, #0x78]
-	ldr	r0, =Func_f9ef8
+	ldr	r0, =TrackStop
 	str	r0, [r1, #0x7c]
 	mov	r2, r1
 	add	r2, #0x80
-	ldr	r0, =Func_fab7c
+	ldr	r0, =FadeOutBody
 	str	r0, [r2]
 	add	r1, #0x84
-	ldr	r0, =Func_fac44
+	ldr	r0, =TrkVolPitSet
 	str	r0, [r1]
 	str	r5, [r4, #0x1c]
-	ldr	r0, =Func_fae58
+	ldr	r0, =CgbSound
 	str	r0, [r4, #0x28]
-	ldr	r0, =Func_fada0
+	ldr	r0, =CgbOscOff
 	str	r0, [r4, #0x2c]
-	ldr	r0, =Func_facf8
+	ldr	r0, =MidiKeyToCgbFreq
 	str	r0, [r4, #0x30]
 	ldr	r0, =0
 	mov	r1, #0
@@ -924,7 +924,7 @@
 	ldr	r2, =0x5000040
 	mov	r0, sp
 	mov	r1, r5
-	bl	Func_6864
+	bl	SWI_CpuSet
 	mov	r0, #1
 	strb	r0, [r5, #1]
 	mov	r0, #0x11
@@ -953,32 +953,32 @@
 	pop	{r4, r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_fa55c
+.func_end MPlayExtender
 
-.thumb_func_start Func_fa674
+.thumb_func_start SWI_SoundGetJumpList
 	swi	0x2a
 	bx	lr
-.func_end Func_fa674
+.func_end SWI_SoundGetJumpList
 
-.thumb_func_start Func_fa678
+.thumb_func_start ClearSoundChannelTracks
 	push	{lr}
 	ldr	r1, =ewram_4088
 	ldr	r1, [r1]
 	bl	_call_via_r1
 	pop	{r0}
 	bx	r0
-.func_end Func_fa678
+.func_end ClearSoundChannelTracks
 
-.thumb_func_start Func_fa68c
+.thumb_func_start Clear64byte
 	push	{lr}
 	ldr	r1, =ewram_408c
 	ldr	r1, [r1]
 	bl	_call_via_r1
 	pop	{r0}
 	bx	r0
-.func_end Func_fa68c
+.func_end Clear64byte
 
-.thumb_func_start Func_fa6a0
+.thumb_func_start SoundInit
 	push	{r4, r5, lr}
 	sub	sp, #4
 	mov	r5, r0
@@ -1039,43 +1039,43 @@
 	add	r1, #4
 	ldr	r0, =REG_FIFO_B
 	str	r0, [r1]
-	ldr	r0, =iwram_7ff0
+	ldr	r0, =SOUND_INFO_PTR
 	str	r5, [r0]
 	str	r3, [sp]
 	ldr	r2, =0x50003ec
 	mov	r0, sp
 	mov	r1, r5
-	bl	Func_6864
+	bl	SWI_CpuSet
 	mov	r0, #8
 	strb	r0, [r5, #6]
 	mov	r0, #0xf
 	strb	r0, [r5, #7]
-	ldr	r0, =Func_f9f6c
+	ldr	r0, =ply_note
 	str	r0, [r5, #0x38]
 	ldr	r0, =Func_fb790
 	str	r0, [r5, #0x28]
 	str	r0, [r5, #0x2c]
 	str	r0, [r5, #0x30]
 	str	r0, [r5, #0x3c]
-	ldr	r4, =ewram_4000
+	ldr	r4, =gMPlayJumpTable
 	mov	r0, r4
-	bl	Func_f9a80
+	bl	MPlayJumpTableCopy
 	str	r4, [r5, #0x34]
 	mov	r0, #0x80
 	lsl	r0, #11
-	bl	Func_fa798
+	bl	SampleFreqSet
 	ldr	r0, =0x68736d53
 	str	r0, [r5]
 	add	sp, #4
 	pop	{r4, r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_fa6a0
+.func_end SoundInit
 
-.thumb_func_start Func_fa798
+.thumb_func_start SampleFreqSet
 	push	{r4, r5, r6, lr}
 	mov	r2, r0
-	ldr	r0, =iwram_7ff0
+	ldr	r0, =SOUND_INFO_PTR
 	ldr	r4, [r0]
 	mov	r0, #0xf0
 	lsl	r0, #12
@@ -1083,7 +1083,7 @@
 	lsr	r2, r0, #16
 	mov	r6, #0
 	strb	r2, [r4, #8]
-	ldr	r1, =.Lfb914
+	ldr	r1, =gPcmSamplesPerVBlankTable
 	sub	r0, r2, #1
 	lsl	r0, #1
 	add	r0, r1
@@ -1092,19 +1092,19 @@
 	mov	r0, #0xc6
 	lsl	r0, #3
 	mov	r1, r5
-	bl	Func_af0_from_thumb
+	bl	div
 	strb	r0, [r4, #0xb]
 	ldr	r0, =0x91d1b
 	mul	r0, r5
 	ldr	r1, =0x1388
 	add	r0, r1
 	ldr	r1, =0x2710
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r1, r0
 	str	r1, [r4, #0x14]
 	mov	r0, #0x80
 	lsl	r0, #17
-	bl	Func_af0_from_thumb
+	bl	div
 	add	r0, #1
 	asr	r0, #1
 	str	r0, [r4, #0x18]
@@ -1113,10 +1113,10 @@
 	ldr	r4, =REG_TM0CNT_L
 	ldr	r0, =0x44940
 	mov	r1, r5
-	bl	Func_af0_from_thumb
+	bl	div
 	neg	r0, r0
 	strh	r0, [r4]
-	bl	Func_fa9a4
+	bl	m4aSoundVSyncOn
 	ldr	r1, =REG_VCOUNT
 .Lfa7fc:
 	ldrb	r0, [r1]
@@ -1133,12 +1133,12 @@
 	pop	{r4, r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_fa798
+.func_end SampleFreqSet
 
-.thumb_func_start Func_fa83c
+.thumb_func_start m4aSoundMode
 	push	{r4, r5, lr}
 	mov	r3, r0
-	ldr	r0, =iwram_7ff0
+	ldr	r0, =SOUND_INFO_PTR
 	ldr	r5, [r0]
 	ldr	r1, [r5]
 	ldr	r0, =0x68736d53
@@ -1201,9 +1201,9 @@
 	and	r4, r3
 	cmp	r4, #0
 	beq	.Lfa8be
-	bl	Func_fa928
+	bl	m4aSoundVSyncOff
 	mov	r0, r4
-	bl	Func_fa798
+	bl	SampleFreqSet
 .Lfa8be:
 	ldr	r0, =0x68736d53
 	str	r0, [r5]
@@ -1211,11 +1211,11 @@
 	pop	{r4, r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_fa83c
+.func_end m4aSoundMode
 
-.thumb_func_start Func_fa8d4
+.thumb_func_start SoundClear
 	push	{r4, r5, r6, r7, lr}
-	ldr	r0, =iwram_7ff0
+	ldr	r0, =SOUND_INFO_PTR
 	ldr	r6, [r0]
 	ldr	r1, [r6]
 	ldr	r0, =0x68736d53
@@ -1255,12 +1255,12 @@
 	pop	{r4, r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_fa8d4
+.func_end SoundClear
 
-.thumb_func_start Func_fa928
+.thumb_func_start m4aSoundVSyncOff
 	push	{lr}
 	sub	sp, #4
-	ldr	r0, =iwram_7ff0
+	ldr	r0, =SOUND_INFO_PTR
 	ldr	r2, [r0]
 	ldr	r1, [r2]
 	ldr	r3, =0x978c92ad
@@ -1302,16 +1302,16 @@
 	add	r1, r2, r0
 	ldr	r2, =0x5000318
 	mov	r0, sp
-	bl	Func_6864
+	bl	SWI_CpuSet
 .Lfa980:
 	add	sp, #4
 	pop	{r0}
 	bx	r0
-.func_end Func_fa928
+.func_end m4aSoundVSyncOff
 
-.thumb_func_start Func_fa9a4
+.thumb_func_start m4aSoundVSyncOn
 	push	{r4, lr}
-	ldr	r0, =iwram_7ff0
+	ldr	r0, =SOUND_INFO_PTR
 	ldr	r2, [r0]
 	ldr	r3, [r2]
 	ldr	r0, =0x68736d53
@@ -1334,9 +1334,9 @@
 	pop	{r4}
 	pop	{r0}
 	bx	r0
-.func_end Func_fa9a4
+.func_end m4aSoundVSyncOn
 
-.thumb_func_start Func_fa9e0
+.thumb_func_start MPlayOpen
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r0
 	mov	r6, r1
@@ -1348,7 +1348,7 @@
 	bls	.Lfa9f4
 	mov	r4, #0x10
 .Lfa9f4:
-	ldr	r0, =iwram_7ff0
+	ldr	r0, =SOUND_INFO_PTR
 	ldr	r5, [r0]
 	ldr	r1, [r5]
 	ldr	r0, =0x68736d53
@@ -1357,7 +1357,7 @@
 	add	r0, r1, #1
 	str	r0, [r5]
 	mov	r0, r7
-	bl	Func_fa68c
+	bl	Clear64byte
 	str	r6, [r7, #0x2c]
 	strb	r4, [r7, #8]
 	mov	r0, #0x80
@@ -1385,7 +1385,7 @@
 	str	r0, [r5, #0x20]
 .Lfaa38:
 	str	r7, [r5, #0x24]
-	ldr	r0, =Func_f9c90
+	ldr	r0, =MPlayMain
 	str	r0, [r5, #0x20]
 	ldr	r0, =0x68736d53
 	str	r0, [r5]
@@ -1394,9 +1394,9 @@
 	pop	{r4, r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_fa9e0
+.func_end MPlayOpen
 
-.thumb_func_start Func_faa58
+.thumb_func_start MPlayStart
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1462,7 +1462,7 @@
 .Lfaace:
 	mov	r0, r5
 	mov	r1, r4
-	bl	Func_f9ef8
+	bl	TrackStop
 	mov	r0, #0xc0
 	strb	r0, [r4]
 	mov	r1, r8
@@ -1490,7 +1490,7 @@
 .Lfab04:
 	mov	r0, r5
 	mov	r1, r4
-	bl	Func_f9ef8
+	bl	TrackStop
 	mov	r0, r8
 	strb	r0, [r4]
 	add	r6, #1
@@ -1505,7 +1505,7 @@
 	cmp	r0, #0
 	beq	.Lfab2a
 	ldrb	r0, [r7, #3]
-	bl	Func_fa83c
+	bl	m4aSoundMode
 .Lfab2a:
 	ldr	r0, =0x68736d53
 	str	r0, [r5, #0x34]
@@ -1515,9 +1515,9 @@
 	pop	{r4, r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_faa58
+.func_end MPlayStart
 
-.thumb_func_start Func_fab3c
+.thumb_func_start m4aMPlayStop
 	push	{r4, r5, r6, lr}
 	mov	r6, r0
 	ldr	r1, [r6, #0x34]
@@ -1538,7 +1538,7 @@
 .Lfab5e:
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_f9ef8
+	bl	TrackStop
 	sub	r4, #1
 	add	r5, #0x50
 	cmp	r4, #0
@@ -1550,9 +1550,9 @@
 	pop	{r4, r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_fab3c
+.func_end m4aMPlayStop
 
-.thumb_func_start Func_fab7c
+.thumb_func_start FadeOutBody
 	push	{r4, r5, r6, r7, lr}
 	mov	r6, r0
 	ldrh	r1, [r6, #0x24]
@@ -1602,7 +1602,7 @@
 .Lfabd6:
 	mov	r0, r6
 	mov	r1, r4
-	bl	Func_f9ef8
+	bl	TrackStop
 	mov	r0, #1
 	ldrh	r7, [r6, #0x28]
 	and	r0, r7
@@ -1662,9 +1662,9 @@
 	pop	{r4, r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_fab7c
+.func_end FadeOutBody
 
-.thumb_func_start Func_fac44
+.thumb_func_start TrkVolPitSet
 	push	{r4, lr}
 	mov	r2, r1
 	mov	r0, #1
@@ -1762,9 +1762,9 @@
 	pop	{r4}
 	pop	{r0}
 	bx	r0
-.func_end Func_fac44
+.func_end TrkVolPitSet
 
-.thumb_func_start Func_facf8
+.thumb_func_start MidiKeyToCgbFreq
 	push	{r4, r5, r6, r7, lr}
 	lsl	r0, #24
 	lsr	r0, #24
@@ -1788,7 +1788,7 @@
 	bls	.Lfad22
 	mov	r5, #0x3b
 .Lfad22:
-	ldr	r0, =.Lfb9c8
+	ldr	r0, =gNoiseTable
 	add	r0, r5, r0
 	ldrb	r0, [r0]
 	b	.Lfad92
@@ -1813,10 +1813,10 @@
 	mov	r1, #0xff
 	mov	r12, r1
 .Lfad4e:
-	ldr	r3, =.Lfb92c
+	ldr	r3, =gCgbScaleTable
 	add	r0, r5, r3
 	ldrb	r6, [r0]
-	ldr	r4, =.Lfb9b0
+	ldr	r4, =gCgbFreqTable
 	mov	r2, #0xf
 	mov	r0, r6
 	and	r0, r2
@@ -1851,9 +1851,9 @@
 	pop	{r4, r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_facf8
+.func_end MidiKeyToCgbFreq
 
-.thumb_func_start Func_fada0
+.thumb_func_start CgbOscOff
 	lsl	r0, #24
 	lsr	r0, #24
 	mov	r1, r0
@@ -1901,9 +1901,9 @@
 .Lfade6:
 	strb	r0, [r1]
 	bx	lr
-.func_end Func_fada0
+.func_end CgbOscOff
 
-.thumb_func_start Func_fadf0
+.thumb_func_start CgbModVol
 	push	{r4, lr}
 	mov	r1, r0
 	ldrb	r0, [r1, #2]
@@ -1961,16 +1961,16 @@
 	pop	{r4}
 	pop	{r0}
 	bx	r0
-.func_end Func_fadf0
+.func_end CgbModVol
 
-.thumb_func_start Func_fae58
+.thumb_func_start CgbSound
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
 	sub	sp, #0x1c
-	ldr	r0, =iwram_7ff0
+	ldr	r0, =SOUND_INFO_PTR
 	ldr	r0, [r0]
 	str	r0, [sp, #4]
 	ldrb	r0, [r0, #0xa]
@@ -2090,7 +2090,7 @@
 	strb	r0, [r4, #0x1d]
 	mov	r0, r4
 	str	r3, [sp, #0x18]
-	bl	Func_fadf0
+	bl	CgbModVol
 	ldr	r3, [sp, #0x18]
 	cmp	r6, #2
 	beq	.Lfaf80
@@ -2212,7 +2212,7 @@
 .Lfb032:
 	lsl	r0, r6, #24
 	lsr	r0, #24
-	bl	Func_fada0
+	bl	CgbOscOff
 	mov	r0, #0
 	strb	r0, [r4]
 	b	.Lfb284
@@ -2261,7 +2261,7 @@
 	strb	r0, [r4, #0x1d]
 .Lfb092:
 	mov	r0, r4
-	bl	Func_fadf0
+	bl	CgbModVol
 	mov	r0, #3
 	ldrb	r2, [r4]
 	and	r0, r2
@@ -2473,7 +2473,7 @@
 	strb	r0, [r1]
 	cmp	r6, #3
 	bne	.Lfb250
-	ldr	r0, =.Lfba04
+	ldr	r0, =gCgb3Vol
 	ldrb	r1, [r4, #9]
 	add	r0, r1, r0
 	ldrb	r0, [r0]
@@ -2543,9 +2543,9 @@
 	pop	{r4, r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_fae58
+.func_end CgbSound
 
-.thumb_func_start Func_fb2a4
+.thumb_func_start m4aMPlayTempoControl
 	push	{r4, lr}
 	mov	r2, r0
 	lsl	r1, #16
@@ -2564,9 +2564,9 @@
 	pop	{r4}
 	pop	{r0}
 	bx	r0
-.func_end Func_fb2a4
+.func_end m4aMPlayTempoControl
 
-.thumb_func_start Func_fb2cc
+.thumb_func_start m4aMPlayVolumeControl
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r9
 	mov	r6, r8
@@ -2621,9 +2621,9 @@
 	pop	{r4, r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_fb2cc
+.func_end m4aMPlayVolumeControl
 
-.thumb_func_start Func_fb334
+.thumb_func_start m4aMPlayPitchControl
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -2684,9 +2684,9 @@
 	pop	{r4, r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_fb334
+.func_end m4aMPlayPitchControl
 
-.thumb_func_start Func_fb3a8
+.thumb_func_start m4aMPlayPanpotControl
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r9
 	mov	r6, r8
@@ -2741,9 +2741,9 @@
 	pop	{r4, r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_fb3a8
+.func_end m4aMPlayPanpotControl
 
-.thumb_func_start Func_fb410
+.thumb_func_start ClearModM
 	mov	r1, r0
 	mov	r2, #0
 	mov	r0, #0
@@ -2761,9 +2761,9 @@
 	orr	r0, r2
 	strb	r0, [r1]
 	bx	lr
-.func_end Func_fb410
+.func_end ClearModM
 
-.thumb_func_start Func_fb430
+.thumb_func_start m4aMPlayModDepthSet
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -2804,7 +2804,7 @@
 	cmp	r1, #0
 	bne	.Lfb482
 	mov	r0, r4
-	bl	Func_fb410
+	bl	ClearModM
 .Lfb482:
 	sub	r5, #1
 	add	r4, #0x50
@@ -2822,9 +2822,9 @@
 	pop	{r4, r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_fb430
+.func_end m4aMPlayModDepthSet
 
-.thumb_func_start Func_fb4a4
+.thumb_func_start m4aMPlayLFOSpeedSet
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -2865,7 +2865,7 @@
 	cmp	r1, #0
 	bne	.Lfb4f6
 	mov	r0, r4
-	bl	Func_fb410
+	bl	ClearModM
 .Lfb4f6:
 	sub	r5, #1
 	add	r4, #0x50
@@ -2883,9 +2883,9 @@
 	pop	{r4, r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_fb4a4
+.func_end m4aMPlayLFOSpeedSet
 
-.thumb_func_start Func_fb518
+.thumb_func_start ply_memacc
 	push	{r4, r5, r6, lr}
 	mov	r4, r0
 	mov	r6, r1
@@ -3062,33 +3062,33 @@
 	pop	{r4, r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_fb518
+.func_end ply_memacc
 
-.thumb_func_start Func_fb670
+.thumb_func_start ply_xcmd
 	push	{lr}
 	ldr	r2, [r1, #0x40]
 	ldrb	r3, [r2]
 	add	r2, #1
 	str	r2, [r1, #0x40]
-	ldr	r2, =.Lfba48
+	ldr	r2, =gXcmdTable
 	lsl	r3, #2
 	add	r3, r2
 	ldr	r2, [r3]
 	bl	_call_via_r2
 	pop	{r0}
 	bx	r0
-.func_end Func_fb670
+.func_end ply_xcmd
 
-.thumb_func_start Func_fb690
+.thumb_func_start ply_xxx
 	push	{lr}
-	ldr	r2, =ewram_4000
+	ldr	r2, =gMPlayJumpTable
 	ldr	r2, [r2]
 	bl	_call_via_r2
 	pop	{r0}
 	bx	r0
-.func_end Func_fb690
+.func_end ply_xxx
 
-.thumb_func_start Func_fb6a4
+.thumb_func_start ply_xwave
 	push	{r4, lr}
 	ldr	r2, [r1, #0x40]
 	ldr	r0, =0xffffff00
@@ -3116,9 +3116,9 @@
 	pop	{r4}
 	pop	{r0}
 	bx	r0
-.func_end Func_fb6a4
+.func_end ply_xwave
 
-.thumb_func_start Func_fb6ec
+.thumb_func_start ply_xtype
 	ldr	r0, [r1, #0x40]
 	ldrb	r2, [r0]
 	mov	r0, r1
@@ -3128,9 +3128,9 @@
 	add	r0, #1
 	str	r0, [r1, #0x40]
 	bx	lr
-.func_end Func_fb6ec
+.func_end ply_xtype
 
-.thumb_func_start Func_fb700
+.thumb_func_start ply_xatta
 	ldr	r0, [r1, #0x40]
 	ldrb	r2, [r0]
 	mov	r0, r1
@@ -3140,9 +3140,9 @@
 	add	r0, #1
 	str	r0, [r1, #0x40]
 	bx	lr
-.func_end Func_fb700
+.func_end ply_xatta
 
-.thumb_func_start Func_fb714
+.thumb_func_start ply_xdeca
 	ldr	r0, [r1, #0x40]
 	ldrb	r0, [r0]
 	mov	r2, r1
@@ -3152,9 +3152,9 @@
 	add	r0, #1
 	str	r0, [r1, #0x40]
 	bx	lr
-.func_end Func_fb714
+.func_end ply_xdeca
 
-.thumb_func_start Func_fb728
+.thumb_func_start ply_xsust
 	ldr	r0, [r1, #0x40]
 	ldrb	r0, [r0]
 	mov	r2, r1
@@ -3164,9 +3164,9 @@
 	add	r0, #1
 	str	r0, [r1, #0x40]
 	bx	lr
-.func_end Func_fb728
+.func_end ply_xsust
 
-.thumb_func_start Func_fb73c
+.thumb_func_start ply_xrele
 	ldr	r0, [r1, #0x40]
 	ldrb	r0, [r0]
 	mov	r2, r1
@@ -3176,27 +3176,27 @@
 	add	r0, #1
 	str	r0, [r1, #0x40]
 	bx	lr
-.func_end Func_fb73c
+.func_end ply_xrele
 
-.thumb_func_start Func_fb750
+.thumb_func_start ply_xiecv
 	ldr	r0, [r1, #0x40]
 	ldrb	r2, [r0]
 	strb	r2, [r1, #0x1e]
 	add	r0, #1
 	str	r0, [r1, #0x40]
 	bx	lr
-.func_end Func_fb750
+.func_end ply_xiecv
 
-.thumb_func_start Func_fb75c
+.thumb_func_start ply_xiecl
 	ldr	r0, [r1, #0x40]
 	ldrb	r2, [r0]
 	strb	r2, [r1, #0x1f]
 	add	r0, #1
 	str	r0, [r1, #0x40]
 	bx	lr
-.func_end Func_fb75c
+.func_end ply_xiecl
 
-.thumb_func_start Func_fb768
+.thumb_func_start ply_xleng
 	ldr	r0, [r1, #0x40]
 	ldrb	r0, [r0]
 	mov	r2, r1
@@ -3206,9 +3206,9 @@
 	add	r0, #1
 	str	r0, [r1, #0x40]
 	bx	lr
-.func_end Func_fb768
+.func_end ply_xleng
 
-.thumb_func_start Func_fb77c
+.thumb_func_start ply_xswee
 	ldr	r0, [r1, #0x40]
 	ldrb	r0, [r0]
 	mov	r2, r1
@@ -3218,7 +3218,7 @@
 	add	r0, #1
 	str	r0, [r1, #0x40]
 	bx	lr
-.func_end Func_fb77c
+.func_end ply_xswee
 
 .thumb_func_start Func_fb790
 	bx	lr
@@ -3226,22 +3226,519 @@
 
 	.section .rodata
 
-.Lfb830:
-	.incrom 0xfb830, 0xfb8e4
-.Lfb8e4:
-	.incrom 0xfb8e4, 0xfb914
-.Lfb914:
-	.incrom 0xfb914, 0xfb92c
-.Lfb92c:
-	.incrom 0xfb92c, 0xfb9b0
-.Lfb9b0:
-	.incrom 0xfb9b0, 0xfb9c8
-.Lfb9c8:
-	.incrom 0xfb9c8, 0xfba04
-.Lfba04:
-	.incrom 0xfba04, 0xfba14
 
-	.incdata Data_fba14, 0xfba14, 0xfba48
+global_label gScaleTable
+    .byte 0xE0
+    .byte 0xE1
+    .byte 0xE2
+    .byte 0xE3
+    .byte 0xE4
+    .byte 0xE5
+    .byte 0xE6
+    .byte 0xE7
+    .byte 0xE8
+    .byte 0xE9
+    .byte 0xEA
+    .byte 0xEB
+    .byte 0xD0
+    .byte 0xD1
+    .byte 0xD2
+    .byte 0xD3
+    .byte 0xD4
+    .byte 0xD5
+    .byte 0xD6
+    .byte 0xD7
+    .byte 0xD8
+    .byte 0xD9
+    .byte 0xDA
+    .byte 0xDB
+    .byte 0xC0
+    .byte 0xC1
+    .byte 0xC2
+    .byte 0xC3
+    .byte 0xC4
+    .byte 0xC5
+    .byte 0xC6
+    .byte 0xC7
+    .byte 0xC8
+    .byte 0xC9
+    .byte 0xCA
+    .byte 0xCB
+    .byte 0xB0
+    .byte 0xB1
+    .byte 0xB2
+    .byte 0xB3
+    .byte 0xB4
+    .byte 0xB5
+    .byte 0xB6
+    .byte 0xB7
+    .byte 0xB8
+    .byte 0xB9
+    .byte 0xBA
+    .byte 0xBB
+    .byte 0xA0
+    .byte 0xA1
+    .byte 0xA2
+    .byte 0xA3
+    .byte 0xA4
+    .byte 0xA5
+    .byte 0xA6
+    .byte 0xA7
+    .byte 0xA8
+    .byte 0xA9
+    .byte 0xAA
+    .byte 0xAB
+    .byte 0x90
+    .byte 0x91
+    .byte 0x92
+    .byte 0x93
+    .byte 0x94
+    .byte 0x95
+    .byte 0x96
+    .byte 0x97
+    .byte 0x98
+    .byte 0x99
+    .byte 0x9A
+    .byte 0x9B
+    .byte 0x80
+    .byte 0x81
+    .byte 0x82
+    .byte 0x83
+    .byte 0x84
+    .byte 0x85
+    .byte 0x86
+    .byte 0x87
+    .byte 0x88
+    .byte 0x89
+    .byte 0x8A
+    .byte 0x8B
+    .byte 0x70
+    .byte 0x71
+    .byte 0x72
+    .byte 0x73
+    .byte 0x74
+    .byte 0x75
+    .byte 0x76
+    .byte 0x77
+    .byte 0x78
+    .byte 0x79
+    .byte 0x7A
+    .byte 0x7B
+    .byte 0x60
+    .byte 0x61
+    .byte 0x62
+    .byte 0x63
+    .byte 0x64
+    .byte 0x65
+    .byte 0x66
+    .byte 0x67
+    .byte 0x68
+    .byte 0x69
+    .byte 0x6A
+    .byte 0x6B
+    .byte 0x50
+    .byte 0x51
+    .byte 0x52
+    .byte 0x53
+    .byte 0x54
+    .byte 0x55
+    .byte 0x56
+    .byte 0x57
+    .byte 0x58
+    .byte 0x59
+    .byte 0x5A
+    .byte 0x5B
+    .byte 0x40
+    .byte 0x41
+    .byte 0x42
+    .byte 0x43
+    .byte 0x44
+    .byte 0x45
+    .byte 0x46
+    .byte 0x47
+    .byte 0x48
+    .byte 0x49
+    .byte 0x4A
+    .byte 0x4B
+    .byte 0x30
+    .byte 0x31
+    .byte 0x32
+    .byte 0x33
+    .byte 0x34
+    .byte 0x35
+    .byte 0x36
+    .byte 0x37
+    .byte 0x38
+    .byte 0x39
+    .byte 0x3A
+    .byte 0x3B
+    .byte 0x20
+    .byte 0x21
+    .byte 0x22
+    .byte 0x23
+    .byte 0x24
+    .byte 0x25
+    .byte 0x26
+    .byte 0x27
+    .byte 0x28
+    .byte 0x29
+    .byte 0x2A
+    .byte 0x2B
+    .byte 0x10
+    .byte 0x11
+    .byte 0x12
+    .byte 0x13
+    .byte 0x14
+    .byte 0x15
+    .byte 0x16
+    .byte 0x17
+    .byte 0x18
+    .byte 0x19
+    .byte 0x1A
+    .byte 0x1B
+    .byte 0x00
+    .byte 0x01
+    .byte 0x02
+    .byte 0x03
+    .byte 0x04
+    .byte 0x05
+    .byte 0x06
+    .byte 0x07
+    .byte 0x08
+    .byte 0x09
+    .byte 0x0A
+    .byte 0x0B
 
-.Lfba48:
-	.incrom 0xfba48, 0xfc624
+
+global_label gFreqTable
+    .word 0x80000000
+    .word 0x879C7C97
+    .word 0x8FACD61E
+    .word 0x9837F052
+    .word 0xA14517CC
+    .word 0xAADC0848
+    .word 0xB504F334
+    .word 0xBFC886BB
+    .word 0xCB2FF52A
+    .word 0xD744FCCB
+    .word 0xE411F03A
+    .word 0xF1A1BF39
+
+
+global_label gPcmSamplesPerVBlankTable
+    .short 0x60
+    .short 0x84
+    .short 0xB0
+    .short 0xE0
+    .short 0x108
+    .short 0x130
+    .short 0x160
+    .short 0x1C0
+    .short 0x210
+    .short 0x260
+    .short 0x2A0
+    .short 0x2C0
+
+
+global_label gCgbScaleTable
+    .byte 0x00
+    .byte 0x01
+    .byte 0x02
+    .byte 0x03
+    .byte 0x04
+    .byte 0x05
+    .byte 0x06
+    .byte 0x07
+    .byte 0x08
+    .byte 0x09
+    .byte 0x0A
+    .byte 0x0B
+    .byte 0x10
+    .byte 0x11
+    .byte 0x12
+    .byte 0x13
+    .byte 0x14
+    .byte 0x15
+    .byte 0x16
+    .byte 0x17
+    .byte 0x18
+    .byte 0x19
+    .byte 0x1A
+    .byte 0x1B
+    .byte 0x20
+    .byte 0x21
+    .byte 0x22
+    .byte 0x23
+    .byte 0x24
+    .byte 0x25
+    .byte 0x26
+    .byte 0x27
+    .byte 0x28
+    .byte 0x29
+    .byte 0x2A
+    .byte 0x2B
+    .byte 0x30
+    .byte 0x31
+    .byte 0x32
+    .byte 0x33
+    .byte 0x34
+    .byte 0x35
+    .byte 0x36
+    .byte 0x37
+    .byte 0x38
+    .byte 0x39
+    .byte 0x3A
+    .byte 0x3B
+    .byte 0x40
+    .byte 0x41
+    .byte 0x42
+    .byte 0x43
+    .byte 0x44
+    .byte 0x45
+    .byte 0x46
+    .byte 0x47
+    .byte 0x48
+    .byte 0x49
+    .byte 0x4A
+    .byte 0x4B
+    .byte 0x50
+    .byte 0x51
+    .byte 0x52
+    .byte 0x53
+    .byte 0x54
+    .byte 0x55
+    .byte 0x56
+    .byte 0x57
+    .byte 0x58
+    .byte 0x59
+    .byte 0x5A
+    .byte 0x5B
+    .byte 0x60
+    .byte 0x61
+    .byte 0x62
+    .byte 0x63
+    .byte 0x64
+    .byte 0x65
+    .byte 0x66
+    .byte 0x67
+    .byte 0x68
+    .byte 0x69
+    .byte 0x6A
+    .byte 0x6B
+    .byte 0x70
+    .byte 0x71
+    .byte 0x72
+    .byte 0x73
+    .byte 0x74
+    .byte 0x75
+    .byte 0x76
+    .byte 0x77
+    .byte 0x78
+    .byte 0x79
+    .byte 0x7A
+    .byte 0x7B
+    .byte 0x80
+    .byte 0x81
+    .byte 0x82
+    .byte 0x83
+    .byte 0x84
+    .byte 0x85
+    .byte 0x86
+    .byte 0x87
+    .byte 0x88
+    .byte 0x89
+    .byte 0x8A
+    .byte 0x8B
+    .byte 0x90
+    .byte 0x91
+    .byte 0x92
+    .byte 0x93
+    .byte 0x94
+    .byte 0x95
+    .byte 0x96
+    .byte 0x97
+    .byte 0x98
+    .byte 0x99
+    .byte 0x9A
+    .byte 0x9B
+    .byte 0xA0
+    .byte 0xA1
+    .byte 0xA2
+    .byte 0xA3
+    .byte 0xA4
+    .byte 0xA5
+    .byte 0xA6
+    .byte 0xA7
+    .byte 0xA8
+    .byte 0xA9
+    .byte 0xAA
+    .byte 0xAB
+
+
+global_label gCgbFreqTable
+    .short 0xF82C
+    .short 0xF89D
+    .short 0xF907
+    .short 0xF96B
+    .short 0xF9C9
+    .short 0xFA23
+    .short 0xFA77
+    .short 0xFAC7
+    .short 0xFB12
+    .short 0xFB58
+    .short 0xFB9B
+    .short 0xFBDA
+
+
+global_label gNoiseTable
+    .byte 0xD7
+    .byte 0xD6
+    .byte 0xD5
+    .byte 0xD4
+    .byte 0xC7
+    .byte 0xC6
+    .byte 0xC5
+    .byte 0xC4
+    .byte 0xB7
+    .byte 0xB6
+    .byte 0xB5
+    .byte 0xB4
+    .byte 0xA7
+    .byte 0xA6
+    .byte 0xA5
+    .byte 0xA4
+    .byte 0x97
+    .byte 0x96
+    .byte 0x95
+    .byte 0x94
+    .byte 0x87
+    .byte 0x86
+    .byte 0x85
+    .byte 0x84
+    .byte 0x77
+    .byte 0x76
+    .byte 0x75
+    .byte 0x74
+    .byte 0x67
+    .byte 0x66
+    .byte 0x65
+    .byte 0x64
+    .byte 0x57
+    .byte 0x56
+    .byte 0x55
+    .byte 0x54
+    .byte 0x47
+    .byte 0x46
+    .byte 0x45
+    .byte 0x44
+    .byte 0x37
+    .byte 0x36
+    .byte 0x35
+    .byte 0x34
+    .byte 0x27
+    .byte 0x26
+    .byte 0x25
+    .byte 0x24
+    .byte 0x17
+    .byte 0x16
+    .byte 0x15
+    .byte 0x14
+    .byte 0x07
+    .byte 0x06
+    .byte 0x05
+    .byte 0x04
+    .byte 0x03
+    .byte 0x02
+    .byte 0x01
+    .byte 0x00
+
+
+global_label gCgb3Vol
+    .byte 0x00
+    .byte 0x00
+    .byte 0x60
+    .byte 0x60
+    .byte 0x60
+    .byte 0x60
+    .byte 0x40
+    .byte 0x40
+    .byte 0x40
+    .byte 0x40
+    .byte 0x80
+    .byte 0x80
+    .byte 0x80
+    .byte 0x80
+    .byte 0x20
+    .byte 0x20
+
+global_label gClockTable
+    .byte 0x00
+    .byte 0x01
+    .byte 0x02
+    .byte 0x03
+    .byte 0x04
+    .byte 0x05
+    .byte 0x06
+    .byte 0x07
+    .byte 0x08
+    .byte 0x09
+    .byte 0x0A
+    .byte 0x0B
+    .byte 0x0C
+    .byte 0x0D
+    .byte 0x0E
+    .byte 0x0F
+    .byte 0x10
+    .byte 0x11
+    .byte 0x12
+    .byte 0x13
+    .byte 0x14
+    .byte 0x15
+    .byte 0x16
+    .byte 0x17
+    .byte 0x18
+    .byte 0x1C
+    .byte 0x1E
+    .byte 0x20
+    .byte 0x24
+    .byte 0x28
+    .byte 0x2A
+    .byte 0x2C
+    .byte 0x30
+    .byte 0x34
+    .byte 0x36
+    .byte 0x38
+    .byte 0x3C
+    .byte 0x40
+    .byte 0x42
+    .byte 0x44
+    .byte 0x48
+    .byte 0x4C
+    .byte 0x4E
+    .byte 0x50
+    .byte 0x54
+    .byte 0x58
+    .byte 0x5A
+    .byte 0x5C
+    .byte 0x60
+
+	.align 2, 0
+
+
+global_label gXcmdTable
+    .word ply_xxx
+    .word ply_xwave
+    .word ply_xtype
+    .word ply_xxx
+    .word ply_xatta
+    .word ply_xdeca
+    .word ply_xsust
+    .word ply_xrele
+    .word ply_xiecv
+    .word ply_xiecl
+    .word ply_xleng
+    .word ply_xswee
+
+
+.Lfba78:
+	.incrom 0xfba78, 0xfc624

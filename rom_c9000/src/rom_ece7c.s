@@ -538,7 +538,7 @@
 	cmp	r0, #0x1c
 	bgt	.Led366
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	div
 	mov	r3, #2
 	ldrsh	r4, [r5, r3]
 	mov	r1, #6
