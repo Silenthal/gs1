@@ -454,7 +454,7 @@
 	bl	Func_479c
 	bl	Func_4760
 	bl	Func_40e8
-	bl	Func_4858
+	bl	InitHeap
 	bl	Func_403c
 	mov	r0, r5
 	bl	_Func_79358
@@ -603,7 +603,7 @@
 	bl	Func_479c
 	bl	Func_4760
 	bl	Func_40e8
-	bl	Func_4858
+	bl	InitHeap
 	bl	Func_403c
 	b	.Lb5740
 .Lb583e:

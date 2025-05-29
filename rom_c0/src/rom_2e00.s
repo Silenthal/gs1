@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_2e00
+.thumb_func_start AgbMain
 	push	{r5, lr}
 	ldr	r2, =REG_DMA0SAD
 	ldr	r3, =0xc5ff
@@ -26,7 +26,7 @@
 	ldr	r2, =0x85001e00
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	bl	Func_4858
+	bl	InitHeap
 	bl	Func_300c
 	ldr	r3, =ewram_2090
 	str	r5, [r3]
@@ -76,7 +76,7 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_2e00
+.func_end AgbMain
 
 .thumb_func_start Func_2ee4
 	push	{r5, lr}
@@ -205,7 +205,7 @@
 	mov	r10, r0
 	ldr	r5, =0x7c
 	mov	r0, r5
-	bl	Func_4938
+	bl	AllocIwram
 	mov	r2, #0x84
 	mov	r6, r0
 	lsr	r5, #2
@@ -229,9 +229,9 @@
 	bx	r0
 .func_end Func_2fb0
 
-.thumb_func_start Func_3008
+.thumb_func_start IRQ_Dummy
 	bx	lr
-.func_end Func_3008
+.func_end IRQ_Dummy
 
 .thumb_func_start Func_300c
 	push	{r5, r6, lr}
@@ -317,7 +317,7 @@
 	b	.L30d8
 .L30d0:
 	ldr	r1, =Data_850
-	ldr	r3, =Func_3008
+	ldr	r3, =IRQ_Dummy
 	lsl	r2, r0, #2
 	str	r3, [r1, r2]
 .L30d8:
@@ -332,4 +332,19 @@
 	.section .rodata
 
 .L7320:
-	.incrom 0x7320, 0x7676
+    .word IRQ_Dummy
+    .word IRQ_Dummy
+    .word IRQ_Dummy
+    .word IRQ_Dummy
+    .word IRQ_Dummy
+    .word IRQ_Dummy
+    .word IRQ_Dummy
+    .word IRQ_Dummy
+    .word IRQ_Dummy
+    .word IRQ_Dummy
+    .word IRQ_Dummy
+    .word IRQ_Dummy
+    .word IRQ_Keypad
+    .word IRQ_Dummy
+
+	.incrom 0x7358, 0x7676

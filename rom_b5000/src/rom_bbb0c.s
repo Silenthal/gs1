@@ -25,7 +25,7 @@
 	mov	r0, r5
 	str	r3, [sp, #0x38]
 	mov	r6, r1
-	bl	Func_4938
+	bl	AllocIwram
 	str	r0, [sp, #0x10]
 	ldr	r1, [sp, #0x50]
 	ldrb	r1, [r1]
@@ -7903,7 +7903,7 @@
 	lsl	r5, #1
 	mov	r10, r0
 	mov	r0, r5
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r2, r5
 	ldr	r3, =Func_1af8
 	ldr	r1, [sp, #8]

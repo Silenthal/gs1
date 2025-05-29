@@ -8,8 +8,8 @@
 	.export_func _Func_44d0
 	.export_func _Func_2322
 	.export_func _Func_231c
-	.export_func _Func_48b0
-	.export_func _Func_48f4
+	.export_func _AllocIwramAtIndex
+	.export_func _AllocEwramAtIndex
 	.export_func _Func_2dd8
 	.export_func _Func_3fa4
 	.export_func _Func_c300

@@ -388,7 +388,7 @@
 	mov	r1, #0xe4
 	lsl	r1, #3
 	mov	r0, #0x38
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r5, r0
 	mov	r0, sp
 	str	r6, [r0]

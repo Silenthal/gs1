@@ -142,7 +142,7 @@
 	mov	r5, #0x80
 	lsl	r5, #8
 	mov	r0, r5
-	bl	Func_4970
+	bl	AllocEwram
 	ldr	r3, =Func_1af8
 	ldr	r1, =ewram_10000
 	mov	r2, r5
@@ -150,7 +150,7 @@
 	bl	_call_via_r3
 	ldr	r5, =0x9c
 	mov	r0, r5
-	bl	Func_4938
+	bl	AllocIwram
 	mov	r2, #0x84
 	mov	r6, r0
 	lsr	r5, #2
@@ -204,7 +204,7 @@
 	mov	r1, r6
 	mov	r0, #8
 	str	r3, [sp, #8]
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r1, r6
 	ldr	r3, =Func_8d4
 	mov	r8, r0
@@ -453,7 +453,7 @@
 	lsl	r2, #7
 	mov	r11, r2
 	mov	r0, r11
-	bl	Func_4938
+	bl	AllocIwram
 	mov	r7, r0
 	cmp	r7, #0
 	beq	.Lfe42

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 
 	.export_func _Func_41d8
-	.export_func _Func_48b0
+	.export_func _AllocIwramAtIndex
 	.export_func _Func_2dd8
 	.export_func _Func_3fa4
 	.export_func _Func_c150

@@ -6,8 +6,8 @@
 	.export_func _Func_4278
 	.export_func _Func_4458
 	.export_func _Func_2322
-	.export_func _Func_48f4
-	.export_func _Func_4970
+	.export_func _AllocEwramAtIndex
+	.export_func _AllocEwram
 	.export_func _Func_3fa4
 	.export_func _Func_4080
 	.export_func _Func_3dec

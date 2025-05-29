@@ -86,7 +86,7 @@
 	lsl	r1, #4
 	mov	r0, #0x37
 	sub	sp, #0x28
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	ldr	r3, =iwram_1f1c
 	mov	r1, #0
 	mov	r2, #1
@@ -970,7 +970,7 @@
 	lsl	r0, #2
 	ldr	r6, [r3]
 	mov	r8, r1
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r10, r0
 	mov	r1, r10
 	mov	r0, r8
@@ -2402,7 +2402,7 @@
 	mov	r5, r0
 	lsl	r1, #3
 	mov	r0, #0xe
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	ldr	r3, =Data_31864
 	lsl	r5, #2
 	mov	r6, r0
@@ -2534,7 +2534,7 @@
 	mov	r0, #0xe
 	mov	r1, r10
 	mov	r8, r2
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r5, r0
 	ldr	r0, =0xf1
 	bl	Func_2f40
@@ -3004,7 +3004,7 @@
 	mov	r6, r0
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r5, r0
 	mov	r0, r6
 	bl	Func_1a4c0
@@ -3034,7 +3034,7 @@
 	mov	r6, r0
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r1, #0x1a
 	mov	r5, r0
 	mov	r0, r6
@@ -3066,7 +3066,7 @@
 	lsl	r1, #3
 	mov	r0, #0x11
 	sub	sp, #0xc
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r1, #1
 	add	r2, sp, #8
 	add	r3, sp, #4
@@ -3153,7 +3153,7 @@
 	ldr	r5, =0x278
 	mov	r0, #0x31
 	mov	r1, r5
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
@@ -3210,7 +3210,7 @@
 	mov	r8, r0
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r6, r0
 	ldr	r0, =0xf1
 	bl	Func_2f40
@@ -3247,7 +3247,7 @@
 	mov	r7, r0
 	mov	r0, #0x11
 	mov	r8, r2
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r6, r0
 	ldr	r0, =0xf1
 	bl	Func_2f40
@@ -3261,7 +3261,7 @@
 	bl	Func_53e8
 	mov	r0, #0x80
 	lsl	r0, #3
-	bl	Func_4938
+	bl	AllocIwram
 	mov	r2, #0
 	mov	r14, r0
 	mov	r5, r14

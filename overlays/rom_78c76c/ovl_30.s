@@ -2150,7 +2150,7 @@
 	lsl	r1, #3
 	mov	r0, #0xe
 	ldr	r5, =.L2a50
-	bl	__Func_48f4
+	bl	__AllocEwramAtIndex
 	mov	r6, r0
 	mov	r1, r6
 	ldr	r0, =.L256c

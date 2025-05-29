@@ -83,7 +83,7 @@
 	ldr	r1, =0x12fc
 	mov	r0, #0xf
 	sub	sp, #4
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r3, #0
 	mov	r4, r0
 	mov	r5, sp
@@ -171,7 +171,7 @@
 	ldr	r1, =0x12fc
 	mov	r0, #0xf
 	sub	sp, #4
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r3, #0
 	mov	r5, r0
 	mov	r4, sp

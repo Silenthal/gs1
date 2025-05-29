@@ -687,12 +687,12 @@
 	b	.Lad922
 .Lad7c2:
 	mov	r0, #0x60
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r5, #0xa6
 	lsl	r5, #1
 	str	r0, [sp, #0x54]
 	mov	r0, r5
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r3, #0
 	str	r3, [sp, #0x4c]
 	str	r3, [sp, #0x48]
@@ -851,11 +851,11 @@
 	cmp	r3, #1
 	bhi	.Lad9d8
 	mov	r0, #0x60
-	bl	Func_4970
+	bl	AllocEwram
 	str	r0, [sp, #0x34]
 	mov	r0, #0xa6
 	lsl	r0, #1
-	bl	Func_4970
+	bl	AllocEwram
 	ldr	r3, =0x21a
 	add	r3, r9
 	ldrb	r6, [r3]
@@ -1210,7 +1210,7 @@
 .Ladc4a:
 	mov	r0, #0x80
 	lsl	r0, #2
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r1, #0
 	ldr	r3, =0x2128
 	str	r1, [sp, #0x24]
@@ -2012,11 +2012,11 @@
 	mov	r0, #0x60
 	str	r7, [r2, #4]
 	mov	r11, r2
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r5, r0
 	mov	r0, #0xa6
 	lsl	r0, #1
-	bl	Func_4970
+	bl	AllocEwram
 	ldr	r3, =0x21a
 	add	r3, r9
 	mov	r6, r0

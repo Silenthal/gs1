@@ -153,7 +153,7 @@
 	mov	r5, r0
 	mov	r0, #0x60
 	sub	sp, #4
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r6, r0
 	mov	r0, r5
 	bl	Func_77394

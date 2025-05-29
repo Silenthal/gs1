@@ -595,7 +595,7 @@
 	strb	r3, [r2]
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	__Func_48b0
+	bl	__AllocIwramAtIndex
 	mov	r5, r0
 	mov	r0, r7
 	bl	__Func_1a370

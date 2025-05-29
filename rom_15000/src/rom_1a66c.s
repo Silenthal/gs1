@@ -5,7 +5,7 @@
 	mov	r1, #0xf9
 	lsl	r1, #2
 	mov	r0, #0x12
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r2, #0xd2
 	mov	r7, r0
 	lsl	r2, #2

@@ -9,12 +9,12 @@
 	mov	r1, #0x5c
 	mov	r0, #6
 	sub	sp, #4
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r1, #0xe0
 	lsl	r1, #5
 	mov	r8, r0
 	mov	r0, #5
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r6, r0
 	mov	r0, r7
 	bl	Func_bb20
@@ -836,7 +836,7 @@
 	ldr	r5, =0x2c4
 	mov	r0, #0x34
 	mov	r1, r5
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24

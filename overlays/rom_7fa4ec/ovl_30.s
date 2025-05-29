@@ -1782,7 +1782,7 @@
 	sub	sp, #4
 	mov	r8, r2
 	mov	r7, r3
-	bl	__Func_48f4
+	bl	__AllocEwramAtIndex
 	mov	r3, #0
 	mov	r4, r0
 	mov	r0, sp
@@ -1979,7 +1979,7 @@
 	mov	r0, #0x80
 	lsl	r0, #1
 	sub	sp, #4
-	bl	__Func_4970
+	bl	__AllocEwram
 	ldr	r5, =.L1c1a
 	mov	r6, r0
 	bl	__Func_4080

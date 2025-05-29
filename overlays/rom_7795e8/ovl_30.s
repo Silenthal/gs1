@@ -1466,7 +1466,7 @@
 	lsl	r0, #2
 	ldr	r6, [r3]
 	mov	r5, r1
-	bl	__Func_4970
+	bl	__AllocEwram
 	mov	r8, r0
 	mov	r1, r8
 	mov	r0, r5
@@ -1525,7 +1525,7 @@
 	mov	r0, #0xc0
 	lsl	r0, #2
 	ldr	r6, [r3]
-	bl	__Func_4970
+	bl	__AllocEwram
 	ldrh	r3, [r5, #0xe]
 	ldrh	r2, [r5, #0xc]
 	lsl	r3, #5

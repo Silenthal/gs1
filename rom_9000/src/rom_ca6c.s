@@ -1077,7 +1077,7 @@
 	push	{r5, r6, lr}
 	ldr	r5, =0x4e8
 	mov	r0, r5
-	bl	Func_4938
+	bl	AllocIwram
 	mov	r2, #0x84
 	mov	r6, r0
 	lsr	r5, #2

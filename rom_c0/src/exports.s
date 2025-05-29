@@ -18,14 +18,14 @@ Exports_c0:
 	.export_func Func_231c
 	.export_func Func_447c
 	.export_func Func_307c
-	.export_func Func_4858
-	.export_func Func_48b0
-	.export_func Func_48f4
+	.export_func InitHeap
+	.export_func AllocIwramAtIndex
+	.export_func AllocEwramAtIndex
 	.export_func Func_2dd8
-	.export_func Func_488c
-	.export_func Func_48a0
-	.export_func Func_4938
-	.export_func Func_4970
+	.export_func GetFreeSpaceIwram
+	.export_func GetFreeSpaceEwram
+	.export_func AllocIwram
+	.export_func AllocEwram
 	.export_func Func_2df0
 	.export_func Func_46c4
 	.export_func Func_4718

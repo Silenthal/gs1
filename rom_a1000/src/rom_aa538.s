@@ -41,7 +41,7 @@
 	lsl	r1, #4
 	mov	r0, #0x37
 	sub	sp, #4
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	ldr	r3, =ewram_240
 	mov	r2, #0x83
 	lsl	r2, #2
@@ -67,7 +67,7 @@
 	mov	r0, #0
 	bl	Func_a1090
 	ldr	r0, =0x2130
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r2, #0xc2
 	lsl	r2, #1
 	add	r3, r7, r2
@@ -4614,7 +4614,7 @@
 	lsr	r2, #16
 	mov	r0, r5
 	str	r2, [sp, #0x18]
-	bl	Func_4938
+	bl	AllocIwram
 	ldr	r3, =Func_1af8
 	ldr	r1, [sp, #0x34]
 	str	r0, [sp, #0x30]

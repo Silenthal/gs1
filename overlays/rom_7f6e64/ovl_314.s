@@ -4016,7 +4016,7 @@
 	str	r3, [r5, #0x34]
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	__Func_48b0
+	bl	__AllocIwramAtIndex
 	str	r0, [sp, #0x28]
 	mov	r0, #0xdc
 	bl	__Func_1a370

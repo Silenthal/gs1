@@ -654,7 +654,7 @@
 	lsl	r1, #3
 	mov	r0, #0x14
 	sub	sp, #4
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r3, #0
 	mov	r4, r0
 	mov	r0, sp
@@ -1653,7 +1653,7 @@
 	lsl	r1, #3
 	mov	r0, #0x14
 	sub	sp, #4
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r3, #0
 	mov	r1, r0
 	mov	r0, sp

@@ -172,7 +172,7 @@
 	push	{r5, r6, lr}
 	mov	r0, #0xa4
 	lsl	r0, #3
-	bl	__Func_4970
+	bl	__AllocEwram
 	ldr	r6, =.L650
 	mov	r2, #0
 	ldrsh	r3, [r6, r2]

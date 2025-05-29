@@ -6315,7 +6315,7 @@
 	str	r3, [r6, #0x48]
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	__Func_48b0
+	bl	__AllocIwramAtIndex
 	mov	r8, r0
 	mov	r0, r10
 	bl	__Func_1a370
@@ -6527,7 +6527,7 @@
 	lsl	r1, #1
 	mov	r0, #0x21
 	sub	sp, #0x44
-	bl	__Func_48f4
+	bl	__AllocEwramAtIndex
 	str	r0, [sp, #0x40]
 	str	r0, [sp, #0x3c]
 	ldr	r1, [sp, #0x40]
@@ -6909,7 +6909,7 @@
 	lsl	r1, #1
 	mov	r0, #0x21
 	sub	sp, #4
-	bl	__Func_48f4
+	bl	__AllocEwramAtIndex
 	mov	r3, #0
 	mov	r9, r0
 	mov	r0, sp

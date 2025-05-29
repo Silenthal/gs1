@@ -516,23 +516,23 @@
 	mov	r1, #0xe0
 	lsl	r1, #4
 	mov	r0, #4
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r1, #0xc0
 	mov	r7, r0
 	lsl	r1, #3
 	mov	r0, #3
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	b	.Lbb56
 .Lbb40:
 	mov	r1, #0xe0
 	lsl	r1, #4
 	mov	r0, #4
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r1, #0xc0
 	mov	r7, r0
 	lsl	r1, #3
 	mov	r0, #3
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 .Lbb56:
 	mov	r6, r0
 	bl	Func_4838
@@ -558,7 +558,7 @@
 	ldr	r5, =0x7c
 	mov	r0, #0x35
 	mov	r1, r5
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24

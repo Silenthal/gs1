@@ -365,7 +365,7 @@
 	mov	r5, #0xa6
 	lsl	r5, #1
 	mov	r0, r5
-	bl	Func_4938
+	bl	AllocIwram
 	ldr	r3, =Func_1af8
 	mov	r1, r8
 	mov	r2, r5

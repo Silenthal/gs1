@@ -54,7 +54,7 @@
 	strb	r3, [r5]
 	lsl	r1, #3
 	mov	r0, #0x34
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	bl	Func_3e10
 	ldr	r3, =iwram_1e44
 	mov	r1, r11

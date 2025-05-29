@@ -201,7 +201,7 @@
 	mov	r6, r0
 	mov	r0, #0x16
 	sub	sp, #4
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r5, r0
 	bl	Func_97384
 	mov	r3, #0

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_4858
+.thumb_func_start InitHeap
 	sub	sp, #4
 	ldr	r4, =iwram_1e50
 	mov	r0, sp
@@ -18,26 +18,26 @@
 	add	sp, #4
 	str	r3, [r4]
 	bx	lr
-.func_end Func_4858
+.func_end InitHeap
 
-.thumb_func_start Func_488c
+.thumb_func_start GetFreeSpaceIwram
 	ldr	r3, =iwram_1e50
 	ldr	r0, =iwram_7800
 	ldr	r3, [r3, #4]
 	sub	r0, r3
 	bx	lr
-.func_end Func_488c
+.func_end GetFreeSpaceIwram
 
-.thumb_func_start Func_48a0
+.thumb_func_start GetFreeSpaceEwram
 	ldr	r3, =iwram_1e50
 	mov	r0, #0x81
 	ldr	r3, [r3]
 	lsl	r0, #18
 	sub	r0, r3
 	bx	lr
-.func_end Func_48a0
+.func_end GetFreeSpaceEwram
 
-.thumb_func_start Func_48b0
+.thumb_func_start AllocIwramAtIndex
 	push	{r5, lr}
 	ldr	r4, =iwram_1e50
 	lsl	r5, r0, #2
@@ -71,9 +71,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_48b0
+.func_end AllocIwramAtIndex
 
-.thumb_func_start Func_48f4
+.thumb_func_start AllocEwramAtIndex
 	push	{r5, lr}
 	ldr	r4, =iwram_1e50
 	lsl	r5, r0, #2
@@ -107,9 +107,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_48f4
+.func_end AllocEwramAtIndex
 
-.thumb_func_start Func_4938
+.thumb_func_start AllocIwram
 	push	{lr}
 	ldr	r1, =iwram_1e50
 	add	r3, r0, #3
@@ -138,9 +138,9 @@
 .L4964:
 	pop	{r1}
 	bx	r1
-.func_end Func_4938
+.func_end AllocIwram
 
-.thumb_func_start Func_4970
+.thumb_func_start AllocEwram
 	push	{lr}
 	ldr	r1, =iwram_1e50
 	add	r3, r0, #3
@@ -169,4 +169,4 @@
 .L499c:
 	pop	{r1}
 	bx	r1
-.func_end Func_4970
+.func_end AllocEwram

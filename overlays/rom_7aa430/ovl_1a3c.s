@@ -12,7 +12,7 @@
 	mov	r1, #4
 	mov	r0, #0x23
 	sub	sp, #4
-	bl	__Func_48f4
+	bl	__AllocEwramAtIndex
 	mov	r2, r8
 	str	r2, [r0]
 	ldr	r0, =0x109
@@ -1152,7 +1152,7 @@
 	push	{r5, lr}
 	mov	r0, #0x23
 	mov	r1, #4
-	bl	__Func_48f4
+	bl	__AllocEwramAtIndex
 	cmp	r0, #0
 	beq	.L23d6
 	ldr	r5, [r0]

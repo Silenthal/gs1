@@ -10,7 +10,7 @@
 	mov	r1, #0x30
 	mov	r0, #2
 	ldr	r5, =iwram_1d2c
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	ldr	r2, =iwram_1cc4
 	mov	r3, #0
 	str	r3, [r2]

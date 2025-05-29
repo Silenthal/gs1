@@ -19,7 +19,7 @@
 	mov	r11, r0
 	mov	r0, #0xe
 	mov	r9, r3
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r3, #0
 	mov	r2, #1
 	str	r3, [sp, #8]
@@ -539,7 +539,7 @@
 	lsl	r5, #1
 	bl	Func_a3ef0
 	mov	r0, r5
-	bl	Func_4938
+	bl	AllocIwram
 	ldr	r3, =Func_1af8
 	ldr	r1, [sp, #4]
 	mov	r2, r5

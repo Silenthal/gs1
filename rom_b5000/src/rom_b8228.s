@@ -1943,10 +1943,10 @@
 	sub	sp, #0x10
 	str	r0, [sp, #0xc]
 	mov	r0, #0x11
-	bl	Func_4970
+	bl	AllocEwram
 	str	r0, [sp, #8]
 	mov	r0, #9
-	bl	Func_4970
+	bl	AllocEwram
 	str	r0, [sp, #4]
 	ldr	r1, [sp, #4]
 	mov	r0, #1
@@ -2637,7 +2637,7 @@
 	lsl	r3, #2
 	mov	r0, #0x28
 	str	r3, [sp, #0xc]
-	bl	Func_4970
+	bl	AllocEwram
 	ldr	r3, [r7]
 	add	r5, sp, #0x10
 	mov	r10, r5

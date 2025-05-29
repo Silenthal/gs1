@@ -67,14 +67,14 @@
 	mov	r5, r0
 	ldr	r1, =0x302
 	mov	r0, #0x29
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	ldr	r1, =0x782c
 	mov	r0, #0x27
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r1, #0x80
 	lsl	r1, #7
 	mov	r0, #0x28
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	ldr	r3, [r5]
 	cmp	r3, #0
 	beq	.Ld662c
@@ -163,14 +163,14 @@
 	mov	r5, r0
 	ldr	r1, =0x302
 	mov	r0, #0x29
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	ldr	r1, =0x782c
 	mov	r0, #0x27
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r1, #0x80
 	lsl	r1, #7
 	mov	r0, #0x28
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	ldr	r3, =iwram_1eec
 	ldr	r2, =0x7828
 	ldr	r3, [r3]

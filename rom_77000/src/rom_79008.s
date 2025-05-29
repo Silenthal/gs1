@@ -54,7 +54,7 @@
 	bl	Func_77394
 	mov	r10, r0
 	mov	r0, #0x2c
-	bl	Func_4970
+	bl	AllocEwram
 	ldr	r3, =0x129
 	add	r3, r10
 	ldrb	r3, [r3]

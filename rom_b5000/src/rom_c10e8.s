@@ -444,12 +444,12 @@
 	str	r3, [r2, #8]
 	ldr	r1, =0x13d0
 	mov	r0, #0x27
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r1, #0x80
 	mov	r11, r0
 	lsl	r1, #7
 	mov	r0, #0x28
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	ldr	r1, =Func_888
 	mov	r7, #0x8e
 	lsl	r7, #5

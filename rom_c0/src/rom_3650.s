@@ -171,7 +171,7 @@
 	bx	lr
 .func_end Func_380c
 
-.thumb_func_start Func_3810
+.thumb_func_start IRQ_Keypad
 	push	{lr}
 	ldr	r3, =ewram_2000
 	ldrh	r3, [r3]
@@ -186,7 +186,7 @@
 .L3826:
 	pop	{r0}
 	bx	r0
-.func_end Func_3810
+.func_end IRQ_Keypad
 
 .thumb_func_start Func_383c
 	push	{r5, r6, lr}

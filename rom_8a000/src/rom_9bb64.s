@@ -5,7 +5,7 @@
 	push	{r5, r6, r7, lr}
 	mov	r0, #0x20
 	sub	sp, #0xc
-	bl	Func_4970
+	bl	AllocEwram
 	ldr	r7, =ewram_10000
 	mov	r1, r7
 	add	r1, #0x20
@@ -722,7 +722,7 @@
 	mov	r0, #0x1b
 	ldr	r6, [r5]
 	sub	sp, #0x18
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r2, #0xcf
 	ldr	r1, =0x1b
 	mov	r7, r0
@@ -986,7 +986,7 @@
 	push	{r5, r6, lr}
 	ldr	r1, =0xccc
 	mov	r0, #0x1b
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r2, #0xcf
 	lsl	r2, #1
 	add	r3, r0, r2

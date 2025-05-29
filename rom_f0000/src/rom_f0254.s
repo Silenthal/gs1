@@ -71,7 +71,7 @@
 	ldr	r5, =0x230
 	mov	r0, #0x31
 	mov	r1, r5
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
@@ -464,7 +464,7 @@
 	mov	r0, #0x80
 	lsl	r0, #3
 	sub	sp, #4
-	bl	Func_4970
+	bl	AllocEwram
 	ldr	r5, =ewram_4c0c
 	mov	r4, sp
 	mov	r3, #0
@@ -633,7 +633,7 @@
 	mov	r0, r6
 	str	r1, [sp, #8]
 	mov	r7, r2
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r1, #0
 	mov	r2, #0xc0
 	mov	r3, r10

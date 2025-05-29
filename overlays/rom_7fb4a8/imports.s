@@ -5,9 +5,9 @@
 	.export_func _Func_30f8
 	.export_func _Func_41d8
 	.export_func _Func_4278
-	.export_func _Func_48f4
+	.export_func _AllocEwramAtIndex
 	.export_func _Func_2dd8
-	.export_func _Func_4970
+	.export_func _AllocEwram
 	.export_func _Func_2df0
 	.export_func _Func_5d10
 	.export_func _Func_6358

@@ -505,7 +505,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	bl	Func_307c
-	bl	Func_4858
+	bl	InitHeap
 	bl	Func_4760
 	bl	Func_403c
 	b	.L8aa18
@@ -549,7 +549,7 @@
 	b	.L8aaa0
 .L8aa52:
 	mov	r0, #0x40
-	bl	Func_4938
+	bl	AllocIwram
 	mov	r5, r0
 	ldr	r3, =REG_DMA3SAD
 	mov	r0, r9
@@ -562,7 +562,7 @@
 	b	.L8aa88
 .L8aa6e:
 	mov	r0, #0x40
-	bl	Func_4938
+	bl	AllocIwram
 	mov	r5, r0
 	ldr	r3, =REG_DMA3SAD
 	mov	r0, r9

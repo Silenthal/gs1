@@ -190,24 +190,24 @@
 	ldr	r1, =0x60e
 	mov	r0, #0x29
 	add	sp, r5
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r1, #0x80
 	lsl	r1, #2
 	mov	r0, #0x28
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	ldr	r1, =0x782c
 	str	r0, [sp, #0x74]
 	mov	r0, #0x27
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r1, #0xc3
 	str	r0, [sp, #0x70]
 	lsl	r1, #3
 	mov	r0, #0x2d
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r1, #0x4c
 	str	r0, [sp, #0x6c]
 	mov	r0, #0xc
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	str	r0, [sp, #0x68]
 	ldr	r0, =0xc
 	bl	Func_2f3c

@@ -3839,7 +3839,7 @@
 	lsl	r1, #3
 	mov	r0, #0x11
 	ldr	r7, [r6, #0x50]
-	bl	__Func_48b0
+	bl	__AllocIwramAtIndex
 	mov	r3, #0x80
 	mov	r5, r0
 	lsl	r3, #3

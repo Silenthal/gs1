@@ -18,7 +18,7 @@
 	ldr	r5, =0x2c4
 	mov	r0, #0x34
 	mov	r1, r5
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24

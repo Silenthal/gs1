@@ -13,7 +13,7 @@
 	lsl	r1, #5
 	mov	r0, #0x33
 	sub	sp, #0x18
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r3, #0
 	mov	r11, r0
 	add	r0, sp, #4

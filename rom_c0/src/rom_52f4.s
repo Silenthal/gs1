@@ -43,7 +43,7 @@
 	mov	r10, r1
 	ldr	r5, =0x2c4
 	mov	r0, r5
-	bl	Func_4938
+	bl	AllocIwram
 	mov	r2, #0x84
 	mov	r6, r0
 	lsr	r5, #2
@@ -78,7 +78,7 @@
 	mov	r10, r1
 	ldr	r5, =0x4ec
 	mov	r0, r5
-	bl	Func_4938
+	bl	AllocIwram
 	mov	r2, #0x84
 	mov	r6, r0
 	lsr	r5, #2
@@ -113,7 +113,7 @@
 	mov	r10, r1
 	ldr	r5, =0x258
 	mov	r0, r5
-	bl	Func_4938
+	bl	AllocIwram
 	mov	r2, #0x84
 	mov	r6, r0
 	lsr	r5, #2

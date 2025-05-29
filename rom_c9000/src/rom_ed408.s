@@ -157,7 +157,7 @@
 .Led506:
 	add	r1, #8
 	lsl	r1, #2
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	ldr	r6, =Data_edcc4
 	mov	r5, r0
 	ldr	r3, =REG_DMA3SAD

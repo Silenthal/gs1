@@ -2,7 +2,7 @@
 
 	.export_func _Func_30f8
 	.export_func _Func_41d8
-	.export_func _Func_48f4
+	.export_func _AllocEwramAtIndex
 	.export_func _Func_2dd8
 	.export_func _Func_53e8
 	.export_func _Func_3fa4

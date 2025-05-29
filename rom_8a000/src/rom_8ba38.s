@@ -1264,7 +1264,7 @@
 	push	{r5, lr}
 	ldr	r1, =0xccc
 	mov	r0, #0x1b
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r1, #0xcf
 	mov	r5, r0
 	lsl	r1, #1
@@ -1276,7 +1276,7 @@
 	mov	r1, #0xa8
 	lsl	r1, #3
 	mov	r0, #0x1f
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	cmp	r0, #0
 	beq	.L8c498
 	ldr	r3, =0x53d
@@ -1316,7 +1316,7 @@
 	push	{r5, lr}
 	ldr	r1, =0xccc
 	mov	r0, #0x1b
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r2, #0xcf
 	lsl	r2, #1
 	mov	r5, r0
@@ -1350,7 +1350,7 @@
 	ldr	r1, =0xccc
 	mov	r0, #0x1b
 	sub	sp, #0x10
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r7, #0
 	mov	r8, r0
 	add	r0, sp, #0xc

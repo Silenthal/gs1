@@ -109,7 +109,7 @@
 	bne	.Laa62
 	ldr	r1, =0x2c4
 	mov	r0, #0x34
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	ldr	r2, =Data_9d9c
 	mov	r1, r0
 	ldr	r0, =Func_9bb8
@@ -462,7 +462,7 @@
 	mul	r4, r2
 	mov	r0, r4
 	str	r4, [sp, #0x24]
-	bl	Func_4938
+	bl	AllocIwram
 	ldr	r3, =Func_8d4
 	ldr	r1, [sp, #0x24]
 	mov	r10, r0
@@ -589,7 +589,7 @@
 	beq	.Laed8
 	mov	r0, #0x80
 	lsl	r0, #3
-	bl	Func_4938
+	bl	AllocIwram
 	ldrb	r3, [r6, #0x16]
 	ldr	r2, [r6, #8]
 	mov	r5, r0
@@ -642,7 +642,7 @@
 	cmp	r3, #0
 	beq	.Laff0
 	ldr	r0, [sp, #0x24]
-	bl	Func_4938
+	bl	AllocIwram
 	str	r0, [sp, #0xc]
 	ldr	r3, [sp, #0x20]
 	ldr	r1, [sp, #0x14]

@@ -274,7 +274,7 @@
 	ldr	r5, =0x27c
 	mov	r0, #0x31
 	mov	r1, r5
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
@@ -455,7 +455,7 @@
 	mov	r10, r3
 	str	r2, [sp, #0x10]
 	str	r2, [sp, #0xc]
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	ldr	r2, =iwram_1c90
 	str	r0, [sp, #8]
 	add	r4, sp, #0x1c
@@ -526,11 +526,11 @@
 	mov	r0, #1
 	bl	Func_3bb4
 .L125de:
-	bl	Func_4858
+	bl	InitHeap
 	bl	Func_40e8
 	mov	r1, #0xa0
 	mov	r0, #9
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	str	r0, [sp, #8]
 	bl	Func_403c
 	mov	r0, #2

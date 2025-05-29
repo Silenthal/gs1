@@ -119,7 +119,7 @@
 	mov	r0, #0x80
 	sub	sp, #0x10
 	mov	r9, r2
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r5, sp
 	mov	r3, #0
 	mov	r10, r0
@@ -289,7 +289,7 @@
 	str	r0, [sp, #8]
 	mov	r0, #0x24
 	mov	r10, r1
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r9, r0
 	ldr	r0, [sp, #8]
 	bl	_Func_77394
@@ -1745,7 +1745,7 @@
 	str	r0, [sp, #0x10]
 	mov	r0, #0xa6
 	lsl	r0, #1
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r11, r0
 	ldr	r0, [sp, #0x10]
 	mov	r3, #0

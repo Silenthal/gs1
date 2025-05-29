@@ -1035,7 +1035,7 @@
 	bl	__Func_924d4
 	ldr	r1, =0xccc
 	mov	r0, #0x1b
-	bl	__Func_48f4
+	bl	__AllocEwramAtIndex
 	mov	r2, #0xf0
 	lsl	r2, #1
 	add	r0, r2

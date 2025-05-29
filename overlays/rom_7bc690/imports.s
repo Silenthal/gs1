@@ -5,7 +5,7 @@
 	.export_func _Func_41d8
 	.export_func _Func_4458
 	.export_func _Func_447c
-	.export_func _Func_4938
+	.export_func _AllocIwram
 	.export_func _Func_2df0
 	.export_func _Func_5340
 	.export_func _Func_3f78

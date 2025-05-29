@@ -7,7 +7,7 @@
 	lsl	r1, #4
 	mov	r0, #0x37
 	sub	sp, #4
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	ldr	r3, =iwram_1e68
 	ldr	r2, [r3]
 	mov	r3, #1
@@ -127,15 +127,15 @@
 	lsl	r1, #4
 	mov	r0, #0x37
 	sub	sp, #4
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r7, r0
 	mov	r0, #0x40
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r6, #0x80
 	lsl	r6, #6
 	mov	r9, r0
 	mov	r0, r6
-	bl	Func_4970
+	bl	AllocEwram
 	ldr	r3, =iwram_1e68
 	ldr	r2, [r3]
 	mov	r3, #1
@@ -2204,7 +2204,7 @@
 .La85c4:
 	mov	r0, #0x80
 	lsl	r0, #1
-	bl	Func_4938
+	bl	AllocIwram
 	mov	r5, r0
 	ldr	r0, =0xbe6
 	mov	r1, r5

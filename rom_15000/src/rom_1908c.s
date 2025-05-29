@@ -631,7 +631,7 @@
 	ldr	r5, =0x140
 	mov	r0, #0x32
 	mov	r1, r5
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
@@ -1239,7 +1239,7 @@
 	mov	r10, r1
 	ldr	r5, =0x60
 	mov	r0, r5
-	bl	Func_4938
+	bl	AllocIwram
 	mov	r2, #0x84
 	mov	r6, r0
 	lsr	r5, #2

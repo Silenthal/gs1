@@ -46,7 +46,7 @@ SECTIONS {
 		rom_c0/src/rom_4458.o(.text)
 		rom_c0/src/rom_447c.o(.text)
 		rom_c0/src/rom_45e8.o(.text)
-		rom_c0/src/rom_4858.o(.text)
+		rom_c0/src/alloc.o(.text)
 		rom_c0/src/rom_49a8.o(.text)
 		rom_c0/src/rom_5208.o(.text)
 		rom_c0/src/rom_52f4.o(.text)

@@ -9,7 +9,7 @@
 	.export_func _Func_45d4
 	.export_func _Func_2322
 	.export_func _Func_447c
-	.export_func _Func_48f4
+	.export_func _AllocEwramAtIndex
 	.export_func _Func_ba30
 	.export_func _Func_c300
 	.export_func _Func_c2d8

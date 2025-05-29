@@ -13,16 +13,16 @@
 	str	r0, [sp, #0x18]
 	ldr	r1, =0x782c
 	mov	r0, #0x27
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r1, #0x80
 	mov	r9, r0
 	lsl	r1, #7
 	mov	r0, #0x28
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	ldr	r1, =0x60e
 	str	r0, [sp, #0x14]
 	mov	r0, #0x29
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	ldr	r5, =0x7828
 	str	r0, [sp, #8]
 	ldr	r0, [sp, #0x18]
@@ -581,12 +581,12 @@
 	ldr	r1, =0x782c
 	mov	r6, r0
 	mov	r0, #0x27
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r1, #0x80
 	mov	r5, r0
 	lsl	r1, #7
 	mov	r0, #0x28
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r0, #0
 	bl	Func_cd594
 	ldr	r3, =0x77b4

@@ -537,7 +537,7 @@
 	mov	r0, #0xaa
 	lsl	r0, #1
 	sub	sp, #0x30
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r2, #0
 	mov	r8, r0
 	mov	r10, r2
@@ -626,7 +626,7 @@
 	bl	Func_2df0
 	mov	r0, #0xa0
 	lsl	r0, #1
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r8, r0
 	mov	r0, #1
 	bl	_Func_77330
@@ -663,7 +663,7 @@
 	lsl	r5, #1
 	mov	r0, r5
 	sub	sp, #0x10
-	bl	Func_4970
+	bl	AllocEwram
 	ldr	r3, =iwram_1e74
 	ldr	r3, [r3]
 	mov	r6, r0
@@ -756,7 +756,7 @@
 	lsl	r5, #1
 	bl	Func_2df0
 	mov	r0, r5
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r6, r0
 	mov	r0, #0
 	bl	_Func_77330
@@ -1272,26 +1272,26 @@
 	str	r0, [sp, #0xc]
 	mov	r1, #0x4c
 	mov	r0, #0xc
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	ldr	r1, =0x82c
 	mov	r10, r0
 	mov	r0, #9
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r5, #0xf9
 	lsl	r5, #3
 	mov	r1, r5
 	mov	r8, r0
 	mov	r0, #0x36
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r1, #0x20
 	mov	r6, r0
 	mov	r0, #0x2c
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r1, #0xa0
 	str	r0, [sp, #8]
 	lsl	r1, #2
 	mov	r0, #0xb
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r1, #0xc
 	add	r1, r10
 	ldr	r3, =Func_8d4
@@ -1340,7 +1340,7 @@
 	mov	r0, #0x25
 	str	r2, [r1]
 	mov	r1, #0xc
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	str	r7, [r5]
 	mov	r1, r0
 	ldr	r3, =REG_DMA3SAD
@@ -1356,11 +1356,11 @@
 	strh	r0, [r3]
 	lsl	r1, #4
 	mov	r0, #4
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r1, #0xc0
 	lsl	r1, #3
 	mov	r0, #3
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r0, #4
 	bl	_Func_c004
 	mov	r0, #0xb7
@@ -1668,13 +1668,13 @@
 	bl	_Func_79338
 	cmp	r0, #0
 	bne	.Lb67ac
-	bl	Func_488c
-	bl	Func_48a0
+	bl	GetFreeSpaceIwram
+	bl	GetFreeSpaceEwram
 	mov	r0, r5
 	bl	Func_b9934
 	mov	r5, r0
-	bl	Func_488c
-	bl	Func_48a0
+	bl	GetFreeSpaceIwram
+	bl	GetFreeSpaceEwram
 	b	.Lb67b4
 .Lb67ac:
 	mov	r0, r5
@@ -1701,8 +1701,8 @@
 	mov	r3, r8
 	ldrsh	r3, [r6, r3]
 	mov	r10, r3
-	bl	Func_488c
-	bl	Func_48a0
+	bl	GetFreeSpaceIwram
+	bl	GetFreeSpaceEwram
 	mov	r0, #0xb5
 	lsl	r0, #1
 	bl	_Func_79338
@@ -1727,8 +1727,8 @@
 	bne	.Lb6814
 	b	.Lb6a00
 .Lb6814:
-	bl	Func_488c
-	bl	Func_48a0
+	bl	GetFreeSpaceIwram
+	bl	GetFreeSpaceEwram
 	mov	r0, #1
 	mov	r1, #0
 	bl	Func_b6b40

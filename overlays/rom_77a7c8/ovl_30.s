@@ -4108,7 +4108,7 @@
 	strb	r3, [r6, #9]
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	__Func_48b0
+	bl	__AllocIwramAtIndex
 	mov	r5, r0
 	mov	r0, #0xf2
 	bl	__Func_1a370
@@ -5708,7 +5708,7 @@
 	mov	r8, r0
 	mov	r0, #0x80
 	lsl	r0, #7
-	bl	__Func_4970
+	bl	__AllocEwram
 	mov	r7, r0
 	mov	r0, #1
 	bl	__Func_30f8

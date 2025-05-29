@@ -2622,20 +2622,20 @@
 	ldr	r1, =0x60e
 	mov	r0, #0x29
 	sub	sp, #0x74
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r1, #0x80
 	str	r0, [sp, #0x2c]
 	lsl	r1, #8
 	mov	r0, #0x28
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	ldr	r1, =0x782c
 	str	r0, [sp, #0x28]
 	mov	r0, #0x27
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	ldr	r1, =0x61c
 	str	r0, [sp, #0x24]
 	mov	r0, #0x2d
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	str	r0, [sp, #0x20]
 	ldr	r0, =0xc
 	ldr	r5, =ewram_24c

@@ -8,10 +8,10 @@
 	.export_func _Func_4458
 	.export_func _Func_44d0
 	.export_func _Func_447c
-	.export_func _Func_48b0
-	.export_func _Func_48f4
+	.export_func _AllocIwramAtIndex
+	.export_func _AllocEwramAtIndex
 	.export_func _Func_2dd8
-	.export_func _Func_4970
+	.export_func _AllocEwram
 	.export_func _Func_2df0
 	.export_func _Func_5340
 	.export_func _Func_3f3c

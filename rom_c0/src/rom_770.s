@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.arm_func_start Func_770
+.arm_func_start srcInterruptHandlerStart
 	mov	r3, #0x4000000
 	ldr	r2, [r3, #0x200]!
 	ldrh	r1, [r3, #8]
@@ -76,7 +76,7 @@ Data_864:
 .L880:	.space	4
 .L884:	.space	4
 	.ssize	Data_864
-.func_end Func_770
+.func_end srcInterruptHandlerStart
 
 .arm_func_start Func_888
 	smull	r2, r0, r1, r0

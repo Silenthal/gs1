@@ -2373,7 +2373,7 @@
 	mov	r1, #0xc1
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	Func_48b0
+	bl	AllocIwramAtIndex
 	mov	r3, #0xc3
 	lsl	r3, #2
 	add	r5, r3
@@ -2734,7 +2734,7 @@
 	mov	r1, #1
 	lsl	r0, #3
 	mov	r11, r1
-	bl	Func_4938
+	bl	AllocIwram
 	mov	r1, #0x8c
 	mov	r7, r0
 	mov	r0, #0
@@ -3267,7 +3267,7 @@
 	push	{lr}
 	ldr	r1, =0x1004
 	mov	r0, #0x13
-	bl	Func_48f4
+	bl	AllocEwramAtIndex
 	mov	r2, r0
 	mov	r3, #0
 	add	r2, #0x46

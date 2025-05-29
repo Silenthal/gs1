@@ -78,7 +78,7 @@
 	mov	r1, #0
 	lsl	r0, #1
 	str	r1, [sp, #0x28]
-	bl	Func_4970
+	bl	AllocEwram
 	mov	r9, r0
 	mov	r3, r9
 	mov	r2, #0xff

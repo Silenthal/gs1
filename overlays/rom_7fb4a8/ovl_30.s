@@ -387,7 +387,7 @@
 	mov	r8, r2
 	mov	r0, r8
 	sub	sp, #0x30
-	bl	__Func_4970
+	bl	__AllocEwram
 	mov	r7, #0xe1
 	mov	r3, #0
 	mov	r11, r0
@@ -561,7 +561,7 @@
 	lsl	r3, #1
 	mov	r8, r3
 	mov	r0, r8
-	bl	__Func_4970
+	bl	__AllocEwram
 	mov	r11, r0
 	mov	r0, #1
 	bl	__Func_77330
@@ -642,7 +642,7 @@
 	lsl	r5, #1
 	mov	r0, r5
 	sub	sp, #0x20
-	bl	__Func_4970
+	bl	__AllocEwram
 	add	r5, sp, #0x10
 	mov	r1, #0
 	mov	r8, r0
@@ -785,7 +785,7 @@
 	lsl	r5, #1
 	bl	__Func_2df0
 	mov	r0, r5
-	bl	__Func_4970
+	bl	__AllocEwram
 	mov	r8, r0
 	mov	r0, #0
 	bl	__Func_77330
@@ -1102,7 +1102,7 @@
 	mov	r1, #0xf9
 	lsl	r1, #3
 	mov	r0, #0x36
-	bl	__Func_48f4
+	bl	__AllocEwramAtIndex
 	ldr	r5, =OvlFunc_148
 	mov	r6, r0
 	mov	r0, r5
