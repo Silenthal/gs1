@@ -26,14 +26,14 @@ global_label gSongTable
 	song 0x081643C0, 1, 1
 	song 0x08164BD8, 1, 1
 	song 0x081652BC, 1, 1
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
 	song 0x081652D8, 1, 1
 	song 0x08165D5C, 1, 1
 	song 0x08166494, 1, 1
@@ -46,33 +46,33 @@ global_label gSongTable
 	song 0x0816C780, 1, 1
 	song 0x0816DA9C, 1, 1
 	song 0x0816E090, 1, 1
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
 	song 0x0816EB24, 1, 1
 	song 0x0816F5F0, 1, 1
 	song 0x081701FC, 1, 1
 	song 0x08170FB4, 1, 1
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
 	song 0x08171AF8, 1, 1
 	song 0x08173A14, 1, 1
 	song 0x08175380, 1, 1
 	song 0x08176F88, 1, 1
 	song 0x08178EA0, 1, 1
 	song 0x081799C0, 1, 1
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
 	song 0x08179D5C, 1, 1
 	song 0x08179F38, 1, 1
 	song 0x0817A574, 1, 1
@@ -80,21 +80,21 @@ global_label gSongTable
 	song 0x0817B068, 1, 1
 	song 0x0817BE30, 1, 1
 	song 0x0817C0D0, 1, 1
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
 	song 0x0817DE2C, 1, 1
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
 	song 0x0817E8E8, 1, 1
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
 	song 0x0817F0D0, 1, 1
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
 	song 0x0817FBD4, 1, 1
 	song 0x0817FE48, 1, 1
 	song 0x081805BC, 1, 1
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
 	song 0x08180688, 0, 0
 	song 0x08180778, 0, 0
 	song 0x08180834, 0, 0
@@ -105,16 +105,16 @@ global_label gSongTable
 	song 0x08180C70, 0, 0
 	song 0x08180D34, 0, 0
 	song 0x08180E10, 0, 0
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
 	song 0x08180E78, 0, 0
 	song 0x08180F30, 0, 0
 	song 0x0818109C, 0, 0
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
 	song 0x081810B8, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
 	song 0x081810E0, 7, 7
 	song 0x08181118, 2, 2
 	song 0x08181154, 2, 2
@@ -222,7 +222,7 @@ global_label gSongTable
 	song 0x0818303C, 2, 2
 	song 0x08183070, 3, 3
 	song 0x081830A4, 3, 3
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
 	song 0x081830F0, 3, 3
 	song 0x08183190, 3, 3
 	song 0x081831D0, 3, 3
@@ -269,8 +269,8 @@ global_label gSongTable
 	song 0x08183CE8, 5, 5
 	song 0x08183D18, 5, 5
 	song 0x08183D6C, 3, 3
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
 	song 0x08183D90, 4, 4
 	song 0x08183DB0, 4, 4
 	song 0x08183DD0, 4, 4
@@ -309,12 +309,12 @@ global_label gSongTable
 	song 0x081842D8, 3, 3
 	song 0x08184314, 2, 2
 	song 0x0818434C, 2, 2
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
+	song song_dummy, 0, 0
 	song 0x08184358, 5, 5
-	song 0x080FD044, 0, 0
+	song song_dummy, 0, 0
 	song 0x0818437C, 3, 3
 	song 0x081843A0, 7, 7
 	song 0x081843BC, 7, 7
@@ -328,5 +328,7 @@ global_label gSongTable
 	song 0x081845C4, 2, 2
 	song 0x08184680, 3, 3
 
+global_label song_dummy
+    .word 0
 
-.incdata Data_fd044, 0xfd044, 0x184698
+.incdata Data_fd048, 0xfd048, 0x184698
