@@ -31,7 +31,7 @@
 	ldr	r2, =Func_21e14
 	mov	r0, #2
 	mov	r1, #0x88
-	bl	Func_307c
+	bl	SetInterruptFunc
 	pop	{r0}
 	bx	r0
 .func_end Func_21e28
@@ -356,7 +356,7 @@
 	ldr	r2, =Func_21e14
 	mov	r0, #2
 	mov	r1, #0x88
-	bl	Func_307c
+	bl	SetInterruptFunc
 	mov	r0, #0xd8
 	mov	r2, #0xe0
 	lsl	r0, #1
@@ -1165,7 +1165,7 @@
 	mov	r0, #2
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_307c
+	bl	SetInterruptFunc
 	ldr	r1, =ewram_2090
 	ldr	r0, =REG_IME
 	ldrh	r3, [r0]

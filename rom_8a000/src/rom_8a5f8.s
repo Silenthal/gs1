@@ -500,11 +500,11 @@
 	mov	r0, #1
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_307c
+	bl	SetInterruptFunc
 	mov	r0, #2
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_307c
+	bl	SetInterruptFunc
 	bl	InitHeap
 	bl	Func_4760
 	bl	Func_403c

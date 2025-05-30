@@ -23,7 +23,7 @@
 	ldr	r2, =0x85000440
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r1, =Data_864
+	ldr	r1, =interruptVector_Timer2
 	mov	r0, #2
 	bl	Func_69c8
 	mov	r7, #0

@@ -1054,7 +1054,7 @@
 	mov	r0, #2
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_307c
+	bl	SetInterruptFunc
 	pop	{r0}
 	bx	r0
 .func_end Func_c1a24

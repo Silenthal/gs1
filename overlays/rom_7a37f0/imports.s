@@ -6,7 +6,7 @@
 	.export_func _Func_4278
 	.export_func _Func_4458
 	.export_func _Func_447c
-	.export_func _Func_307c
+	.export_func _SetInterruptFunc
 	.export_func _AllocEwramAtIndex
 	.export_func _Func_c300
 	.export_func _Func_c150

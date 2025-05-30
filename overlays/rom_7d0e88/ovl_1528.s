@@ -175,7 +175,7 @@
 	ldr	r2, =OvlFunc_1578
 	mov	r0, #1
 	mov	r1, #0
-	bl	__Func_307c
+	bl	__SetInterruptFunc
 	mov	r0, #0xe7
 	bl	__Func_f9080
 	str	r6, [r5]
@@ -232,7 +232,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #1
-	bl	__Func_307c
+	bl	__SetInterruptFunc
 	mov	r0, #1
 	bl	__Func_30f8
 	ldr	r0, =OvlFunc_15cc

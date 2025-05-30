@@ -1,7 +1,7 @@
 	.include "macros.inc"
 
 	.export_func _Func_41d8
-	.export_func _Func_307c
+	.export_func _SetInterruptFunc
 	.export_func _Func_5ee0
 	.export_func _Func_11f54
 	.export_func _Func_916b0

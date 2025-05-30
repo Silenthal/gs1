@@ -9,7 +9,7 @@
 	.export_func _Func_2322
 	.export_func _Func_231c
 	.export_func _Func_447c
-	.export_func _Func_307c
+	.export_func _SetInterruptFunc
 	.export_func _Func_b8ac
 	.export_func _Func_bc48
 	.export_func _Func_c300

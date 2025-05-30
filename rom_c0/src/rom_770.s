@@ -60,22 +60,22 @@
 	msr	SPSR_fc, r0
 	bx	lr
 
-	.global	Data_850
-Data_850:
+	.global	interruptVector
+interruptVector:
 .L850:	.space	4
 .L854:	.space	4
 .L858:	.space	8
 .L860:	.space	4
-	.ssize	Data_850
+	.ssize	interruptVector
 
-	.global	Data_864
-Data_864:
+	.global	interruptVector_Timer2
+interruptVector_Timer2:
 .L864:	.space	4
 .L868:	.space	4
 .L86c:	.space	0x14
 .L880:	.space	4
 .L884:	.space	4
-	.ssize	Data_864
+	.ssize	interruptVector_Timer2
 .func_end srcInterruptHandlerStart
 
 .arm_func_start Func_888

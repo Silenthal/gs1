@@ -545,7 +545,7 @@
 	ldr	r2, =Func_c0298
 	mov	r1, #0x20
 	mov	r0, #2
-	bl	Func_307c
+	bl	SetInterruptFunc
 	strh	r5, [r6, #2]
 	mov	r0, #1
 	bl	Func_30f8
@@ -574,7 +574,7 @@
 	mov	r0, #2
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_307c
+	bl	SetInterruptFunc
 	b	.Lc069c
 
 	.pool_aligned
@@ -682,7 +682,7 @@
 	mov	r0, #2
 	ldr	r2, =Func_c0298
 	mov	r1, #0x20
-	bl	Func_307c
+	bl	SetInterruptFunc
 	mov	r0, #1
 	b	.Lc05c0
 
@@ -791,14 +791,14 @@
 	mov	r0, #2
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_307c
+	bl	SetInterruptFunc
 .Lc069c:
 	ldr	r6, =REG_BG1CNT
 	ldr	r5, .Lc06d8	@ 0x1f83
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #2
-	bl	Func_307c
+	bl	SetInterruptFunc
 	strh	r5, [r6]
 	mov	r0, #1
 	bl	Func_30f8

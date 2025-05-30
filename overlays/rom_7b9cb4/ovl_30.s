@@ -793,7 +793,7 @@
 	ldr	r2, =OvlFunc_6a0
 	mov	r0, #1
 	mov	r1, #0
-	bl	__Func_307c
+	bl	__SetInterruptFunc
 	ldr	r2, =.L5238
 	ldr	r3, .L78c	@ 0
 	strh	r3, [r2]
@@ -814,7 +814,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #1
-	bl	__Func_307c
+	bl	__SetInterruptFunc
 	ldr	r0, =0x121
 	bl	__Func_f9080
 	mov	r0, #1
@@ -892,7 +892,7 @@
 	ldr	r2, =OvlFunc_6a0
 	mov	r0, #1
 	mov	r1, #0
-	bl	__Func_307c
+	bl	__SetInterruptFunc
 	ldr	r2, =.L5238
 	ldr	r3, .L880	@ 0
 	strh	r3, [r2]
@@ -913,7 +913,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #1
-	bl	__Func_307c
+	bl	__SetInterruptFunc
 	ldr	r0, =0x121
 	bl	__Func_f9080
 	mov	r0, #1
@@ -1009,7 +1009,7 @@
 	ldr	r2, =OvlFunc_6a0
 	mov	r0, #1
 	mov	r1, #0
-	bl	__Func_307c
+	bl	__SetInterruptFunc
 	ldr	r2, =.L5238
 	ldr	r3, .L994	@ 0
 	strh	r3, [r2]
@@ -1030,7 +1030,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #1
-	bl	__Func_307c
+	bl	__SetInterruptFunc
 	ldr	r0, =0x121
 	bl	__Func_f9080
 	mov	r0, #1

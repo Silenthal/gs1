@@ -27,7 +27,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	bl	InitHeap
-	bl	Func_300c
+	bl	InitializeInterrupts
 	ldr	r3, =ewram_2090
 	str	r5, [r3]
 	ldr	r3, =iwram_1ac4
@@ -46,7 +46,7 @@
 	mov	r0, #0
 	ldr	r2, =Func_3650
 	mov	r1, #1
-	bl	Func_307c
+	bl	SetInterruptFunc
 	ldr	r2, =0xc00f
 	ldr	r3, =REG_KEYCNT
 	strh	r2, [r3]
@@ -233,11 +233,13 @@
 	bx	lr
 .func_end IRQ_Dummy
 
-.thumb_func_start Func_300c
+.thumb_func_start InitializeInterrupts
 	push	{r5, r6, lr}
+	@ Disable interrupts
 	ldr	r6, =REG_IME
 	mov	r5, #0
 	strh	r5, [r6]
+	@ Copy IWRAM code
 	ldr	r4, =iwram_0
 	ldr	r3, =REG_DMA3SAD
 	ldr	r0, =__load_start_rom_770
@@ -245,30 +247,42 @@
 	ldr	r2, =0x84000500
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
+	@ Set interrupt code pointer
 	ldr	r3, =iwram_7ffc
-	ldr	r0, =.L7320
+	ldr	r0, =srcInterruptVector
 	str	r4, [r3]
-	ldr	r1, =Data_850
+	@ Copy template interrupt table
+	ldr	r1, =interruptVector
 	ldr	r3, =REG_DMA3SAD
 	ldr	r2, =0x8400000e
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
+	@ Set DISPSTAT to 0
 	sub	r3, #0xd0
 	strh	r5, [r3]
+	@ Enable all buttons
 	ldr	r2, =0xc3ff
 	ldr	r3, =REG_KEYCNT
 	strh	r2, [r3]
-	ldr	r2, =0x1001
+	@ Enable just vblank and keypad interrupts
+	ldr	r2, =INTR_FLAG_VBLANK | INTR_FLAG_KEYPAD
 	add	r3, #0xce
 	strh	r2, [r3]
+	@ Enable interrupts
 	mov	r3, #1
 	strh	r3, [r6]
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_300c
+.func_end InitializeInterrupts
 
-.thumb_func_start Func_307c
+
+@@ Assigns a given function to the interrupt handler table.
+@@ In:
+@@ r0 - int type - The type of interrupt. 0 = vblank, 1 = hblank, etc.
+@@ r1 - int vcount - The vcount to interrupt on. Used for vcount interrupts.
+@@ r2 - void* func - The handler for the given interrupt.
+.thumb_func_start SetInterruptFunc
 	push	{r5, r6, lr}
 	mov	r5, r1
 	mov	r1, r2
@@ -311,12 +325,12 @@
 .L30c4:
 	cmp	r1, #0
 	beq	.L30d0
-	ldr	r2, =Data_850
+	ldr	r2, =interruptVector
 	lsl	r3, r0, #2
 	str	r1, [r2, r3]
 	b	.L30d8
 .L30d0:
-	ldr	r1, =Data_850
+	ldr	r1, =interruptVector
 	ldr	r3, =IRQ_Dummy
 	lsl	r2, r0, #2
 	str	r3, [r1, r2]
@@ -327,11 +341,11 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_307c
+.func_end SetInterruptFunc
 
 	.section .rodata
 
-.L7320:
+srcInterruptVector:
     .word IRQ_Dummy
     .word IRQ_Dummy
     .word IRQ_Dummy

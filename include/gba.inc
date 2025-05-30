@@ -54,3 +54,19 @@
 	.set REG_IF,          0x04000202
 	.set REG_WAITCNT,     0x04000204
 	.set REG_IME,         0x04000208
+
+	.set INTR_FLAG_VBLANK,  1 <<  0
+	.set INTR_FLAG_HBLANK,  1 <<  1
+	.set INTR_FLAG_VCOUNT,  1 <<  2
+	.set INTR_FLAG_TIMER0,  1 <<  3
+	.set INTR_FLAG_TIMER1,  1 <<  4
+	.set INTR_FLAG_TIMER2,  1 <<  5
+	.set INTR_FLAG_TIMER3,  1 <<  6
+	.set INTR_FLAG_SERIAL,  1 <<  7
+	.set INTR_FLAG_DMA0,    1 <<  8
+	.set INTR_FLAG_DMA1,    1 <<  9
+	.set INTR_FLAG_DMA2,    1 << 10
+	.set INTR_FLAG_DMA3,    1 << 11
+	.set INTR_FLAG_KEYPAD,  1 << 12
+	.set INTR_FLAG_GAMEPAK, 1 << 13
+	

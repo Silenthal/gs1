@@ -17,7 +17,7 @@ Exports_c0:
 	.export_func Func_2322
 	.export_func Func_231c
 	.export_func Func_447c
-	.export_func Func_307c
+	.export_func SetInterruptFunc
 	.export_func InitHeap
 	.export_func AllocIwramAtIndex
 	.export_func AllocEwramAtIndex

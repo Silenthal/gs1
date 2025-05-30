@@ -6,7 +6,7 @@
 	mov	r0, #5
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_307c
+	bl	SetInterruptFunc
 	mov	r0, #0x33
 	bl	Func_2dd8
 	pop	{r1}
@@ -24,11 +24,11 @@
 	mov	r0, #7
 	mov	r1, #0
 	mov	r2, r5
-	bl	Func_307c
+	bl	SetInterruptFunc
 	mov	r0, #6
 	mov	r1, #0
 	mov	r2, r5
-	bl	Func_307c
+	bl	SetInterruptFunc
 	ldr	r4, .L5d54	@ 0
 	mov	r3, r6
 	strh	r4, [r3]
@@ -805,11 +805,11 @@
 	strh	r3, [r2]
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_307c
+	bl	SetInterruptFunc
 	mov	r0, #6
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_307c
+	bl	SetInterruptFunc
 	b	.L6380
 
 	.align	2, 0
