@@ -1,17 +1,35 @@
+include make_tools.mk
+
+TARGET			:= goldensun
+BASE			:= baserom
+
+TOOLS_DIR		:= $(CURDIR)/tools
+
+PACK_STRINGS	:= $(TOOLS_DIR)/pack_strings/pack_strings
+UNPACK_STRINGS	:= $(TOOLS_DIR)/unpack_strings/unpack_strings
+UNPACK_OVERLAY	:= $(TOOLS_DIR)/unpack_overlay/unpack_overlay
+
+PREFIX := arm-none-eabi-
+OBJCOPY := $(PREFIX)objcopy
+AS := $(PREFIX)as
+LD := $(PREFIX)ld
+
+ASFLAGS := -mcpu=arm7tdmi
+
 # Default target. Verify the checksums of the built ROM and overlays.
 
-ROM := goldensun.gba
+ROM := $(TARGET).gba
 OVERLAYS := $(patsubst %.sha1,%.bin,$(wildcard overlays/*/overlay.sha1))
 
 COMPARE_OVERLAYS := $(OVERLAYS:%.bin=compare-%)
 
-.PHONY: compare compare-goldensun $(COMPARE_OVERLAYS)
+.PHONY: $(ROM) compare compare-goldensun $(COMPARE_OVERLAYS)
 compare: compare-goldensun $(COMPARE_OVERLAYS)
 
 compare-goldensun $(COMPARE_OVERLAYS):
 	sha1sum -c $<
 
-compare-goldensun: goldensun.sha1 $(ROM)
+compare-goldensun: $(TARGET).sha1 $(ROM)
 
 $(COMPARE_OVERLAYS): compare-%: %.sha1 %.bin
 
@@ -24,13 +42,13 @@ clean::
 # Build ARM binaries from assembly sources.
 
 %.o: %.s
-	arm-none-eabi-as -mcpu=arm7tdmi -Iinclude -MD $(@:.o=.d) -o $@ $<
+	$(AS) $(ASFLAGS) -Iinclude -MD $(@:.o=.d) -o $@ $<
 
 %.elf: %.ld
-	arm-none-eabi-ld -T $< -Map $(@:.elf=.map) -o $@
+	$(LD) -T $< -Map $(@:.elf=.map) -o $@
 
 $(ROM) $(OVERLAYS):
-	arm-none-eabi-objcopy -O binary $< $@
+	$(OBJCOPY) -O binary $< $@
 
 $(ROM): %.gba: %.elf
 
@@ -44,7 +62,7 @@ DEPS := $(OBJS:.o=.d)
 
 -include $(DEPS)
 
-clean::
+clean:: clean-tools
 	-$(RM) $(ROM) $(OVERLAYS) $(ELFS) $(MAPS) $(OBJS) $(DEPS)
 
 
@@ -56,31 +74,12 @@ endef
 $(foreach elf,$(ELFS),$(eval $(call elf_deps,$(elf))))
 
 
-# Tools are compiled for the host and used during the build.
-
-TOOLS := tools/pack_strings tools/unpack_overlay tools/unpack_strings
-
-CPPFLAGS += -MMD
-CFLAGS ?= -O2 -Wall
-
-$(TOOLS):
-
-TOOL_SRCS := $(wildcard tools/*.c)
-TOOL_OBJS := $(TOOL_SRCS:.c=.o)
-TOOL_DEPS := $(TOOL_OBJS:.o=.d)
-
--include $(TOOL_DEPS)
-
-clean::
-	-$(RM) $(TOOLS) $(TOOL_OBJS) $(TOOL_DEPS)
-
-
 rom_15000/data/strings/strings.s: rom_15000/data/strings/strings.txt tools/pack_strings
-	tools/pack_strings -i $< -o $(dir $@)
+	$(PACK_STRINGS) -i $< -o $(dir $@)
 
-rom_15000/data/strings/strings.txt: baserom.gba tools/unpack_strings
+rom_15000/data/strings/strings.txt: $(BASE).gba tools/unpack_strings
 	mkdir -p $(dir $@)
-	tools/unpack_strings -r $< -o $@
+	$(UNPACK_STRINGS) -r $< -o $@
 
 clean::
 	-$(RM) -r rom_15000/data/
@@ -108,8 +107,8 @@ overlays/common/common1.o: overlays/rom_7db0c8/orig.bin
 
 overlays/common/common2.o: overlays/rom_7bf5a8/orig.bin
 
-overlays/rom_%/orig.bin: baserom.gba tools/unpack_overlay
-	tools/unpack_overlay -r $< -a 0x$* -o $@
+overlays/rom_%/orig.bin: $(BASE).gba tools/unpack_overlay
+	$(UNPACK_OVERLAY) -r $< -a 0x$* -o $@
 
 clean::
 	-$(RM) $(addsuffix orig.bin,$(OVERLAY_DIRS))
@@ -119,5 +118,5 @@ clean::
 
 OVERLAY_ELFS := $(OVERLAYS:.bin=.elf)
 
-$(OVERLAY_ELFS): %.elf: %.ld goldensun.elf
-	arm-none-eabi-ld -T $< -Map $(@:.elf=.map) -R goldensun.elf -o $@
+$(OVERLAY_ELFS): %.elf: %.ld $(TARGET).elf
+	$(LD) -T $< -Map $(@:.elf=.map) -R $(TARGET).elf -o $@

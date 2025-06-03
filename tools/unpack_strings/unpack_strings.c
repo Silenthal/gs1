@@ -8,6 +8,7 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <getopt.h>
 
 #define HUFFMAN_OFFSET 0x3842c
 #define DATA_OFFSET 0x736b8
