@@ -116,7 +116,7 @@
 .thumb_func_start Func_2f10
 	push	{lr}
 	ldr	r0, =2
-	bl	Func_2f40
+	bl	GetFile
 	ldr	r4, =iwram_7804
 	ldr	r3, =REG_DMA3SAD
 	mov	r1, r4
@@ -133,12 +133,12 @@
 	bx	lr
 .func_end Func_2f3c
 
-.thumb_func_start Func_2f40
-	ldr	r3, =Data_320000
+.thumb_func_start GetFile
+	ldr	r3, =fileTable
 	lsl	r0, #2
 	ldr	r0, [r3, r0]
 	bx	lr
-.func_end Func_2f40
+.func_end GetFile
 
 .thumb_func_start Func_2f4c
 	push	{r5, r6, r7, lr}
@@ -199,7 +199,7 @@
 	mov	r5, r8
 	push	{r5, r6}
 	mov	r8, r1
-	bl	Func_2f40
+	bl	GetFile
 	mov	r1, r8
 	bl	Func_5340
 	mov	r10, r0

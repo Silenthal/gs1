@@ -1255,7 +1255,7 @@
 .thumb_func_start Func_77cb8
 	push	{r5, lr}
 	ldr	r0, =2
-	bl	Func_2f40
+	bl	GetFile
 	ldrb	r2, [r0]
 	lsl	r3, r2, #2
 	ldr	r1, =0xfffffe20

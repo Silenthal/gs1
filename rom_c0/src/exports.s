@@ -61,7 +61,7 @@ Exports_c0:
 	.export_func Func_5258
 	.export_func Func_2f10
 	.export_func Func_2f0c
-	.export_func Func_2f40
+	.export_func GetFile
 	.export_func Func_2f3c
 	.export_func Func_2fb0
 	.export_func Func_3b70

@@ -19,7 +19,7 @@
 	.export_func _Func_4080
 	.export_func _Func_3d28
 	.export_func _Func_3dec
-	.export_func _Func_2f40
+	.export_func _GetFile
 	.export_func _Func_bc48
 	.export_func _Func_c300
 	.export_func _Func_c2d8

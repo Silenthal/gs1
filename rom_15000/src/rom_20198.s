@@ -2537,7 +2537,7 @@
 	bl	AllocEwramAtIndex
 	mov	r5, r0
 	ldr	r0, =0xf1
-	bl	Func_2f40
+	bl	GetFile
 	mov	r2, r0
 	cmp	r7, #0x5f
 	bgt	.L2173e
@@ -3213,7 +3213,7 @@
 	bl	AllocIwramAtIndex
 	mov	r6, r0
 	ldr	r0, =0xf1
-	bl	Func_2f40
+	bl	GetFile
 	ldr	r3, =0x604
 	lsl	r5, #1
 	add	r2, r6, r3
@@ -3250,7 +3250,7 @@
 	bl	AllocIwramAtIndex
 	mov	r6, r0
 	ldr	r0, =0xf1
-	bl	Func_2f40
+	bl	GetFile
 	ldr	r3, =0x604
 	lsl	r5, #1
 	add	r2, r6, r3

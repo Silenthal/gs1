@@ -54,7 +54,7 @@
 	bl	Func_de2f8
 .Lcf300:
 	ldr	r0, =0x7b
-	bl	Func_2f40
+	bl	GetFile
 	mov	r6, r0
 	mov	r0, #0xa0
 	mov	r2, #0x80
@@ -67,7 +67,7 @@
 	mov	r0, r6
 	bl	Func_5340
 	ldr	r0, =0xb1
-	bl	Func_2f40
+	bl	GetFile
 	mov	r6, r0
 	mov	r0, #0xa0
 	mov	r1, r6
@@ -86,7 +86,7 @@
 .Lcf348:
 	ldr	r0, =0x91
 .Lcf34a:
-	bl	Func_2f40
+	bl	GetFile
 	mov	r6, r0
 	mov	r0, #0xa0
 	mov	r1, r6

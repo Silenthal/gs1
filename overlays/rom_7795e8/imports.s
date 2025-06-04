@@ -9,7 +9,7 @@
 	.export_func _Func_2df0
 	.export_func _Func_5340
 	.export_func _Func_479c
-	.export_func _Func_2f40
+	.export_func _GetFile
 	.export_func _Func_3b70
 	.export_func _Func_5d10
 	.export_func _Func_6358

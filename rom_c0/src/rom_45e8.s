@@ -219,7 +219,7 @@
 .thumb_func_start Func_479c
 	push	{lr}
 	ldr	r0, =0x13
-	bl	Func_2f40
+	bl	GetFile
 	mov	r1, #0xc0
 	ldr	r3, =REG_DMA3SAD
 	lsl	r1, #19

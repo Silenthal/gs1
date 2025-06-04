@@ -994,7 +994,7 @@
 	mov	r5, #4
 .L8be:
 	ldr	r0, =0xe7
-	bl	__Func_2f40
+	bl	__GetFile
 	mov	r1, r6
 	bl	__Func_5340
 	mov	r2, r8
@@ -3669,7 +3669,7 @@
 	ldr	r3, =iwram_1f3c
 	ldr	r6, [r3]
 	ldr	r5, =ewram_1000
-	bl	__Func_2f40
+	bl	__GetFile
 	mov	r1, r6
 	add	r1, #0xf0
 	bl	__Func_5340

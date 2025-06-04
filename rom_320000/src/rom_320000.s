@@ -2,12 +2,10 @@
 
 	.section .rodata
 
-	.global	Data_320000
-Data_320000:
-
+global_label fileTable
 	.word	__start_rom
-	.word	Data_320000
-	.word	.L2
+	.word	fileTable
+	.word	buildDate
 	.word	Exports_9000
 	.word	Exports_15000
 	.word	Exports_77000
@@ -1006,10 +1004,13 @@ Data_320000:
 	.word	0
 	.word	0
 
-	.ssize	Data_320000
+	.ssize	fileTable
 
-.L2:
-	.incrom 0x320fa0, 0x320fb0
+buildDate:
+	.asciz "010918151347\n"
+
+	.align 2, 0
+
 .L19:
 	.incrom 0x320fb0, 0x322fb0
 .L20:

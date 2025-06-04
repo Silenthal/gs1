@@ -2381,7 +2381,7 @@
 	mov	r7, r0
 	ldr	r0, =0xf1
 	mov	r8, r3
-	bl	Func_2f40
+	bl	GetFile
 	ldr	r3, =0x604
 	add	r2, r7, r3
 	ldrh	r3, [r6, #8]
