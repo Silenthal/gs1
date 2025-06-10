@@ -195,7 +195,7 @@
 .L5848:
 	bl	Func_4458
 	mov	r1, r6
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	mov	r5, r0
 	mov	r2, sp
 	lsl	r3, r5, #2

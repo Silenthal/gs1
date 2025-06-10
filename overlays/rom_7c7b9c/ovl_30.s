@@ -54,7 +54,7 @@
 	str	r3, [r0, #0x1c]
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	add	r0, #0x3c
 	strh	r0, [r5]
 .L98:
@@ -1319,7 +1319,7 @@
 	bx	r0
 .func_end OvlFunc_a48
 
-.thumb_func_start OvlFunc_af0
+.thumb_func_start Ovldiv
 	push	{r5, lr}
 	bl	__Func_916b0
 	ldr	r0, =0x925
@@ -1377,7 +1377,7 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_af0
+.func_end Ovldiv
 
 .thumb_func_start OvlFunc_b98
 	push	{lr}
@@ -2493,7 +2493,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	ldr	r6, =.L44d8
 	add	r0, #0x3c
 	add	r5, #0x64
@@ -2512,7 +2512,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	add	r5, #0x64
 	add	r0, #0x3c
 	strh	r0, [r5]
@@ -5103,12 +5103,12 @@
 	ldr	r0, [r0]
 	ldr	r6, [r3]
 	mov	r9, r3
-	bl	__Func_231c
+	bl	__Cos
 	ldr	r1, =.L5b38
 	mov	r5, r0
 	ldr	r0, [r1]
 	mov	r10, r1
-	bl	__Func_2322
+	bl	__Sin
 	ldr	r3, [r6]
 	asr	r5, #1
 	add	r3, r5
@@ -5662,13 +5662,13 @@
 	beq	.L36c0
 	ldr	r5, =.L5b40
 	ldrh	r0, [r5, r6]
-	bl	__Func_2322
+	bl	__Sin
 	mov	r2, #0x80
 	mov	r7, r0
 	ldrh	r0, [r5, r6]
 	lsl	r2, #8
 	add	r0, r2
-	bl	__Func_2322
+	bl	__Sin
 	mov	r3, r11
 	asr	r0, #5
 	strh	r0, [r3, #0x1e]
@@ -5686,10 +5686,10 @@
 	ldrh	r0, [r5, r6]
 	lsl	r3, #8
 	add	r0, r3
-	bl	__Func_2322
+	bl	__Sin
 	mov	r7, r0
 	ldrh	r0, [r5, r6]
-	bl	__Func_2322
+	bl	__Sin
 	mov	r1, r11
 	asr	r0, #5
 	strh	r0, [r1, #0x1e]

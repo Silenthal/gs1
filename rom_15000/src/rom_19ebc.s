@@ -412,7 +412,7 @@
 	bgt	.L1a26e
 	mov	r1, #0xa
 	mov	r0, r10
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	ldr	r3, =.L29b68
 	lsl	r0, #2
 	ldr	r2, =0x604
@@ -436,7 +436,7 @@
 	bl	Func_1a5a4
 	mov	r0, r10
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	cmp	r0, #0
 	beq	.L1a26e
 	lsl	r3, r0, #2

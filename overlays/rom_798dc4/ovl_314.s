@@ -1151,7 +1151,7 @@
 	strh	r3, [r2, #0x1e]
 	ldr	r3, [r6, #0x50]
 	ldrh	r0, [r3, #0x1e]
-	bl	__Func_231c
+	bl	__Cos
 	lsr	r3, r0, #31
 	add	r0, r3
 	ldr	r3, [r6, #8]
@@ -1217,13 +1217,13 @@
 	mov	r1, r8
 	lsl	r5, r1, #12
 	mov	r0, r5
-	bl	__Func_231c
+	bl	__Cos
 	mov	r2, r10
 	mov	r3, r9
 	str	r0, [r2]
 	str	r3, [r2, #4]
 	mov	r0, r5
-	bl	__Func_2322
+	bl	__Sin
 	mov	r4, r10
 	ldr	r2, [r4]
 	str	r0, [r4, #8]

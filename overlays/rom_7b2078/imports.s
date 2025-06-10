@@ -1,13 +1,13 @@
 	.include "macros.inc"
 
-	.export_func Func_af0
+	.export_func div
 	.export_func _Func_30f8
 	.export_func _Func_41d8
 	.export_func _Func_4278
 	.export_func _Func_4458
 	.export_func _Func_44d0
-	.export_func _Func_2322
-	.export_func _Func_231c
+	.export_func _Sin
+	.export_func _Cos
 	.export_func _Func_c300
 	.export_func _Func_c2d8
 	.export_func _Func_c150

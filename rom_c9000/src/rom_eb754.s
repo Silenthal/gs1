@@ -159,7 +159,7 @@
 	str	r0, [r5, #0x10]
 	bl	Func_4458
 	mov	r1, #0x30
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	mov	r4, #1
 	add	r8, r4
 	add	r0, #2
@@ -267,7 +267,7 @@
 	ldr	r2, =0xffff8000
 	add	r0, r2
 .Leb99e:
-	bl	Func_2322
+	bl	Sin
 	mov	r3, r5
 	mul	r3, r0
 	asr	r3, #16
@@ -369,7 +369,7 @@
 	mov	r1, r8
 	lsl	r6, r1, #10
 	mov	r0, r6
-	bl	Func_2322
+	bl	Sin
 	ldr	r3, [sp, #0x28]
 	add	r3, #8
 	mov	r5, r3
@@ -378,7 +378,7 @@
 	asr	r5, #16
 	mov	r0, r6
 	add	r5, r2
-	bl	Func_231c
+	bl	Cos
 	ldr	r4, [sp, #0x24]
 	mov	r3, r4
 	mul	r3, r0
@@ -444,7 +444,7 @@
 	bne	.Lebb78
 	mov	r1, #3
 	mov	r0, r8
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	add	r0, #1
 	lsl	r4, r0, #1
 	ldr	r2, =Data_ede48
@@ -777,7 +777,7 @@
 	ldr	r4, =0xffffc000
 	add	r0, r3, r4
 .Lebdc4:
-	bl	Func_2322
+	bl	Sin
 	lsl	r0, #6
 	b	.Lebde8
 .Lebdcc:
@@ -793,7 +793,7 @@
 	ldr	r4, =0xffffc000
 	add	r0, r3, r4
 .Lebde2:
-	bl	Func_2322
+	bl	Sin
 	lsl	r0, #5
 .Lebde8:
 	asr	r4, r0, #16
@@ -1392,14 +1392,14 @@
 	mov	r5, #0x7f
 	and	r5, r0
 	mov	r0, r6
-	bl	Func_2322
+	bl	Sin
 	add	r5, #0xff
 	mov	r3, r5
 	mul	r3, r0
 	asr	r3, #2
 	str	r3, [r7]
 	mov	r0, r6
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r5
 	mul	r3, r0
 	asr	r2, r3, #2
@@ -1439,7 +1439,7 @@
 	mov	r5, r0
 	and	r5, r3
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	mov	r3, r6
 	mul	r3, r0
 	mov	r4, #0x80
@@ -1448,7 +1448,7 @@
 	add	r3, r4
 	str	r3, [r7]
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r6
 	mul	r3, r0
 	mov	r6, #0xc0
@@ -1739,7 +1739,7 @@
 	mov	r5, r0
 	and	r5, r3
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	mov	r3, r6
 	mul	r3, r0
 	mov	r0, #0x80
@@ -1748,7 +1748,7 @@
 	add	r3, r0
 	str	r3, [r7]
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r6
 	mul	r3, r0
 	mov	r1, #0xc0
@@ -2248,7 +2248,7 @@
 	blt	.Leca1c
 	mov	r1, #3
 	mov	r0, r8
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	add	r0, #2
 	lsl	r4, r0, #1
 	ldr	r2, =Data_ede48
@@ -2515,7 +2515,7 @@
 	mov	r1, r10
 	lsl	r0, r1, #4
 	mov	r1, #0x68
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r6, #0x68
 	ldr	r3, [r7, #4]
 	mov	r4, #0x11
@@ -2609,7 +2609,7 @@
 	lsl	r3, r0, #16
 	str	r3, [r2, #4]
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	add	r6, #0x20
 	mov	r3, r6
 	mul	r3, r0
@@ -2617,7 +2617,7 @@
 	asr	r3, #7
 	str	r3, [r2, #0xc]
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r6
 	mul	r3, r0
 	lsl	r3, #1

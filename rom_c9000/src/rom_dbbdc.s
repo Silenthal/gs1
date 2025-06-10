@@ -320,7 +320,7 @@
 	bne	.Ldbe70
 	ldr	r0, [r7]
 	mov	r1, #3
-	bl	div
+	bl	div_from_thumb
 	ldr	r2, =REG_BG2PA
 	ldr	r3, .Ldbe84	@ 0x55
 	str	r0, [r7]
@@ -374,7 +374,7 @@
 	ldr	r3, [r1]
 	ldr	r0, [sp, #0x20]
 	ldr	r1, [r3, #0x14]
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	ldr	r2, [sp, #0x20]
 	mov	r8, r0
 	cmp	r2, #4
@@ -408,9 +408,9 @@
 	bne	.Ldbf3a
 	ldr	r0, [sp, #0x20]
 	mov	r1, #3
-	bl	div
+	bl	div_from_thumb
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	lsl	r1, r0, #3
 	add	r1, r0
 	ldr	r2, =0xc56
@@ -429,9 +429,9 @@
 .Ldbf3a:
 	ldr	r0, [sp, #0x20]
 	mov	r1, #3
-	bl	div
+	bl	div_from_thumb
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	lsl	r1, r0, #3
 	add	r1, r0
 	ldr	r3, [sp, #0x18]
@@ -854,13 +854,13 @@
 .Ldc2a2:
 	ldr	r3, =iwram_1e80
 	ldr	r5, [r3]
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r1, r5
 	add	r1, #0xc
 	mov	r0, r5
 	bl	Func_51d8
 	ldr	r0, [sp, #0xc]
-	bl	Func_4cb4
+	bl	MatrixTranslateV
 	mov	r3, r10
 	neg	r3, r3
 	mov	r2, r10
@@ -883,7 +883,7 @@
 	ldr	r3, [r6, #0x18]
 	cmp	r3, #0
 	bne	.Ldc3d2
-	bl	Func_49e8
+	bl	MatrixPush
 	mov	r3, #3
 	and	r3, r7
 	cmp	r3, #1
@@ -901,21 +901,21 @@
 	b	.Ldc326
 .Ldc302:
 	mov	r0, r9
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	b	.Ldc326
 .Ldc30a:
 	mov	r0, r8
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	b	.Ldc326
 .Ldc312:
 	mov	r0, r8
-	bl	Func_4c6c
+	bl	MatrixRotateZ
 	b	.Ldc326
 .Ldc31a:
 	mov	r0, r8
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	mov	r0, r8
-	bl	Func_4c6c
+	bl	MatrixRotateZ
 .Ldc326:
 	add	r5, sp, #0x1c
 	mov	r1, r5
@@ -924,7 +924,7 @@
 	ldr	r3, [r5]
 	asr	r3, #1
 	str	r3, [r5]
-	bl	Func_4a5c
+	bl	MatrixPop
 	ldr	r2, [r5, #8]
 	cmp	r2, #0xf9
 	bgt	.Ldc346
@@ -1205,7 +1205,7 @@
 	ldr	r1, [sp, #0x10]
 	cmp	r1, #0x3f
 	bhi	.Ldc63c
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x1c]
 	mov	r1, r0
 	add	r1, #0xc
@@ -1243,7 +1243,7 @@
 	ldr	r0, [r5, #0xc]
 	add	r0, r8
 	str	r4, [sp, #8]
-	bl	Func_2322
+	bl	Sin
 	mov	r3, r10
 	ldr	r6, [r3]
 	lsl	r0, #3
@@ -1251,7 +1251,7 @@
 	add	r6, r0
 	ldr	r0, [r5, #0xc]
 	add	r0, r8
-	bl	Func_231c
+	bl	Cos
 	mov	r1, r10
 	ldr	r3, [r1, #4]
 	ldr	r2, [r5, #0xc]
@@ -1411,7 +1411,7 @@
 	mov	r0, r9
 	mov	r1, #6
 	and	r6, r3
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	cmp	r0, #5
 	bne	.Ldc776
 	mov	r1, r8
@@ -1420,13 +1420,13 @@
 	b	.Ldc792
 .Ldc776:
 	mov	r0, r7
-	bl	Func_2322
+	bl	Sin
 	mov	r3, r6
 	mul	r3, r0
 	asr	r3, #7
 	str	r3, [r5, #0xc]
 	mov	r0, r7
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r6
 	mul	r3, r0
 	asr	r3, #9
@@ -1487,7 +1487,7 @@
 	ldrsh	r0, [r2, r3]
 	bl	_Func_b7dd0
 	ldr	r5, [r0]
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x10]
 	ldr	r1, [sp, #0xc]
 	bl	Func_51d8
@@ -1500,7 +1500,7 @@
 	ldr	r3, [r5, #0x10]
 	mov	r0, r8
 	str	r3, [r2, #8]
-	bl	Func_4cb4
+	bl	MatrixTranslateV
 	ldr	r4, [sp, #0x14]
 	ldr	r1, [sp, #0x20]
 	lsl	r3, r4, #3
@@ -1524,7 +1524,7 @@
 .Ldc848:
 	ldr	r0, [r6, #0x18]
 	mov	r1, #6
-	bl	div
+	bl	div_from_thumb
 	mov	r5, r0
 	cmp	r5, #5
 	ble	.Ldc858
@@ -1828,7 +1828,7 @@
 .Ldcb34:
 	bl	Func_4458
 	mov	r1, #0x60
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	add	r0, #0xc
 	lsl	r0, #16
 	str	r0, [r7]
@@ -1862,21 +1862,21 @@
 	and	r3, r0
 	add	r3, #0x30
 	str	r3, [r5]
-	bl	Func_49ac
+	bl	InitMatrixStack
 	bl	Func_4458
 	mov	r3, r8
 	and	r0, r3
-	bl	Func_4c6c
+	bl	MatrixRotateZ
 	bl	Func_4458
 	mov	r1, r8
 	and	r0, r1
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	bl	Func_4458
 	mov	r2, r8
 	and	r0, r2
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	mov	r0, r6
-	bl	Func_4a28
+	bl	MatrixGet
 	mov	r3, #1
 	add	r9, r3
 	mov	r0, r9
@@ -2297,7 +2297,7 @@
 	cmp	r3, #0
 	ble	.Ldcf7a
 	mov	r0, r7
-	bl	Func_4a44
+	bl	MatrixSet
 	ldr	r3, [r5]
 	ldr	r2, [sp, #0xc]
 	str	r3, [r2]
@@ -2409,7 +2409,7 @@
 .Ldd010:
 	ldr	r0, [sp, #0x2c]
 	mov	r1, #6
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	ldr	r3, =0x7828
 	add	r3, r11
 	ldr	r2, [r3]
@@ -2627,7 +2627,7 @@
 	bl	_Func_f9080
 	mov	r1, #6
 	ldr	r0, [sp, #0x2c]
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	ldr	r6, =0x7828
 	add	r6, r11
 	ldr	r2, [r6]

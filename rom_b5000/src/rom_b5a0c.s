@@ -1318,7 +1318,7 @@
 	bl	_Func_79358
 	ldr	r0, =0x169
 	bl	_Func_79358
-	bl	Func_49ac
+	bl	InitMatrixStack
 	add	r5, sp, #0x10
 	str	r7, [r5]
 	ldr	r3, =REG_DMA3SAD

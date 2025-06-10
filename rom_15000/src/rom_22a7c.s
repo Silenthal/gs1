@@ -207,7 +207,7 @@
 	mov	r1, #5
 	str	r0, [sp, #0x14]
 	sub	r0, #1
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, [sp, #0x6c]
 	add	r0, #1
 	str	r0, [r3]

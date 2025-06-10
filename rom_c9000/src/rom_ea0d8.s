@@ -234,13 +234,13 @@
 	mov	r5, r0
 	and	r5, r3
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	mov	r3, r10
 	mul	r3, r0
 	asr	r3, #2
 	str	r3, [r6]
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r10
 	mul	r3, r0
 	asr	r3, #2
@@ -317,7 +317,7 @@
 	ldr	r6, [sp, #0x54]
 	cmp	r6, #0
 	bge	.Lea496
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x4c]
 	mov	r1, r0
 	add	r1, #0xc
@@ -364,7 +364,7 @@
 	str	r5, [r0, #8]
 	mov	r1, #0x64
 	mov	r0, r5
-	bl	div
+	bl	div_from_thumb
 	ldr	r1, [sp, #0x40]
 	add	r4, r0, #1
 	cmp	r1, r5
@@ -399,7 +399,7 @@
 	cmp	r5, #0x40
 	bne	.Lea48e
 	ldr	r0, [r6, #0x18]
-	bl	Func_2322
+	bl	Sin
 	lsl	r2, r0, #8
 	ldr	r3, [r6, #0xc]
 	sub	r2, r0
@@ -407,7 +407,7 @@
 	add	r3, r2
 	str	r3, [r6, #0xc]
 	ldr	r0, [r6, #0x18]
-	bl	Func_231c
+	bl	Cos
 	lsl	r2, r0, #8
 	ldr	r3, [r6, #0x10]
 	sub	r2, r0
@@ -453,15 +453,15 @@
 	ldr	r3, [r6]
 	cmp	r3, #0
 	ble	.Lea55c
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [r6, #0x10]
-	bl	Func_4c6c
+	bl	MatrixRotateZ
 	ldr	r0, [r6, #0xc]
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	ldr	r0, [r6, #0x10]
 	lsl	r3, r5, #9
 	add	r0, r3
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	ldr	r3, [r6]
 	ldr	r0, [sp, #0x10]
 	str	r3, [r0]
@@ -494,7 +494,7 @@
 	add	r0, #0x3c
 	str	r0, [r5, #8]
 	mov	r1, #0x14
-	bl	div
+	bl	div_from_thumb
 	ldr	r2, [r5]
 	ldr	r3, [r5, #4]
 	add	r0, #2
@@ -760,7 +760,7 @@
 	mov	r6, r0
 	and	r6, r3
 	mov	r0, r6
-	bl	Func_2322
+	bl	Sin
 	ldr	r4, [sp, #8]
 	mov	r5, r0
 	mov	r0, r8
@@ -775,7 +775,7 @@
 	.pool_aligned
 
 .Lea794:
-	bl	Func_231c
+	bl	Cos
 	ldr	r2, =.Leef50
 	ldr	r4, [sp, #8]
 	mov	r3, r0
@@ -889,14 +889,14 @@
 .Lea882:
 	lsl	r6, r7, #9
 	mov	r0, r6
-	bl	Func_2322
+	bl	Sin
 	mov	r5, r8
 	mul	r5, r0
 	mov	r4, r11
 	mov	r0, r6
 	asr	r5, #16
 	sub	r5, r4
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r8
 	mul	r3, r0
 	add	r5, #0x3c
@@ -979,7 +979,7 @@
 	strb	r3, [r2]
 	mov	r1, #3
 	mov	r0, r7
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r1, r0
 	mov	r0, r5
 	bl	_Func_ba30
@@ -1920,14 +1920,14 @@
 .Leb146:
 	lsl	r6, r7, #8
 	mov	r0, r6
-	bl	Func_2322
+	bl	Sin
 	mov	r5, r8
 	mul	r5, r0
 	mov	r4, r11
 	mov	r0, r6
 	asr	r5, #16
 	sub	r5, r4
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r8
 	mul	r3, r0
 	mov	r2, r10
@@ -2214,12 +2214,12 @@
 	mov	r10, r3
 .Leb382:
 	mov	r0, r6
-	bl	Func_2322
+	bl	Sin
 	mov	r3, r8
 	mul	r3, r0
 	mov	r0, r6
 	asr	r5, r3, #16
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r9
 	mul	r3, r0
 	mov	r1, r10

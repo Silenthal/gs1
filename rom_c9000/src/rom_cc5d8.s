@@ -230,7 +230,7 @@
 	cmp	r0, #0x14
 	bhi	.Lcc816
 	mov	r1, #3
-	bl	div
+	bl	div_from_thumb
 	lsl	r1, r0, #3
 	add	r1, r0
 	lsl	r1, #8
@@ -253,9 +253,9 @@
 	cmp	r0, #0xe
 	bhi	.Lcc878
 	mov	r1, #3
-	bl	div
+	bl	div_from_thumb
 	mov	r1, #5
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	ldr	r6, =iwram_1f0c
 	lsl	r0, #10
 	mov	r7, #0
@@ -312,14 +312,14 @@
 	asr	r3, r2, #3
 	ldr	r0, [r5]
 	add	r6, r3, #1
-	bl	Func_2322
+	bl	Sin
 	ldr	r3, [r5, #4]
 	mul	r3, r0
 	asr	r3, #16
 	add	r3, #0x40
 	ldr	r0, [r5]
 	mov	r8, r3
-	bl	Func_231c
+	bl	Cos
 	ldr	r3, [r5, #4]
 	mul	r3, r0
 	mov	r1, r11
@@ -464,16 +464,16 @@
 	ldr	r3, [r1]
 	cmp	r3, #0
 	ble	.Lccaae
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r2, r8
 	ldr	r0, [r2, #0x14]
-	bl	Func_4c6c
+	bl	MatrixRotateZ
 	mov	r3, r8
 	ldr	r0, [r3, #0xc]
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	mov	r1, r8
 	ldr	r0, [r1, #0x10]
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	mov	r2, r8
 	ldr	r3, [r2]
 	add	r4, sp, #0x18

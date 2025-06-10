@@ -483,13 +483,13 @@
 	blt	.Le4d30
 	mov	r3, #5
 	mov	r11, r3
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [r6, #0x14]
-	bl	Func_4c6c
+	bl	MatrixRotateZ
 	ldr	r0, [r6, #0xc]
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	ldr	r0, [r6, #0x10]
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	add	r5, sp, #0x7c
 	mov	r1, r5
 	mov	r0, r6
@@ -580,7 +580,7 @@
 	mov	r5, r9
 	cmp	r5, #0x3f
 	bgt	.Le4d8a
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x50]
 	mov	r1, r0
 	add	r1, #0xc
@@ -896,7 +896,7 @@
 	ldr	r0, [r1, #8]
 	mov	r1, #6
 	sub	r0, r3
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, [sp, #0x18]
 	str	r0, [r3]
 	ldr	r5, [sp, #0x1c]
@@ -908,7 +908,7 @@
 	sub	r0, r3
 	add	r0, r2
 	mov	r1, #6
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, [sp, #0x18]
 	str	r0, [r3, #4]
 	ldr	r0, [r5, #0x10]
@@ -916,7 +916,7 @@
 	ldr	r3, [r5, #8]
 	mov	r1, #6
 	sub	r0, r3
-	bl	div
+	bl	div_from_thumb
 	ldr	r1, [sp, #0x18]
 	str	r0, [r1, #8]
 	ldr	r5, [sp, #0x5c]
@@ -1260,7 +1260,7 @@
 	lsl	r5, r1, #12
 .Le5316:
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	lsl	r0, #2
 	sub	r0, r7, r0
 	mov	r3, #1
@@ -1502,7 +1502,7 @@
 	ldr	r0, [sp, #0x58]
 	bl	_call_via_r4
 .Le556a:
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r1, [sp, #0x50]
 	ldr	r0, [sp, #0x50]
 	add	r1, #0xc
@@ -1849,7 +1849,7 @@
 	mov	r5, r0
 	and	r5, r3
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	ldr	r2, [sp, #0x3c]
 	ldr	r3, [r2]
 	mov	r6, r0
@@ -1865,7 +1865,7 @@
 	mov	r0, r5
 	lsr	r3, #1
 	sub	r6, r3
-	bl	Func_231c
+	bl	Cos
 	mov	r2, r9
 	mov	r5, r0
 	mov	r0, r8
@@ -2184,7 +2184,7 @@
 	mov	r1, #3
 	asr	r0, #1
 	add	r6, r3
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	lsl	r5, r0, #2
 	add	r5, r0
 	lsl	r3, r5, #9
@@ -2315,9 +2315,9 @@
 	ldr	r0, [sp, #0x54]
 	lsl	r5, r0, #9
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	ldr	r2, [sp, #0x3c]
 	lsl	r0, #2
 	mov	r1, #6
@@ -2925,12 +2925,12 @@
 	blt	.Le61c6
 	mov	r5, #3
 	and	r5, r1
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [r7, #0xc]
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	mov	r6, r9
 	ldr	r0, [r7, #0x10]
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	mov	r1, r6
 	mov	r0, r7
 	bl	Func_e3944
@@ -3137,7 +3137,7 @@
 .Le6308:
 	mov	r0, r10
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r1, r6
 	mov	r5, r0
 	mov	r0, r7

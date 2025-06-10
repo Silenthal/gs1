@@ -1475,7 +1475,7 @@
 	ldrh	r0, [r6, #0x1e]
 	lsl	r2, #7
 	add	r0, r2
-	bl	__Func_231c
+	bl	__Cos
 	mov	r5, r0
 	lsl	r3, r5, #4
 	add	r3, r9
@@ -1503,7 +1503,7 @@
 	ldrh	r0, [r6, #0x1e]
 	lsl	r3, #7
 	add	r0, r3
-	bl	__Func_231c
+	bl	__Cos
 	mov	r5, r0
 	lsl	r3, r5, #4
 	add	r3, r9
@@ -1536,11 +1536,11 @@
 	lsl	r3, #7
 	add	r0, r3
 	mov	r8, r2
-	bl	__Func_231c
+	bl	__Cos
 	mov	r5, r0
 	ldrh	r0, [r6, #0x1e]
 	add	r0, r11
-	bl	__Func_2322
+	bl	__Sin
 	lsl	r3, r5, #4
 	add	r3, r9
 	mov	r2, r10
@@ -4628,7 +4628,7 @@
 	ldr	r6, =iwram_1e40
 	mov	r1, #3
 	ldr	r0, [r6]
-	bl	_Func_b50
+	bl	_umod
 	cmp	r0, #0
 	bne	.L2cbc
 	bl	__Func_4458
@@ -4649,7 +4649,7 @@
 	beq	.L2cbc
 	ldr	r0, [r6]
 	mov	r1, #9
-	bl	_Func_b50
+	bl	_umod
 	cmp	r0, #0
 	bne	.L2c3a
 	bl	__Func_4458

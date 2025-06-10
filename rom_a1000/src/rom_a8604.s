@@ -690,19 +690,19 @@
 .La8bd4:
 	mov	r1, #5
 	mov	r0, r6
-	bl	div
+	bl	div_from_thumb
 	mov	r1, #5
 	mov	r10, r0
 	mov	r0, r6
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r1, #5
 	mov	r8, r0
 	mov	r0, r7
-	bl	div
+	bl	div_from_thumb
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, r7
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	cmp	r0, #0
 	beq	.La8c00
 	add	r5, #1
@@ -1496,7 +1496,7 @@
 	add	r3, r8
 	ldrb	r1, [r3]
 	add	r0, r1
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r3, #0x82
 	lsl	r2, r0, #1
 	lsl	r3, #2
@@ -2271,7 +2271,7 @@
 	add	r3, r7, r2
 	ldrb	r1, [r3]
 	add	r0, r5, r1
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r3, #0x82
 	mov	r5, r0
 	lsl	r3, #2
@@ -2653,13 +2653,13 @@
 .La9bec:
 	ldr	r1, [sp, #0x14]
 	mov	r0, r5
-	bl	div
+	bl	div_from_thumb
 	lsl	r0, #4
 	add	r0, r7
 	strh	r0, [r6, #8]
 	ldr	r1, [sp, #0x14]
 	mov	r0, r5
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	lsl	r0, #4
 	add	r0, r8
 	strh	r0, [r6, #6]
@@ -3579,7 +3579,7 @@
 	lsl	r0, r3, #3
 	sub	r0, r3
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	strh	r0, [r5, #0x38]
 	mov	r0, r10
 .Laa372:

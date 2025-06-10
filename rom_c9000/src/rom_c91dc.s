@@ -459,7 +459,7 @@
 .Lc956a:
 	mov	r1, #3
 	str	r2, [sp, #0xc]
-	bl	div
+	bl	div_from_thumb
 	mov	r1, r0
 	lsl	r1, #10
 	mov	r3, #0x80
@@ -1530,7 +1530,7 @@
 	ldr	r0, [r1, #8]
 	mov	r1, #0x18
 	sub	r0, r3
-	bl	div
+	bl	div_from_thumb
 	str	r0, [r7, #0xc]
 	mov	r2, r8
 	ldr	r0, [r2, #0xc]
@@ -1539,13 +1539,13 @@
 	add	r0, r3
 	mov	r1, #0x18
 	sub	r0, r5
-	bl	div
+	bl	div_from_thumb
 	str	r0, [r7, #0x10]
 	mov	r4, r8
 	ldr	r0, [r4, #0x10]
 	mov	r1, #0x18
 	sub	r0, r6
-	bl	div
+	bl	div_from_thumb
 	str	r0, [r7, #0x14]
 	mov	r0, #1
 	add	r11, r0
@@ -1596,7 +1596,7 @@
 	lsl	r5, r3, #12
 .Lc9eae:
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	lsl	r0, #1
 	sub	r0, r7, r0
 	asr	r0, #10
@@ -1620,7 +1620,7 @@
 	orr	r2, r1
 	strh	r2, [r3]
 .Lc9ee0:
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r1, [sp, #0x1c]
 	ldr	r0, [sp, #0x2c]
 	bl	Func_51d8
@@ -1710,7 +1710,7 @@
 	lsl	r5, #3
 	asr	r0, #1
 	add	r5, r2
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	lsl	r2, r0, #2
 	add	r2, r0
 	lsl	r3, r2, #4

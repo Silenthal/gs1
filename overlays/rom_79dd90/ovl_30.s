@@ -908,14 +908,14 @@
 	mov	r6, r0
 	ldr	r0, [r6, #0x30]
 	ldr	r7, [r6, #0x50]
-	bl	__Func_2322
+	bl	__Sin
 	lsl	r5, r0, #1
 	cmp	r5, #0
 	ble	.L920
 	neg	r5, r5
 .L920:
 	ldr	r0, [r6, #0x30]
-	bl	__Func_231c
+	bl	__Cos
 	ldr	r3, [r6, #0x38]
 	lsl	r0, #1
 	add	r3, r0
@@ -927,7 +927,7 @@
 	add	r3, r5
 	add	r0, r2
 	str	r3, [r6, #0xc]
-	bl	__Func_231c
+	bl	__Cos
 	cmp	r0, #0
 	bge	.L946
 	add	r0, #7

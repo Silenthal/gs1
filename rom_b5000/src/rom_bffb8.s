@@ -1402,7 +1402,7 @@
 	mov	r1, #0x64
 	sub	sp, #0x28
 	mov	r10, r2
-	bl	div
+	bl	div_from_thumb
 	mov	r3, r10
 	mov	r2, r9
 	str	r2, [r3, #4]
@@ -1428,17 +1428,17 @@
 	mov	r1, r0
 	mov	r0, r6
 	bl	Func_5258
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r0, r10
-	bl	Func_4cb4
+	bl	MatrixTranslateV
 	mov	r2, r8
 	mov	r3, #0x36
 	ldrsh	r0, [r2, r3]
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	mov	r2, r8
 	mov	r3, #0x34
 	ldrsh	r0, [r2, r3]
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	add	r0, sp, #0x1c
 	str	r5, [r0]
 	str	r5, [r0, #4]
@@ -1452,7 +1452,7 @@
 	mov	r5, #0x78
 	str	r5, [r3, #0xc]
 	str	r5, [r3, #0x10]
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r0, r8
 	mov	r1, r10
 	bl	Func_51d8
@@ -1516,7 +1516,7 @@
 	mov	r1, #0x64
 	sub	sp, #0x28
 	mov	r10, r2
-	bl	div
+	bl	div_from_thumb
 	mov	r3, r10
 	mov	r2, r9
 	str	r2, [r3, #4]
@@ -1542,17 +1542,17 @@
 	mov	r1, r0
 	mov	r0, r6
 	bl	Func_5258
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r0, r10
-	bl	Func_4cb4
+	bl	MatrixTranslateV
 	mov	r2, r8
 	mov	r3, #0x36
 	ldrsh	r0, [r2, r3]
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	mov	r2, r8
 	mov	r3, #0x34
 	ldrsh	r0, [r2, r3]
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	add	r0, sp, #0x1c
 	mov	r1, r8
 	str	r5, [r0]
@@ -1564,7 +1564,7 @@
 	mov	r5, #0x78
 	str	r5, [r3, #0xc]
 	str	r5, [r3, #0x10]
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r0, r8
 	mov	r1, r10
 	bl	Func_51d8

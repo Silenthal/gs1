@@ -235,12 +235,12 @@
 	lsr	r6, r3, #1
 	mov	r0, r5
 	mov	r8, r3
-	bl	Func_231c
+	bl	Cos
 	mov	r1, r6
 	.call_via r9
 	str	r0, [r7]
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	mov	r1, r6
 	.call_via r9
 	ldr	r2, [r7]
@@ -467,12 +467,12 @@
 	lsr	r6, r3, #1
 	mov	r0, r5
 	mov	r8, r3
-	bl	Func_231c
+	bl	Cos
 	mov	r1, r6
 	.call_via r10
 	str	r0, [r7]
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	mov	r1, r6
 	.call_via r10
 	ldr	r2, [r7]
@@ -537,23 +537,23 @@
 	mov	r9, r2
 .Lc1552:
 	mov	r0, r7
-	bl	Func_231c
+	bl	Cos
 	mov	r1, r8
 	.call_via r6
 	str	r0, [r5]
 	mov	r0, r7
-	bl	Func_2322
+	bl	Sin
 	mov	r1, r8
 	.call_via r6
 	str	r0, [r5, #4]
 	mov	r0, r7
-	bl	Func_231c
+	bl	Cos
 	mov	r1, #0x80
 	lsl	r1, #2
 	.call_via r6
 	str	r0, [r5, #8]
 	mov	r0, r7
-	bl	Func_2322
+	bl	Sin
 	mov	r1, #0x80
 	lsl	r1, #2
 	.call_via r6

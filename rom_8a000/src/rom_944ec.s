@@ -2249,11 +2249,11 @@
 	add	r5, r6, r1
 	mov	r0, r5
 	mov	r1, #0x14
-	bl	div
+	bl	div_from_thumb
 	mov	r1, #0x14
 	mov	r8, r0
 	mov	r0, r5
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r5, #8
 	mov	r7, r0
 	b	.L95828
@@ -2598,7 +2598,7 @@
 	bl	_Func_b684
 	bl	Func_4458
 	mov	r1, #3
-	bl	Func_b60_from_thumb
+	bl	udiv_from_thumb
 	mov	r3, #0x80
 	lsl	r3, #9
 	add	r0, r3
@@ -3022,7 +3022,7 @@
 	bl	_Func_b684
 	bl	Func_4458
 	mov	r1, #3
-	bl	Func_b60_from_thumb
+	bl	udiv_from_thumb
 	mov	r3, #0x80
 	lsl	r3, #9
 	add	r0, r3
@@ -3497,7 +3497,7 @@
 	beq	.L96348
 	bl	Func_4458
 	mov	r1, #3
-	bl	Func_b60_from_thumb
+	bl	udiv_from_thumb
 	mov	r2, #0x80
 	lsl	r2, #9
 	add	r0, r2
@@ -3509,7 +3509,7 @@
 	mov	r1, #0x18
 	strh	r3, [r2]
 	lsl	r0, r7, #16
-	bl	div
+	bl	div_from_thumb
 	mov	r3, r6
 	add	r3, #0x66
 	strh	r0, [r3]
@@ -4498,7 +4498,7 @@
 	mov	r2, r10
 	ldr	r0, [r2]
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	ldmia	r7!, {r5}
 	sub	r6, #1
 	strb	r0, [r5, #5]

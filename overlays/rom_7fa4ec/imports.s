@@ -1,11 +1,11 @@
 	.include "macros.inc"
 
-	.export_func Func_b60
+	.export_func udiv
 	.export_func _Func_30f8
 	.export_func _Func_41d8
 	.export_func _Func_4278
 	.export_func _Func_4458
-	.export_func _Func_2322
+	.export_func _Sin
 	.export_func _AllocEwramAtIndex
 	.export_func _AllocEwram
 	.export_func _Func_3fa4

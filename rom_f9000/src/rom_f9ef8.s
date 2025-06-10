@@ -1092,19 +1092,19 @@
 	mov	r0, #0xc6
 	lsl	r0, #3
 	mov	r1, r5
-	bl	div
+	bl	div_from_thumb
 	strb	r0, [r4, #0xb]
 	ldr	r0, =0x91d1b
 	mul	r0, r5
 	ldr	r1, =0x1388
 	add	r0, r1
 	ldr	r1, =0x2710
-	bl	div
+	bl	div_from_thumb
 	mov	r1, r0
 	str	r1, [r4, #0x14]
 	mov	r0, #0x80
 	lsl	r0, #17
-	bl	div
+	bl	div_from_thumb
 	add	r0, #1
 	asr	r0, #1
 	str	r0, [r4, #0x18]
@@ -1113,7 +1113,7 @@
 	ldr	r4, =REG_TM0CNT_L
 	ldr	r0, =0x44940
 	mov	r1, r5
-	bl	div
+	bl	div_from_thumb
 	neg	r0, r0
 	strh	r0, [r4]
 	bl	m4aSoundVSyncOn

@@ -1067,7 +1067,7 @@
 	beq	.L8b556
 	bl	Func_4458
 	mov	r1, #0x1e
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	mov	r3, r8
 	add	r3, #0x24
 	strb	r0, [r3]

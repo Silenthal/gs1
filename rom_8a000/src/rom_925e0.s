@@ -21,7 +21,7 @@
 	mov	r1, #0x12
 	str	r3, [r6, #0xc]
 	str	r3, [r6, #0x3c]
-	bl	div
+	bl	div_from_thumb
 	sub	r5, r0
 	str	r5, [r6, #0x30]
 	mov	r3, r7
@@ -89,7 +89,7 @@
 	strb	r1, [r3]
 	bl	Func_4458
 	mov	r1, #0xa
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	add	r0, #5
 	lsl	r2, r0, #1
 	add	r2, r0
@@ -103,7 +103,7 @@
 	str	r3, [r6, #0x34]
 	bl	Func_4458
 	mov	r1, #0xf
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	ldr	r3, =0x1999
 	sub	r0, #7
 	lsl	r0, #1

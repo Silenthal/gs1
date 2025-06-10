@@ -1152,7 +1152,7 @@
 	mov	r10, r0
 	mov	r0, r9
 	mov	r11, r3
-	bl	_Func_af0
+	bl	_div
 	add	r0, #1
 	mov	r8, r0
 	mov	r1, #0
@@ -1264,7 +1264,7 @@
 	add	r0, #1
 .Lb4e:
 	mov	r1, r8
-	bl	_Func_b1c
+	bl	_mod
 	mov	r7, #1
 	mov	r11, r0
 .Lb58:
@@ -1369,18 +1369,18 @@
 	bl	OvlFunc_2f4
 	mov	r0, r7
 	mov	r1, #0xa
-	bl	_Func_b1c
+	bl	_mod
 	ldr	r4, [sp, #4]
 	cmp	r0, #4
 	ble	.Lc4a
 	mov	r0, r4
 	mov	r1, #0xa
-	bl	_Func_b1c
+	bl	_mod
 	ldr	r4, [sp, #4]
 	mov	r5, r0
 	mov	r1, #0xa
 	mov	r0, r4
-	bl	_Func_af0
+	bl	_div
 	lsl	r2, r5, #1
 	mov	r3, r0
 	add	r2, r5
@@ -1392,12 +1392,12 @@
 	mov	r0, r4
 	mov	r1, #0xa
 	str	r4, [sp, #4]
-	bl	_Func_b1c
+	bl	_mod
 	ldr	r4, [sp, #4]
 	mov	r5, r0
 	mov	r1, #0xa
 	mov	r0, r4
-	bl	_Func_af0
+	bl	_div
 	lsl	r2, r5, #1
 	mov	r3, r0
 	add	r2, r5

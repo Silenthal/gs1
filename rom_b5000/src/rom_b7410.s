@@ -1456,13 +1456,13 @@
 	push	{r5, lr}
 	ldr	r3, =iwram_1e80
 	ldr	r5, [r3]
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, =0x16b
 	bl	_Func_79338
 	cmp	r0, #0
 	beq	.Lb7f00
 	ldr	r0, =.Lc2a7c
-	ldr	r3, =Func_a30
+	ldr	r3, =MatrixMultiply
 	bl	_call_via_r3
 	mov	r1, r5
 	add	r1, #0xc
@@ -1561,16 +1561,16 @@
 	str	r6, [r5, #0x1c]
 	str	r6, [r5, #0x18]
 	sub	sp, #0xc
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r0, r5
 	add	r0, #0xc
-	bl	Func_4cb4
+	bl	MatrixTranslateV
 	mov	r3, #0x36
 	ldrsh	r0, [r5, r3]
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	mov	r3, #0x34
 	ldrsh	r0, [r5, r3]
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	mov	r0, sp
 	str	r6, [r0]
 	str	r6, [r0, #4]
@@ -1685,7 +1685,7 @@
 	mul	r0, r3
 	mov	r1, #0x64
 	mov	r8, r2
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, [r6, #0x10]
 	ldr	r6, [r5, #0x10]
 	sub	r3, r6
@@ -1693,7 +1693,7 @@
 	mov	r1, #0x64
 	mov	r0, r10
 	mul	r0, r3
-	bl	div
+	bl	div_from_thumb
 	ldr	r2, =REG_BLDCNT
 	ldr	r3, .Lb812c	@ 0
 	strh	r3, [r2]

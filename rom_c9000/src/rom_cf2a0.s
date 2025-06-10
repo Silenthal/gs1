@@ -219,7 +219,7 @@
 	ldr	r0, [sp, #0x2c]
 	lsl	r5, r0, #11
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	neg	r0, r0
 	lsl	r3, r0, #2
 	add	r3, r0
@@ -232,7 +232,7 @@
 	sub	r3, #0x14
 	mov	r0, r5
 	mov	r10, r3
-	bl	Func_231c
+	bl	Cos
 	ldr	r3, [sp, #0x3c]
 	lsl	r0, #2
 	asr	r0, #16
@@ -332,7 +332,7 @@
 	lsl	r2, #4
 	ldr	r5, [r0]
 	mov	r10, r2
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x24]
 	ldr	r1, [sp, #0x20]
 	bl	Func_51d8
@@ -343,7 +343,7 @@
 	ldr	r3, [r5, #0x10]
 	mov	r0, r7
 	str	r3, [r7, #8]
-	bl	Func_4cb4
+	bl	MatrixTranslateV
 	ldr	r3, [sp, #0x2c]
 	cmp	r3, r10
 	ble	.Lcf65c
@@ -374,7 +374,7 @@
 	str	r3, [r5]
 	ldr	r0, [r6, #0x18]
 	lsl	r0, #10
-	bl	Func_2322
+	bl	Sin
 	mov	r3, #1
 	mov	r2, r9
 	lsl	r0, #4
@@ -486,7 +486,7 @@
 	ldrsh	r0, [r3, r2]
 	bl	_Func_b7dd0
 	ldr	r6, [r0]
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x24]
 	mov	r1, r0
 	add	r1, #0xc
@@ -561,7 +561,7 @@
 	mov	r1, #3
 	sub	r0, #0x58
 	str	r2, [sp, #0xc]
-	bl	div
+	bl	div_from_thumb
 	mov	r1, r10
 	sub	r1, r0
 	ldr	r2, [sp, #0xc]

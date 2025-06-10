@@ -1665,12 +1665,12 @@
 	ldr	r3, [r3]
 	ldr	r0, [r6]
 	ldr	r5, [r3]
-	bl	__Func_231c
+	bl	__Cos
 	ldr	r2, =.L1928
 	mov	r10, r0
 	ldr	r0, [r2]
 	mov	r8, r2
-	bl	__Func_2322
+	bl	__Sin
 	ldr	r3, [r5]
 	add	r3, r10
 	stmia	r5!, {r3}

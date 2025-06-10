@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-	.export_func Func_af0
+	.export_func div
 	.export_func _Func_30f8
 	.export_func _Func_c300
 	.export_func _Func_d14c

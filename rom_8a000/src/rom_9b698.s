@@ -403,7 +403,7 @@
 	mov	r0, r4
 	str	r7, [r6, #0x1c]
 	str	r4, [sp]
-	bl	Func_231c
+	bl	Cos
 	ldr	r5, =Func_888
 	mov	r1, r7
 	.call_via r5
@@ -412,7 +412,7 @@
 	add	r3, r0
 	mov	r0, r4
 	str	r3, [r6, #4]
-	bl	Func_2322
+	bl	Sin
 	mov	r1, r7
 	.call_via r5
 	ldr	r3, [r6, #8]

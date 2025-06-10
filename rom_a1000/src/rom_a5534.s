@@ -61,19 +61,19 @@
 .La55be:
 	mov	r1, #5
 	mov	r0, r6
-	bl	div
+	bl	div_from_thumb
 	mov	r1, #5
 	mov	r9, r0
 	mov	r0, r6
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r1, #5
 	mov	r8, r0
 	mov	r0, r7
-	bl	div
+	bl	div_from_thumb
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, r7
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	cmp	r0, #0
 	beq	.La55ea
 	add	r5, #1
@@ -631,7 +631,7 @@
 	add	r3, r7, r4
 	ldrb	r1, [r3]
 	add	r0, r5, r1
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r1, #0x82
 	mov	r5, r0
 	lsl	r1, #2
@@ -1513,7 +1513,7 @@
 	ldr	r0, [sp, #0x18]
 	ldr	r1, [sp, #0x18]
 	add	r0, r10
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r10, r0
 	mov	r1, r10
 	ldr	r5, [sp, #0x1c]
@@ -1842,7 +1842,7 @@
 	mov	r1, r11
 	add	r0, r11
 	mov	r9, r2
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r8, r0
 	mov	r3, r8
 	lsl	r3, #1
@@ -2564,19 +2564,19 @@
 .La6a42:
 	mov	r1, #5
 	mov	r0, r6
-	bl	div
+	bl	div_from_thumb
 	mov	r1, #5
 	mov	r10, r0
 	mov	r0, r6
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r1, #5
 	mov	r8, r0
 	mov	r0, r7
-	bl	div
+	bl	div_from_thumb
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, r7
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	cmp	r0, #0
 	beq	.La6a6e
 	add	r5, #1
@@ -3416,7 +3416,7 @@
 	ldrb	r1, [r3]
 	add	r0, r6, r1
 	str	r4, [sp, #8]
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r6, r0
 	lsl	r3, r6, #1
 	mov	r2, #0x82

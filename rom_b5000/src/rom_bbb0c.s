@@ -535,7 +535,7 @@
 	bl	_Func_79bf8
 	mov	r1, #0xa
 	mul	r0, r5
-	bl	div
+	bl	div_from_thumb
 	b	.Lbbf66
 .Lbbf58:
 	ldr	r2, [sp, #0x48]
@@ -570,7 +570,7 @@
 .Lbbf8e:
 	ldrb	r0, [r7, #0xf]
 	mov	r1, #5
-	bl	Func_b60_from_thumb
+	bl	udiv_from_thumb
 	lsl	r0, #24
 	lsr	r0, #24
 	add	r0, r5, r0
@@ -610,7 +610,7 @@
 .Lbbfe0:
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	mov	r5, r0
 .Lbbfea:
 	cmp	r5, #0
@@ -727,7 +727,7 @@
 	mov	r0, r3
 	mul	r0, r5
 	mov	r1, #0x64
-	bl	div
+	bl	div_from_thumb
 	ldr	r4, =0x12b
 	add	r3, r7, r4
 	ldr	r2, [sp, #0x30]
@@ -747,7 +747,7 @@
 .Lbc0ec:
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	mov	r5, r0
 .Lbc0f6:
 	ldr	r0, [sp, #0x4c]
@@ -821,7 +821,7 @@
 	mov	r0, r3
 	mul	r0, r5
 	mov	r1, #0x64
-	bl	div
+	bl	div_from_thumb
 	ldr	r2, [sp, #0x30]
 	mov	r5, r0
 	mul	r5, r2
@@ -900,7 +900,7 @@
 	mov	r0, r3
 	mul	r0, r5
 	mov	r1, #0x64
-	bl	div
+	bl	div_from_thumb
 	ldr	r1, =0x12b
 	add	r3, r7, r1
 	mov	r5, r0
@@ -920,7 +920,7 @@
 .Lbc274:
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	mov	r5, r0
 .Lbc27e:
 	mov	r1, r10
@@ -1043,7 +1043,7 @@
 	mov	r1, #0x64
 	mov	r0, r2
 	mul	r0, r3
-	bl	div
+	bl	div_from_thumb
 	add	r5, r0
 .Lbc38c:
 	mov	r2, #0x80
@@ -1085,7 +1085,7 @@
 	mov	r1, #0x64
 	mov	r0, r3
 	mul	r0, r5
-	bl	div
+	bl	div_from_thumb
 	mov	r5, r0
 .Lbc3d8:
 	bl	_Func_79bc4
@@ -1108,7 +1108,7 @@
 .Lbc3fc:
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	mov	r5, r0
 .Lbc406:
 	mov	r0, #0xb7
@@ -1212,7 +1212,7 @@
 	mov	r0, r3
 	mul	r0, r5
 	mov	r1, #0x64
-	bl	div
+	bl	div_from_thumb
 	ldr	r2, [sp, #0x30]
 	mov	r5, r0
 	mul	r5, r2
@@ -1292,7 +1292,7 @@
 	mov	r1, #0x64
 	mov	r0, r3
 	mul	r0, r5
-	bl	div
+	bl	div_from_thumb
 	mov	r5, r0
 	ldr	r0, =0x12b
 	add	r3, r7, r0
@@ -1313,7 +1313,7 @@
 .Lbc5d4:
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	mov	r5, r0
 .Lbc5de:
 	mov	r1, r10
@@ -1672,7 +1672,7 @@
 	lsl	r0, #1
 .Lbc94a:
 	mov	r1, #0x64
-	bl	div
+	bl	div_from_thumb
 	add	r5, r0
 	lsl	r3, r6, #16
 	asr	r2, r3, #16
@@ -1717,7 +1717,7 @@
 	lsl	r0, r6, #3
 	sub	r0, r6
 	mov	r1, #0x64
-	bl	div
+	bl	div_from_thumb
 	mov	r8, r5
 	add	r5, r0
 	cmp	r5, r6
@@ -2133,7 +2133,7 @@
 	ldrsh	r0, [r7, r1]
 	mov	r1, #0xa
 	lsl	r0, #3
-	bl	div
+	bl	div_from_thumb
 	strh	r0, [r7, #0x38]
 	b	.Lbcfd8
 .Lbcd38:
@@ -2581,7 +2581,7 @@
 .Lbd128:
 	ldr	r0, [sp, #0x2c]
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	mov	r5, r0
 	mov	r0, #0x3a
 	ldrsh	r3, [r7, r0]
@@ -4004,7 +4004,7 @@
 	mov	r4, r9
 	strh	r3, [r4, #6]
 	lsl	r0, #12
-	bl	Func_2322
+	bl	Sin
 	cmp	r0, #0
 	bge	.Lbdcbc
 	ldr	r2, =0x7fff
@@ -4233,7 +4233,7 @@
 .Lbde70:
 	asr	r0, #3
 	mov	r1, #5
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	add	r0, #1
 	mov	r10, r0
 .Lbde7c:
@@ -6220,7 +6220,7 @@
 	bl	_Func_79cbc
 	mov	r1, #0xc8
 	lsl	r0, #16
-	bl	div
+	bl	div_from_thumb
 	mov	r5, r0
 	bl	_Func_79bc4
 	ldr	r3, =0xffff
@@ -8057,7 +8057,7 @@
 	ldrsh	r3, [r2, r1]
 	mov	r1, #0xa
 	mul	r0, r3
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, =iwram_1e74
 	mov	r7, r0
 	mov	r1, r8

@@ -407,12 +407,12 @@
 	mov	r2, r8
 	lsl	r5, r2, #12
 	mov	r0, r5
-	bl	__Func_231c
+	bl	__Cos
 	mov	r3, #0
 	str	r0, [r7]
 	str	r3, [r7, #4]
 	mov	r0, r5
-	bl	__Func_2322
+	bl	__Sin
 	ldr	r2, [r7]
 	str	r0, [r7, #8]
 	mov	r3, r2

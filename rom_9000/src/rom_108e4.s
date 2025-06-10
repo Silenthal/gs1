@@ -298,21 +298,21 @@
 	str	r6, [r3]
 	str	r6, [r3, #4]
 	str	r6, [r3, #8]
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r0, r8
-	bl	Func_4cb4
+	bl	MatrixTranslateV
 	mov	r1, #0x8d
 	lsl	r1, #1
 	add	r1, r7, r1
 	str	r1, [sp]
 	ldrh	r0, [r1]
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	mov	r2, #0x8c
 	lsl	r2, #1
 	add	r2, r7
 	ldrh	r0, [r2]
 	mov	r11, r2
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	add	r3, sp, #0x10
 	mov	r10, r3
 	str	r6, [r3]
@@ -322,7 +322,7 @@
 	ldr	r2, =Func_9c0
 	mov	r0, r10
 	bl	_call_via_r2
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r0, r9
 	mov	r1, r8
 	bl	Func_51d8
@@ -341,11 +341,11 @@
 	sub	r3, #0xc
 	mov	r3, r11
 	ldrh	r0, [r3]
-	bl	Func_231c
+	bl	Cos
 	mov	r1, r11
 	mov	r5, r0
 	ldrh	r0, [r1]
-	bl	Func_2322
+	bl	Sin
 	ldr	r3, =Func_8ac
 	mov	r1, r0
 	mov	r0, r5
@@ -379,22 +379,22 @@
 	str	r6, [r3]
 	str	r6, [r3, #4]
 	str	r6, [r3, #8]
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r3, #0xe0
 	mov	r1, r11
 	lsl	r3, #8
 	strh	r3, [r1]
 	ldr	r2, [sp]
 	strh	r6, [r2]
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r0, r8
-	bl	Func_4cb4
+	bl	MatrixTranslateV
 	ldr	r3, [sp]
 	ldrh	r0, [r3]
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	mov	r1, r11
 	ldrh	r0, [r1]
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	mov	r2, r10
 	str	r6, [r2]
 	str	r6, [r2, #4]
@@ -1132,19 +1132,19 @@
 	str	r7, [r1, #4]
 	ldr	r3, [r2, #4]
 	str	r3, [r1, #8]
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r0, r10
-	bl	Func_4cb4
+	bl	MatrixTranslateV
 	mov	r2, #0x8d
 	lsl	r2, #1
 	add	r3, r6, r2
 	ldrh	r0, [r3]
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	mov	r3, #0x8c
 	lsl	r3, #1
 	add	r6, r3
 	ldrh	r0, [r6]
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	add	r0, sp, #0x18
 	str	r7, [r0]
 	str	r7, [r0, #4]
@@ -1156,7 +1156,7 @@
 	ldr	r1, [sp, #0x14]
 	ldr	r3, =Func_9c0
 	bl	_call_via_r3
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r1, r10
 	ldr	r0, [sp, #0x14]
 	bl	Func_51d8
@@ -1166,10 +1166,10 @@
 	ldr	r3, [r3]
 	cmp	r3, r0
 	beq	.L11388
-	bl	Func_231c
+	bl	Cos
 	mov	r5, r0
 	ldrh	r0, [r6]
-	bl	Func_2322
+	bl	Sin
 	ldr	r3, =Func_8ac
 	mov	r1, r0
 	mov	r0, r5

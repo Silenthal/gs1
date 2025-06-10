@@ -11,7 +11,7 @@
 	lsl	r0, #7
 	add	r0, r8
 	mov	r5, r2
-	bl	Func_2322
+	bl	Sin
 	ldr	r6, =Func_888
 	mov	r1, r0
 	mov	r0, r10
@@ -20,7 +20,7 @@
 	add	r3, r0
 	stmia	r5!, {r3}
 	mov	r0, r8
-	bl	Func_2322
+	bl	Sin
 	add	r5, #4
 	mov	r1, r0
 	mov	r0, r10
@@ -57,7 +57,7 @@
 	neg	r0, r6
 .L44f2:
 	lsl	r0, #8
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, =0xfb6a
 	mov	r4, #0x80
 	mov	r1, r0

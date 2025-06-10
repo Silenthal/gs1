@@ -933,7 +933,7 @@
 	mov	r0, r8
 	bl	__Func_30f8
 	mov	r0, r5
-	bl	__Func_231c
+	bl	__Cos
 	lsl	r2, r0, #1
 	ldr	r3, [r7, #8]
 	add	r2, r0
@@ -941,7 +941,7 @@
 	add	r3, r2
 	str	r3, [r7, #8]
 	mov	r0, r5
-	bl	__Func_2322
+	bl	__Sin
 	lsl	r2, r0, #1
 	ldr	r3, [r7, #0x10]
 	add	r2, r0
@@ -1027,7 +1027,7 @@
 	lsl	r0, #1
 	bl	__Func_30f8
 	mov	r0, r5
-	bl	__Func_231c
+	bl	__Cos
 	lsl	r2, r0, #1
 	ldr	r3, [r7, #8]
 	add	r2, r0
@@ -1035,7 +1035,7 @@
 	sub	r3, r2
 	str	r3, [r7, #8]
 	mov	r0, r5
-	bl	__Func_2322
+	bl	__Sin
 	lsl	r2, r0, #1
 	ldr	r3, [r7, #0x10]
 	add	r2, r0

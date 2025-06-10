@@ -409,14 +409,14 @@
 	blt	.Lf632a
 	mov	r1, r5
 	str	r4, [sp]
-	bl	div
+	bl	div_from_thumb
 	mov	r12, r0
 	ldr	r4, [sp]
 	b	.Lf6336
 .Lf632a:
 	sub	r1, r7, r4
 	str	r4, [sp]
-	bl	div
+	bl	div_from_thumb
 	ldr	r4, [sp]
 	mov	r12, r0
 .Lf6336:
@@ -502,7 +502,7 @@
 	mov	r6, r10
 	sub	r1, r3, r6
 .Lf63c6:
-	bl	div
+	bl	div_from_thumb
 	mov	r12, r0
 	mov	r0, r8
 	mov	r1, r7
@@ -968,7 +968,7 @@
 	ldr	r0, [r5]
 	mov	r1, #6
 	add	r0, #1
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	str	r0, [r5]
 	mov	r0, #0x6f
 	bl	_Func_f9080
@@ -984,7 +984,7 @@
 	ldr	r0, [r5]
 	mov	r1, #6
 	add	r0, #5
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	str	r0, [r5]
 	mov	r0, #0x6f
 	bl	_Func_f9080
@@ -1507,7 +1507,7 @@
 .Lf6b9e:
 	mov	r1, #0x15
 	str	r4, [sp, #8]
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	add	r0, r5
 	add	r0, #4
 	ldrb	r3, [r7, r0]
@@ -2283,7 +2283,7 @@
 	add	r0, #0x15
 	mov	r1, #0x15
 	str	r4, [sp, #8]
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	add	r0, #4
 	ldrb	r3, [r5, r0]
 	mov	r2, #0x80
@@ -2323,7 +2323,7 @@
 	bgt	.Lf7200
 	ldr	r3, =0x2aa
 	mul	r0, r3
-	bl	Func_2322
+	bl	Sin
 	lsl	r0, #6
 	b	.Lf7210
 .Lf7200:
@@ -2332,7 +2332,7 @@
 	ldr	r1, =0xfffd0000
 	lsl	r0, #12
 	add	r0, r1
-	bl	Func_2322
+	bl	Sin
 	lsl	r0, #2
 .Lf7210:
 	asr	r0, #16
@@ -2532,13 +2532,13 @@
 	mov	r5, r6
 	mul	r5, r3
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	lsl	r3, r0, #1
 	add	r3, r0
 	lsr	r3, #15
 	strh	r3, [r7]
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	mov	r2, #0x6e
 	sub	r2, r6
 	mov	r3, #0x9b
@@ -3011,7 +3011,7 @@
 .Lf77de:
 	bl	Func_4458
 	mov	r1, #5
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	add	r6, #1
 	strb	r0, [r5]
 	add	r5, #1
@@ -3037,7 +3037,7 @@
 	str	r4, [sp, #8]
 	bl	Func_4458
 	mov	r1, #0x15
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	mov	r1, r8
 	str	r0, [r5, r7]
 	mov	r6, #0
@@ -3264,7 +3264,7 @@
 .Lf7a14:
 	mov	r0, r11
 	mov	r1, #0x50
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	cmp	r0, #0xf
 	bgt	.Lf7a28
 	ldr	r0, =0x91
@@ -3349,14 +3349,14 @@
 	str	r1, [r7, #4]
 	str	r0, [r7]
 	mov	r0, r6
-	bl	Func_2322
+	bl	Sin
 	add	r5, #0x40
 	mov	r3, r5
 	mul	r3, r0
 	asr	r3, #6
 	str	r3, [r7, #0xc]
 	mov	r0, r6
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r5
 	mul	r3, r0
 	neg	r3, r3
@@ -3396,7 +3396,7 @@
 	blt	.Lf7b5c
 	mov	r1, #0xc
 	asr	r5, r3, #16
-	bl	div
+	bl	div_from_thumb
 	add	r0, #1
 	lsl	r4, r0, #1
 	mov	r3, r8

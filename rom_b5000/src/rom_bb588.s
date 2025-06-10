@@ -198,7 +198,7 @@
 .Lbb728:
 	ldr	r0, [r3]
 	lsl	r0, #12
-	bl	Func_2322
+	bl	Sin
 	cmp	r0, #0
 	bge	.Lbb738
 	ldr	r1, =0x7fff

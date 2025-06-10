@@ -2233,13 +2233,13 @@
 	ldr	r5, [r6, #0x30]
 	mov	r1, #0x1c
 	mov	r0, r5
-	bl	_Func_af0
+	bl	_div
 	sub	r5, r0
 	str	r5, [r6, #0x30]
 	ldr	r5, [r6, #0x34]
 	mov	r1, #0x1c
 	mov	r0, r5
-	bl	_Func_af0
+	bl	_div
 	sub	r5, r0
 	str	r5, [r6, #0x34]
 	pop	{r5, r6}
@@ -2319,7 +2319,7 @@
 	beq	.L1882
 	bl	__Func_4458
 	mov	r1, #0xa
-	bl	_Func_b50
+	bl	_umod
 	mov	r5, #1
 	and	r7, r5
 	mov	r3, r7
@@ -2335,7 +2335,7 @@
 	str	r3, [r6, #0x34]
 	bl	__Func_4458
 	mov	r1, #0xf
-	bl	_Func_b50
+	bl	_umod
 	ldr	r3, =0x1999
 	sub	r0, #7
 	mul	r3, r0
@@ -2348,7 +2348,7 @@
 .L1882:
 	bl	__Func_4458
 	mov	r1, #0xa
-	bl	_Func_b50
+	bl	_umod
 	ldr	r3, =0x3332
 	mul	r3, r7
 	ldr	r1, =0xffffe667
@@ -2358,7 +2358,7 @@
 	str	r3, [r6, #0x30]
 	bl	__Func_4458
 	mov	r1, #0xe
-	bl	_Func_b50
+	bl	_umod
 	ldr	r3, =0x1999
 	add	r0, #1
 	mul	r3, r0

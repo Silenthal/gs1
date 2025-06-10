@@ -16,7 +16,7 @@
 	lsl	r0, r3, #3
 	add	r0, r3
 	mov	r1, #0xa
-	bl	_Func_af0
+	bl	_div
 	ldr	r3, [r7]
 	cmp	r3, r0
 	blt	.L7a
@@ -57,7 +57,7 @@
 	lsl	r0, r3, #3
 	add	r0, r3
 	mov	r1, #0xa
-	bl	_Func_af0
+	bl	_div
 	ldr	r3, [r5]
 	cmp	r3, r0
 	blt	.Lc2
@@ -89,7 +89,7 @@
 	lsl	r0, r3, #3
 	add	r0, r3
 	mov	r1, #0xa
-	bl	_Func_af0
+	bl	_div
 	ldr	r3, [r5]
 	cmp	r3, r0
 	blt	.L10a
@@ -217,7 +217,7 @@
 	mov	r3, #0
 	ldrsh	r0, [r5, r3]
 	lsl	r0, #3
-	bl	__Func_2322
+	bl	__Sin
 	mov	r1, #0x80
 	ldr	r3, =Func_888
 	lsl	r1, #11
@@ -4894,7 +4894,7 @@
 	ldr	r3, =iwram_1e40
 	mov	r1, #3
 	ldr	r0, [r3]
-	bl	_Func_b50
+	bl	_umod
 	cmp	r0, #0
 	bne	.L32c6
 	bl	__Func_4458
@@ -5635,7 +5635,7 @@
 	ldrsh	r6, [r0, r2]
 	mov	r1, #3
 	ldr	r0, [r3]
-	bl	_Func_b50
+	bl	_umod
 	cmp	r0, #0
 	bne	.L39e8
 	bl	__Func_4458
@@ -6338,7 +6338,7 @@
 	ldr	r0, [r5]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_b50
+	bl	_umod
 	mov	r1, r0
 	mov	r0, r6
 	bl	__Func_c598
@@ -6368,7 +6368,7 @@
 	ldr	r0, [r0]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_b50
+	bl	_umod
 	mov	r1, r0
 	mov	r0, r5
 	bl	__Func_c598
@@ -6396,7 +6396,7 @@
 	b	.L3ffe
 .L3fd4:
 	lsl	r0, #10
-	bl	__Func_2322
+	bl	__Sin
 	str	r0, [r5, #0x18]
 	str	r0, [r5, #0x1c]
 	ldr	r3, [r6, #8]
@@ -6439,7 +6439,7 @@
 	b	.L4050
 .L4024:
 	lsl	r0, #10
-	bl	__Func_2322
+	bl	__Sin
 	neg	r3, r0
 	str	r0, [r5, #0x18]
 	str	r3, [r5, #0x1c]

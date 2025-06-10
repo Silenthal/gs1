@@ -41,16 +41,16 @@
 	str	r6, [r3, #0x10]
 	str	r6, [r5, #0x18]
 	sub	sp, #0xc
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r0, r5
 	add	r0, #0xc
-	bl	Func_4cb4
+	bl	MatrixTranslateV
 	mov	r3, #0x36
 	ldrsh	r0, [r5, r3]
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	mov	r3, #0x34
 	ldrsh	r0, [r5, r3]
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	mov	r0, sp
 	str	r6, [r0]
 	str	r6, [r0, #4]
@@ -100,7 +100,7 @@
 	lsl	r1, #16
 	asr	r1, #16
 	asr	r0, #8
-	bl	div
+	bl	div_from_thumb
 	lsl	r0, #16
 	asr	r0, #16
 	pop	{r1}
@@ -114,7 +114,7 @@
 	mov	r0, #0x80
 	asr	r1, #16
 	lsl	r0, #9
-	bl	div
+	bl	div_from_thumb
 	lsl	r0, #16
 	asr	r0, #16
 	pop	{r1}
@@ -443,7 +443,7 @@
 	str	r2, [sp, #0x90]
 	bl	Func_4458
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	mov	r5, sp
 	add	r5, #0x88
 	str	r0, [sp, #0x88]
@@ -451,7 +451,7 @@
 .Lf43f0:
 	bl	Func_4458
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	ldr	r6, [sp, #0x28]
 	str	r0, [r6, #4]
 	ldr	r3, [sp, #0x88]
@@ -561,7 +561,7 @@
 	mov	r3, r6
 	bl	Func_f4100
 .Lf44e2:
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x68]
 	ldr	r1, [sp, #0x30]
 	bl	Func_51d8
@@ -1124,7 +1124,7 @@
 	mov	r1, #6
 	and	r5, r0
 	ldr	r0, [r6, #4]
-	bl	div
+	bl	div_from_thumb
 	add	r5, #0x8c
 	lsl	r5, #12
 	add	r5, r0
@@ -1132,7 +1132,7 @@
 	bl	Func_4458
 	mov	r1, #0x90
 	lsl	r1, #7
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	mov	r3, #0x96
 	lsl	r3, #1
 	str	r0, [r6, #0x18]
@@ -1175,12 +1175,12 @@
 	str	r1, [r3]
 	bl	Func_4458
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	str	r0, [sp, #0x88]
 .Lf4a2c:
 	bl	Func_4458
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	ldr	r6, [sp, #0x28]
 	str	r0, [r6, #4]
 	ldr	r3, [sp, #0x88]
@@ -1316,7 +1316,7 @@
 	add	r1, #0x80
 	lsl	r0, #4
 	str	r4, [sp, #8]
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, [r6]
 	sub	r2, r3, r0
 	ldr	r3, [r6, #4]
@@ -1418,14 +1418,14 @@
 	mov	r0, #0x80
 	mov	r1, r6
 	lsl	r0, #4
-	bl	div
+	bl	div_from_thumb
 	mov	r1, r9
 	ldr	r5, [r1]
 	sub	r5, r0
 	mov	r0, #0xc0
 	mov	r1, r6
 	lsl	r0, #2
-	bl	div
+	bl	div_from_thumb
 	mov	r3, r9
 	ldr	r2, [r3, #4]
 	mov	r4, #0x9e
@@ -1642,21 +1642,21 @@
 	mov	r5, r0
 	mov	r1, r5
 	lsl	r0, r6, #15
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, [r7, #0xc]
 	ldr	r4, [sp, #8]
 	add	r3, r0
 	str	r3, [r7, #0xc]
 	lsl	r0, r4, #15
 	mov	r1, r5
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, [r7, #0x10]
 	add	r3, r0
 	str	r3, [r7, #0x10]
 	mov	r3, r8
 	lsl	r0, r3, #15
 	mov	r1, r5
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, [r7, #0x14]
 	add	r3, r0
 	str	r3, [r7, #0x14]
@@ -1804,13 +1804,13 @@
 	mov	r5, r0
 	and	r5, r3
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	mov	r3, r6
 	mul	r3, r0
 	asr	r3, #8
 	str	r3, [r7, #0xc]
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r6
 	mul	r3, r0
 	asr	r3, #8
@@ -1864,7 +1864,7 @@
 .Lf4fc6:
 	asr	r0, #10
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	cmp	r0, #1
 	bne	.Lf4fdc
 	mov	r4, #0x80
@@ -1947,7 +1947,7 @@
 	ldr	r0, [r7, #0x18]
 	lsl	r1, #4
 	add	r5, sp, #0xe0
-	bl	div
+	bl	div_from_thumb
 	ldr	r1, =.Lf541a
 	mov	r3, #0
 	str	r0, [r5, r6]

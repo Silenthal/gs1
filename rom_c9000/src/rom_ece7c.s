@@ -384,14 +384,14 @@
 	lsl	r3, #15
 	str	r3, [r7, #4]
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	add	r6, #0x80
 	mov	r3, r6
 	mul	r3, r0
 	asr	r3, #8
 	str	r3, [r7, #0xc]
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r6
 	mul	r3, r0
 	asr	r3, #9
@@ -538,7 +538,7 @@
 	cmp	r0, #0x1c
 	bgt	.Led366
 	mov	r1, #3
-	bl	div
+	bl	div_from_thumb
 	mov	r3, #2
 	ldrsh	r4, [r5, r3]
 	mov	r1, #6

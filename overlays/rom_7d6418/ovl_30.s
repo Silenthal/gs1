@@ -1435,7 +1435,7 @@
 	add	r5, #4
 	mov	r0, r5
 	mov	r1, #3
-	bl	_Func_b1c
+	bl	_mod
 	mov	r3, r8
 	strb	r0, [r3, r6]
 	lsl	r3, r7, #1
@@ -1630,7 +1630,7 @@
 	mov	r0, r8
 	mul	r0, r7
 	mov	r1, r10
-	bl	_Func_af0
+	bl	_div
 	mov	r1, r9
 	ldr	r3, [r1, #0x40]
 	add	r7, r3, r0
@@ -1638,7 +1638,7 @@
 	mov	r0, r8
 	mul	r0, r6
 	mov	r1, r10
-	bl	_Func_af0
+	bl	_div
 	mov	r2, r9
 	ldr	r3, [r2, #0x48]
 	add	r2, r3, r0
@@ -1832,7 +1832,7 @@
 	mul	r0, r2
 	mov	r1, #0x12
 	str	r4, [sp, #4]
-	bl	_Func_af0
+	bl	_div
 	mov	r1, #0xc0
 	lsl	r1, #14
 	mov	r3, #0xb4
@@ -1863,7 +1863,7 @@
 	add	r0, r1
 	mov	r1, #0x12
 	str	r4, [sp, #4]
-	bl	_Func_af0
+	bl	_div
 	mov	r2, #0xc0
 	lsl	r2, #14
 	mov	r3, #0xb4
@@ -1898,7 +1898,7 @@
 	add	r0, r3
 	lsl	r0, #1
 	mov	r1, #0x2a
-	bl	_Func_af0
+	bl	_div
 	mov	r2, #0xc0
 	lsl	r2, #13
 	mov	r3, #0xa8
@@ -1928,7 +1928,7 @@
 	lsl	r0, #1
 	add	r0, r1
 	mov	r1, #0x2a
-	bl	_Func_af0
+	bl	_div
 	mov	r2, #0xc0
 	lsl	r2, #13
 	mov	r3, #0xa8
@@ -2164,7 +2164,7 @@
 	bl	__Func_c300
 	mov	r1, #0xc
 	ldrsh	r0, [r6, r1]
-	bl	__Func_2322
+	bl	__Sin
 	lsl	r3, r0, #1
 	add	r3, r0
 	mov	r2, #0xe0
@@ -2174,7 +2174,7 @@
 	str	r3, [r6]
 	mov	r3, #0xc
 	ldrsh	r0, [r6, r3]
-	bl	__Func_231c
+	bl	__Cos
 	lsl	r3, r0, #2
 	add	r3, r0
 	mov	r4, #0x90
@@ -2226,7 +2226,7 @@
 	bgt	.L13fe
 	mov	r4, #0xc
 	ldrsh	r0, [r6, r4]
-	bl	__Func_2322
+	bl	__Sin
 	mov	r3, #0x34
 	mul	r3, r0
 	mov	r0, #0xe0
@@ -2235,7 +2235,7 @@
 	str	r3, [r6]
 	mov	r1, #0xc
 	ldrsh	r0, [r6, r1]
-	bl	__Func_231c
+	bl	__Cos
 	lsl	r3, r0, #1
 	add	r3, r0
 	mov	r2, #0x90
@@ -2327,7 +2327,7 @@
 	mul	r0, r4
 	mov	r1, r2
 	str	r2, [sp, #8]
-	bl	_Func_af0
+	bl	_div
 	ldr	r2, [sp, #8]
 	ldr	r4, [sp, #4]
 	neg	r3, r5
@@ -2336,7 +2336,7 @@
 	mov	r0, r3
 	mul	r0, r4
 	mov	r1, r2
-	bl	_Func_af0
+	bl	_div
 	mov	r2, r9
 	ldr	r3, [r2, #0x4c]
 	sub	r3, #0x64
@@ -2350,7 +2350,7 @@
 	ldrsh	r0, [r6, r3]
 	mov	r1, #3
 	add	r0, #1
-	bl	_Func_b1c
+	bl	_mod
 	mov	r3, #0x24
 	strh	r3, [r6, #0x12]
 	mov	r3, #0x1e

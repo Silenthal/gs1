@@ -10,7 +10,7 @@
 	ldr	r3, =iwram_1e40
 	mov	r1, #5
 	ldr	r0, [r3]
-	bl	_Func_b50
+	bl	_umod
 	cmp	r0, #0
 	bne	.Le22
 	ldr	r3, =.L291c
@@ -41,7 +41,7 @@
 	bhi	.Ldf4
 	lsl	r0, r5, #2
 	mov	r1, #0xa
-	bl	_Func_af0
+	bl	_div
 	sub	r5, r0
 .Ldf4:
 	mov	r2, #0x6f

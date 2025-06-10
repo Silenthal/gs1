@@ -1377,19 +1377,19 @@
 	mov	r0, r6
 	and	r5, r2
 	and	r7, r2
-	bl	_Func_af0
+	bl	_div
 	add	r0, r6, r0
 	lsl	r0, #16
 	mov	r1, r8
 	asr	r6, r0, #16
 	mov	r0, r5
-	bl	_Func_af0
+	bl	_div
 	sub	r0, r5, r0
 	lsl	r0, #16
 	asr	r5, r0, #16
 	mov	r1, r8
 	mov	r0, r7
-	bl	_Func_af0
+	bl	_div
 	sub	r0, r7, r0
 	lsl	r0, #16
 	asr	r7, r0, #16
@@ -1493,14 +1493,14 @@
 	mov	r6, r0
 	ldr	r0, [r6, #0x30]
 	ldr	r7, [r6, #0x50]
-	bl	__Func_2322
+	bl	__Sin
 	lsl	r5, r0, #1
 	cmp	r5, #0
 	ble	.Lc60
 	neg	r5, r5
 .Lc60:
 	ldr	r0, [r6, #0x30]
-	bl	__Func_231c
+	bl	__Cos
 	ldr	r3, [r6, #0x38]
 	lsl	r0, #1
 	add	r3, r0
@@ -1512,7 +1512,7 @@
 	add	r3, r5
 	add	r0, r2
 	str	r3, [r6, #0xc]
-	bl	__Func_231c
+	bl	__Cos
 	cmp	r0, #0
 	bge	.Lc86
 	add	r0, #7

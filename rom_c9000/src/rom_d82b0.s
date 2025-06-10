@@ -61,7 +61,7 @@
 	add	r3, #0x1c
 	cmp	r8, r2
 	bne	.Ld8324
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r1, r6
 	add	r1, #0xc
 	mov	r0, r6
@@ -127,7 +127,7 @@
 	mov	r5, r0
 	and	r5, r3
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	mov	r2, r6
 	mul	r2, r0
 	mov	r4, r10
@@ -137,7 +137,7 @@
 	add	r2, r3
 	str	r2, [r7]
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	mov	r2, r6
 	mul	r2, r0
 	mov	r0, r10
@@ -261,7 +261,7 @@
 	blt	.Ld852e
 	mov	r1, #3
 	mov	r0, r8
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	add	r0, #1
 	lsl	r4, r0, #1
 	ldr	r2, =Data_ede48
@@ -569,7 +569,7 @@
 	mov	r0, #0x85
 	bl	_Func_bd7dc
 .Ld8778:
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x24]
 	ldr	r1, [sp, #0x1c]
 	bl	Func_51d8

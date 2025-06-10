@@ -14,7 +14,7 @@
 	strh	r0, [r6, #6]
 	bl	__Func_4458
 	mov	r1, #0x14
-	bl	_Func_b50
+	bl	_umod
 	add	r0, #0x14
 	strh	r0, [r5]
 .L56:
@@ -80,7 +80,7 @@
 	str	r3, [r0, #0x1c]
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	add	r0, #0x3c
 	strh	r0, [r5]
 .Lcc:
@@ -612,7 +612,7 @@
 	strh	r6, [r5, #6]
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	ldr	r2, =.L4ec8
 	mov	r3, r5
 	add	r0, #0x3c
@@ -636,7 +636,7 @@
 	strh	r6, [r5, #6]
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	mov	r3, r5
 	add	r0, #0x3c
 	add	r3, #0x64
@@ -658,7 +658,7 @@
 	strh	r6, [r5, #6]
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	mov	r3, r5
 	add	r0, #0x3c
 	add	r3, #0x64
@@ -681,7 +681,7 @@
 	strh	r6, [r5, #6]
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	mov	r3, r5
 	add	r0, #0x3c
 	add	r3, #0x64
@@ -762,7 +762,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	ldr	r6, =.L4ec8
 	add	r0, #0x3c
 	add	r5, #0x64
@@ -788,7 +788,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	add	r5, #0x64
 	add	r0, #0x3c
 	strh	r0, [r5]
@@ -813,7 +813,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	add	r5, #0x64
 	add	r0, #0x3c
 	strh	r0, [r5]
@@ -3378,7 +3378,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	ldr	r6, =.L4ec8
 	add	r0, #0x3c
 	add	r5, #0x64
@@ -3414,7 +3414,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	add	r5, #0x64
 	add	r0, #0x3c
 	strh	r0, [r5]
@@ -3439,7 +3439,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	add	r5, #0x64
 	add	r0, #0x3c
 	strh	r0, [r5]
@@ -4161,7 +4161,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	add	r5, #0x64
 	add	r0, #0x3c
 	strh	r0, [r5]
@@ -4170,7 +4170,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	add	r5, #0x64
 	add	r0, #0x3c
 	strh	r0, [r5]
@@ -4179,7 +4179,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	add	r5, #0x64
 	add	r0, #0x3c
 	strh	r0, [r5]
@@ -4510,7 +4510,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	add	r5, #0x64
 	add	r0, #0x3c
 	ldr	r1, =.L4ec8
@@ -5065,7 +5065,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x14
-	bl	_Func_b50
+	bl	_umod
 	add	r5, #0x64
 	ldr	r2, .L3394	@ 0
 	add	r0, #0x14
@@ -5078,7 +5078,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x14
-	bl	_Func_b50
+	bl	_umod
 	add	r5, #0x64
 	add	r0, #0x14
 	strh	r0, [r5]
@@ -5087,7 +5087,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x14
-	bl	_Func_b50
+	bl	_umod
 	add	r5, #0x64
 	add	r0, #0x14
 	strh	r0, [r5]
@@ -5104,7 +5104,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x14
-	bl	_Func_b50
+	bl	_umod
 	add	r5, #0x64
 	add	r0, #0x14
 	strh	r0, [r5]
@@ -5113,7 +5113,7 @@
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, #0x14
-	bl	_Func_b50
+	bl	_umod
 	add	r5, #0x64
 	add	r0, #0x14
 	strh	r0, [r5]
@@ -5744,7 +5744,7 @@
 	strh	r3, [r7, #6]
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	mov	r3, r7
 	ldr	r5, =.L4ec8
 	add	r0, #0x3c
@@ -5772,7 +5772,7 @@
 	strh	r0, [r7, #6]
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	mov	r3, r7
 	add	r0, #0x3c
 	add	r3, #0x64
@@ -5798,7 +5798,7 @@
 	strh	r2, [r7, #6]
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	mov	r3, r7
 	b	.L3adc
 
@@ -5830,7 +5830,7 @@
 	strh	r3, [r7, #6]
 	bl	__Func_4458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_umod
 	mov	r3, r7
 	add	r0, #0x3c
 	add	r3, #0x64
@@ -6660,7 +6660,7 @@
 	lsl	r1, #3
 	add	r1, #0x10
 	ldr	r0, [r2]
-	bl	_Func_b50
+	bl	_umod
 	cmp	r0, #0
 	bne	.L42f6
 	mov	r0, r5
@@ -6683,7 +6683,7 @@
 	ldr	r0, [r5]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_b50
+	bl	_umod
 	mov	r1, r0
 	mov	r0, r6
 	bl	__Func_c598
@@ -6693,7 +6693,7 @@
 	lsl	r1, #3
 	add	r1, #0x10
 	ldr	r0, [r5]
-	bl	_Func_b50
+	bl	_umod
 	cmp	r0, #0
 	bne	.L433e
 	mov	r0, r6
@@ -6716,7 +6716,7 @@
 	ldr	r0, [r0]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_b50
+	bl	_umod
 	mov	r1, r0
 	mov	r0, r5
 	bl	__Func_c598
@@ -6744,7 +6744,7 @@
 	b	.L43c2
 .L4398:
 	lsl	r0, #10
-	bl	__Func_2322
+	bl	__Sin
 	str	r0, [r5, #0x18]
 	str	r0, [r5, #0x1c]
 	ldr	r3, [r6, #8]
@@ -6787,7 +6787,7 @@
 	b	.L4414
 .L43e8:
 	lsl	r0, #10
-	bl	__Func_2322
+	bl	__Sin
 	neg	r3, r0
 	str	r0, [r5, #0x18]
 	str	r3, [r5, #0x1c]

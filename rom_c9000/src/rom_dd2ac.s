@@ -150,7 +150,7 @@
 	str	r5, [r6, #0x10]
 	mov	r0, r9
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	ldrb	r3, [r7, r0]
 	cmp	r3, r5
 	bge	.Ldd3e4
@@ -275,7 +275,7 @@
 	ble	.Ldd57c
 	mov	r0, r9
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	ldr	r5, [sp, #0xc]
 	ldr	r2, [sp, #0x24]
 	mov	r6, r10
@@ -760,7 +760,7 @@
 	asr	r0, #2
 	add	r0, r6
 	mov	r1, #5
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r3, r5
 	add	r3, #0x20
 	cmp	r8, r3
@@ -1649,14 +1649,14 @@
 	lsl	r3, #15
 	str	r3, [r7, #4]
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	add	r6, #0x40
 	mov	r3, r6
 	mul	r3, r0
 	asr	r3, #5
 	str	r3, [r7, #0xc]
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r6
 	mul	r3, r0
 	neg	r3, r3
@@ -1722,7 +1722,7 @@
 	add	r3, #2
 	ldrb	r5, [r1, r3]
 	mov	r1, r5
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	ldr	r2, [sp, #0x18]
 	ldr	r2, [r2, #4]
 	mov	r8, r2
@@ -1744,7 +1744,7 @@
 	ldr	r3, [sp, #0x18]
 	mov	r1, r5
 	ldr	r6, [r3]
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	ldr	r4, [sp, #8]
 	add	r6, r0
 	ldr	r0, =Data_edeca
@@ -2087,7 +2087,7 @@
 	str	r4, [r7, #8]
 	str	r3, [r7, #4]
 	mov	r0, r6
-	bl	Func_2322
+	bl	Sin
 	add	r5, #0x80
 	mov	r3, r5
 	mul	r3, r0
@@ -2096,7 +2096,7 @@
 	str	r3, [r7, #0xc]
 	str	r1, [r7, #0x10]
 	mov	r0, r6
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r5
 	mul	r3, r0
 	asr	r3, #5
@@ -2208,7 +2208,7 @@
 	ldr	r0, [r5]
 	mov	r1, #0x28
 	sub	r0, r3
-	bl	div
+	bl	div_from_thumb
 	ldr	r7, [sp, #0xc]
 	str	r0, [r7]
 	mov	r1, r11
@@ -2216,14 +2216,14 @@
 	ldr	r0, [r5, #4]
 	mov	r1, #0x28
 	sub	r0, r3
-	bl	div
+	bl	div_from_thumb
 	str	r0, [r7, #4]
 	mov	r2, r11
 	ldr	r3, [r2, #8]
 	ldr	r0, [r5, #8]
 	mov	r1, #0x28
 	sub	r0, r3
-	bl	div
+	bl	div_from_thumb
 	str	r0, [r7, #8]
 	ldr	r4, [sp, #0x14]
 	mov	r3, #0
@@ -2260,7 +2260,7 @@
 	.pool
 
 .Lde5d4:
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r1, r5
 	add	r1, #0xc
 	mov	r0, r5
@@ -2286,7 +2286,7 @@
 	str	r3, [r7, #8]
 .Lde608:
 	mov	r0, r11
-	bl	Func_4cb4
+	bl	MatrixTranslateV
 	mov	r1, r10
 	cmp	r1, #0
 	bne	.Lde62e
@@ -2345,7 +2345,7 @@
 	beq	.Lde67a
 	b	.Lde7a4
 .Lde67a:
-	bl	Func_49e8
+	bl	MatrixPush
 	mov	r3, #3
 	mov	r2, r8
 	and	r3, r2
@@ -2364,21 +2364,21 @@
 	b	.Lde6c0
 .Lde69c:
 	mov	r0, r9
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	b	.Lde6c0
 .Lde6a4:
 	mov	r0, r7
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	b	.Lde6c0
 .Lde6ac:
 	mov	r0, r7
-	bl	Func_4c6c
+	bl	MatrixRotateZ
 	b	.Lde6c0
 .Lde6b4:
 	mov	r0, r7
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	mov	r0, r7
-	bl	Func_4c6c
+	bl	MatrixRotateZ
 .Lde6c0:
 	add	r5, sp, #0x30
 	mov	r1, r5
@@ -2387,7 +2387,7 @@
 	ldr	r3, [r5]
 	asr	r3, #1
 	str	r3, [r5]
-	bl	Func_4a5c
+	bl	MatrixPop
 	ldr	r2, [r5, #8]
 	cmp	r2, #0xf9
 	bgt	.Lde6e0
@@ -2517,7 +2517,7 @@
 	cmp	r3, #0xf
 	bhi	.Lde80c
 	lsl	r0, r1, #10
-	bl	Func_2322
+	bl	Sin
 	mov	r3, #0
 	add	r5, sp, #0x30
 	add	r2, sp, #0x3c
@@ -2575,14 +2575,14 @@
 	str	r3, [r7, #4]
 	and	r5, r0
 	mov	r0, r6
-	bl	Func_2322
+	bl	Sin
 	add	r5, #0x80
 	mov	r3, r5
 	mul	r3, r0
 	asr	r3, #6
 	str	r3, [r7, #0xc]
 	mov	r0, r6
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r5
 	mul	r3, r0
 	asr	r3, #5

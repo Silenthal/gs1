@@ -1399,10 +1399,10 @@
 	bx	r0
 .func_end OvlFunc_a68
 
-.thumb_func_start OvlFunc_b50
+.thumb_func_start Ovlumod
 	ldr	r0, =.L1690
 	bx	lr
-.func_end OvlFunc_b50
+.func_end Ovlumod
 
 .thumb_func_start OvlFunc_b58
 	mov	r0, #0

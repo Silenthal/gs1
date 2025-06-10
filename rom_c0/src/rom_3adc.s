@@ -44,7 +44,7 @@
 	ldrb	r1, [r7]
 	mov	r0, r2
 	mul	r0, r3
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, =REG_BLDY
 	add	r5, r0
 	strh	r5, [r3]

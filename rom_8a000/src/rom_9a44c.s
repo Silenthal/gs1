@@ -191,7 +191,7 @@
 	ldr	r3, [r6, #0x18]
 	ldr	r1, [r5, #0xc]
 	sub	r0, r3
-	bl	div
+	bl	div_from_thumb
 	str	r0, [r6, #0x30]
 	ldr	r0, [r7, #0x14]
 	ldr	r3, [r6, #0x1c]
@@ -203,14 +203,14 @@
 	ldr	r2, =0xffff0000
 	ldr	r1, [r5, #0xc]
 	add	r0, r2
-	bl	div
+	bl	div_from_thumb
 	str	r0, [r6, #0x30]
 	ldr	r0, [r7, #0x14]
 	ldr	r3, =0xffff0000
 	ldr	r1, [r5, #0xc]
 	add	r0, r3
 .L9a5e8:
-	bl	div
+	bl	div_from_thumb
 	str	r0, [r6, #0x34]
 .L9a5ee:
 	mov	r3, #0x80
@@ -283,7 +283,7 @@
 	add	r3, r7
 	mov	r1, #0x12
 	str	r3, [r6, #0x10]
-	bl	div
+	bl	div_from_thumb
 	sub	r5, r0
 	str	r5, [r6, #0x44]
 	mov	r3, r7
@@ -335,7 +335,7 @@
 .L9a6da:
 	lsl	r5, r7, #12
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	lsl	r3, r0, #1
 	add	r3, r0
 	lsr	r2, r3, #31
@@ -345,7 +345,7 @@
 	mov	r0, r5
 	mov	r3, #0
 	str	r3, [r6, #4]
-	bl	Func_2322
+	bl	Sin
 	str	r0, [r6, #8]
 	mov	r2, r10
 	ldr	r5, [r2, #8]
@@ -387,14 +387,14 @@
 	mov	r6, r0
 	mov	r0, r8
 	add	r6, r1
-	bl	Func_231c
+	bl	Cos
 	ldr	r5, =Func_888
 	mov	r1, r0
 	mov	r0, r6
 	.call_via r5
 	mov	r10, r0
 	mov	r0, r8
-	bl	Func_2322
+	bl	Sin
 	mov	r1, r0
 	mov	r0, r6
 	.call_via r5
@@ -471,14 +471,14 @@
 	mov	r9, r0
 	mov	r0, r6
 	mov	r10, r2
-	bl	Func_231c
+	bl	Cos
 	ldr	r5, =Func_888
 	mov	r1, r0
 	mov	r0, r10
 	.call_via r5
 	mov	r8, r0
 	mov	r0, r6
-	bl	Func_2322
+	bl	Sin
 	mov	r1, r0
 	mov	r0, r10
 	.call_via r5
@@ -616,7 +616,7 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	add	r5, r0
 	str	r5, [r7, #8]
 	mov	r2, r9
@@ -626,7 +626,7 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	add	r5, r0
 	str	r5, [r7, #0xc]
 	mov	r2, r9
@@ -636,14 +636,14 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, =0x10ccc
 	add	r5, r0
 	mov	r1, #0xa
 	mov	r0, r8
 	mul	r0, r3
 	str	r5, [r7, #0x10]
-	bl	div
+	bl	div_from_thumb
 	mov	r3, #0x80
 	lsl	r3, #7
 	add	r0, r3
@@ -960,7 +960,7 @@
 	mov	r0, r7
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	add	r5, r0
 	str	r5, [r6, #8]
 	mov	r2, r8
@@ -971,7 +971,7 @@
 	mov	r0, r7
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	add	r5, r0
 	str	r5, [r6, #0xc]
 	mov	r2, r8
@@ -982,7 +982,7 @@
 	mov	r0, r7
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	mov	r3, #0xc0
 	lsl	r3, #8
 	add	r5, r0
@@ -990,7 +990,7 @@
 	mov	r0, r7
 	mul	r0, r3
 	str	r5, [r6, #0x10]
-	bl	div
+	bl	div_from_thumb
 	mov	r2, #0x80
 	lsl	r2, #7
 	add	r0, r2

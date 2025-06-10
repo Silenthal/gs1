@@ -548,7 +548,7 @@
 	cmp	r5, #0xf
 	bgt	.La1516
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	cmp	r0, #9
 	bgt	.La1506
 .La1516:

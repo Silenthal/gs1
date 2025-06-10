@@ -576,7 +576,7 @@
 	lsl	r3, r6, #2
 	ldr	r0, [r5, r3]
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 .L798aa:
 	add	sp, #0x10
 	pop	{r5, r6}
@@ -669,11 +669,11 @@
 	mov	r1, #0xa
 	mov	r0, r5
 	str	r4, [sp]
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r1, #0xa
 	mov	r6, r0
 	mov	r0, r5
-	bl	div
+	bl	div_from_thumb
 	ldr	r4, [sp]
 	cmp	r0, #0xf
 	ble	.L79970
@@ -965,7 +965,7 @@
 	sub	r2, r5
 	sub	r0, r6, r0
 	mul	r0, r2
-	bl	div
+	bl	div_from_thumb
 	add	r0, r5
 .L79b9e:
 	mov	r7, r8
@@ -1192,7 +1192,7 @@
 	add	r0, r3
 	mov	r1, #0x64
 	lsl	r0, #16
-	bl	div
+	bl	div_from_thumb
 	mov	r5, r0
 	bl	Func_79bc4
 	ldr	r3, =0xffff
@@ -1591,7 +1591,7 @@
 .L7a08e:
 	mov	r0, r7
 	mov	r1, #0x64
-	bl	div
+	bl	div_from_thumb
 	mov	r5, r0
 	bl	Func_79be8
 	cmp	r5, r0

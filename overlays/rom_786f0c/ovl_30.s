@@ -1659,7 +1659,7 @@
 	ldr	r3, =iwram_1e40
 	mov	r1, #0xb4
 	ldr	r0, [r3]
-	bl	_Func_b50
+	bl	_umod
 	mov	r6, #0x17
 	cmp	r0, #0x14
 	beq	.L10e2

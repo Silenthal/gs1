@@ -3808,7 +3808,7 @@
 	mov	r0, r6
 	mov	r8, r2
 	mov	r10, r1
-	bl	__Func_231c
+	bl	__Cos
 	mov	r1, r10
 	lsl	r2, r0, #3
 	ldr	r3, [r1, #8]
@@ -3817,7 +3817,7 @@
 	add	r3, r2
 	str	r3, [r5, #8]
 	mov	r0, r6
-	bl	__Func_2322
+	bl	__Sin
 	mov	r1, r10
 	lsl	r3, r0, #2
 	ldr	r2, [r1, #0x10]
@@ -4934,7 +4934,7 @@
 	beq	.L3264
 	bl	__Func_4458
 	mov	r1, #0x14
-	bl	_Func_b50
+	bl	_umod
 	ldr	r5, [r6, #8]
 	ldr	r2, =0xfff60000
 	lsl	r0, #16
@@ -4963,7 +4963,7 @@
 	strb	r3, [r2]
 	bl	__Func_4458
 	mov	r1, #0xa
-	bl	_Func_b50
+	bl	_umod
 	mov	r3, r7
 	add	r3, #0x64
 	ldr	r2, .L3254	@ 0
@@ -4972,7 +4972,7 @@
 	mov	r8, r2
 	bl	__Func_4458
 	mov	r1, #0x3c
-	bl	_Func_b50
+	bl	_umod
 	mov	r3, r7
 	add	r3, #0x66
 	add	r0, #0x1e

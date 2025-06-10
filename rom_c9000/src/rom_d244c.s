@@ -319,7 +319,7 @@
 	mov	r3, #0xa0
 	str	r3, [sp, #0x24]
 .Ld26da:
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x30]
 	ldr	r1, [sp, #0xc]
 	bl	Func_51d8
@@ -518,13 +518,13 @@
 .Ld28c4:
 	str	r3, [r5, #4]
 	mov	r0, r6
-	bl	Func_2322
+	bl	Sin
 	mov	r3, r8
 	mul	r3, r0
 	asr	r3, #9
 	str	r3, [r5, #0xc]
 	mov	r0, r6
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r8
 	mul	r3, r0
 	mov	r6, #1
@@ -602,13 +602,13 @@
 .Ld296a:
 	str	r3, [r5, #4]
 	mov	r0, r6
-	bl	Func_2322
+	bl	Sin
 	mov	r3, r8
 	mul	r3, r0
 	asr	r3, #6
 	str	r3, [r5, #0xc]
 	mov	r0, r6
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r8
 	mul	r3, r0
 	asr	r3, #6

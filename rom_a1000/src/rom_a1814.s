@@ -405,7 +405,7 @@
 	sub	r0, r5
 	mov	r1, #2
 	add	r0, #1
-	bl	div
+	bl	div_from_thumb
 	mov	r3, r8
 	mov	r11, r0
 	lsl	r6, #4
@@ -413,7 +413,7 @@
 	sub	r0, r6
 	add	r0, #1
 	mov	r1, #2
-	bl	div
+	bl	div_from_thumb
 	ldr	r4, .La1b88	@ 0xffff
 	mov	r8, r0
 .La1b56:
@@ -548,13 +548,13 @@
 	ldr	r1, [sp, #0x14]
 	ldr	r5, [r0]
 	mov	r0, r6
-	bl	div
+	bl	div_from_thumb
 	lsl	r0, #4
 	add	r0, r7
 	strh	r0, [r5, #8]
 	ldr	r1, [sp, #0x14]
 	mov	r0, r6
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	lsl	r0, #4
 	add	r0, r8
 	strh	r0, [r5, #6]
@@ -581,13 +581,13 @@
 	ldr	r1, [sp, #0x14]
 	ldr	r5, [r0]
 	mov	r0, r6
-	bl	div
+	bl	div_from_thumb
 	lsl	r0, #4
 	add	r0, r7
 	strh	r0, [r5, #8]
 	ldr	r1, [sp, #0x14]
 	mov	r0, r6
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	lsl	r3, r0, #1
 	add	r3, r0
 	lsl	r3, #3
@@ -1044,11 +1044,11 @@
 	bl	_Func_219c8
 	mov	r1, r7
 	mov	r0, r8
-	bl	div
+	bl	div_from_thumb
 	mov	r1, r7
 	mov	r9, r0
 	mov	r0, r8
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	cmp	r0, #0
 	beq	.La2016
 	mov	r3, #1
@@ -1284,11 +1284,11 @@
 	mov	r3, #0x31
 	ldr	r7, [sp, #0x24]
 	mov	r10, r3
-	bl	div
+	bl	div_from_thumb
 	mov	r1, r6
 	mov	r8, r0
 	mov	r0, r5
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	cmp	r0, #0
 	beq	.La21e8
 	mov	r3, #1
@@ -3465,7 +3465,7 @@
 	beq	.La34aa
 	mov	r0, r6
 	mov	r1, #5
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	cmp	r0, #0
 	bne	.La34aa
 	mov	r3, r8
@@ -3711,7 +3711,7 @@
 	ldr	r0, [sp, #0x18]
 	ldr	r1, [sp, #0x18]
 	add	r0, r8
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	lsl	r7, r0, #1
 	mov	r8, r0
 	add	r0, r7, r0
@@ -4023,7 +4023,7 @@
 	ldr	r1, [sp, #0x14]
 	add	r0, r10
 	str	r3, [sp, #0x10]
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r10, r0
 	mov	r2, r10
 	lsl	r2, #1
@@ -5160,12 +5160,12 @@
 .La4258:
 	mov	r1, #3
 	mov	r0, r5
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	lsl	r0, #24
 	asr	r7, r0, #24
 	mov	r1, #3
 	mov	r0, r5
-	bl	div
+	bl	div_from_thumb
 	lsl	r0, #24
 	asr	r0, #24
 	mov	r8, r0
@@ -5193,7 +5193,7 @@
 	add	r0, r7, #3
 	mov	r9, r1
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r2, r8
 	add	r2, #2
 	lsr	r3, r2, #31

@@ -49,7 +49,7 @@
 	cmp	r6, #0
 	bne	.L3d8a
 	mov	r0, #0x80
-	ldr	r3, =Func_af0
+	ldr	r3, =div
 	mov	r1, r10
 	lsl	r0, #9
 	bl	_call_via_r3
@@ -68,28 +68,28 @@
 	b	.L3dc8
 .L3d8a:
 	mov	r0, r6
-	bl	Func_2322
+	bl	Sin
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_231c
+	bl	Cos
 	mov	r1, r8
 	mov	r6, r0
-	bl	div
+	bl	div_from_thumb
 	mov	r1, r8
 	strh	r0, [r7]
 	mov	r0, r5
-	bl	div
+	bl	div_from_thumb
 	add	r7, #2
 	neg	r5, r5
 	strh	r0, [r7]
 	mov	r1, r10
 	mov	r0, r5
-	bl	div
+	bl	div_from_thumb
 	add	r7, #2
 	strh	r0, [r7]
 	mov	r1, r10
 	mov	r0, r6
-	bl	div
+	bl	div_from_thumb
 	add	r7, #2
 	strh	r0, [r7]
 .L3dc8:

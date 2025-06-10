@@ -4,7 +4,7 @@
 .thumb_func_start Func_aa538
 	push	{lr}
 	add	r0, r1
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	pop	{r1}
 	bx	r1
 .func_end Func_aa538
@@ -592,7 +592,7 @@
 	add	r3, r7, r2
 	ldrh	r0, [r3]
 	mov	r1, #0xa
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	mov	r1, #0xbc
 	mov	r3, #0
 	lsl	r1, #1
@@ -734,7 +734,7 @@
 	add	r3, r7, r2
 	ldrh	r0, [r3]
 	mov	r1, #0xa
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	mov	r1, #0xbc
 	mov	r3, #0
 	lsl	r1, #1
@@ -2040,13 +2040,13 @@
 	ldrh	r5, [r7, r3]
 	mov	r1, #0xa
 	mov	r0, r5
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	lsl	r0, #16
 	lsr	r0, #16
 	str	r0, [sp, #0x38]
 	mov	r1, #0xa
 	mov	r0, r5
-	bl	Func_b60_from_thumb
+	bl	udiv_from_thumb
 	mov	r2, sp
 	add	r2, #0x64
 	lsl	r0, #16
@@ -2205,11 +2205,11 @@
 	ldrh	r6, [r3]
 	mov	r1, #0xa
 	mov	r0, r6
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	mov	r1, #0xa
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_b60_from_thumb
+	bl	udiv_from_thumb
 	lsl	r5, #16
 	lsr	r5, #16
 	ldr	r3, [sp, #0x4c]

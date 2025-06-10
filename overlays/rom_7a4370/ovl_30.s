@@ -2265,7 +2265,7 @@
 	strh	r2, [r3]
 	lsl	r1, #1
 	mov	r0, r7
-	bl	_Func_b60
+	bl	_udiv
 	mov	r3, r5
 	add	r3, #0x66
 	strh	r0, [r3]
@@ -2403,19 +2403,19 @@
 	mov	r0, r6
 	and	r5, r2
 	and	r7, r2
-	bl	_Func_af0
+	bl	_div
 	add	r0, r6, r0
 	lsl	r0, #16
 	mov	r1, r8
 	asr	r6, r0, #16
 	mov	r0, r5
-	bl	_Func_af0
+	bl	_div
 	sub	r0, r5, r0
 	lsl	r0, #16
 	asr	r5, r0, #16
 	mov	r1, r8
 	mov	r0, r7
-	bl	_Func_af0
+	bl	_div
 	sub	r0, r7, r0
 	lsl	r0, #16
 	asr	r7, r0, #16

@@ -2079,7 +2079,7 @@
 .L12a6:
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	_Func_b1c
+	bl	_mod
 	mov	r2, #0x10
 	mov	r1, r0
 	sub	r2, r6
@@ -2090,7 +2090,7 @@
 	bl	__Func_10424
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	_Func_af0
+	bl	_div
 	add	r6, #1
 	mov	r5, r0
 	cmp	r6, #2

@@ -58,7 +58,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	div
+	bl	div_from_thumb
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x10
@@ -127,7 +127,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	div
+	bl	div_from_thumb
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x10
@@ -168,7 +168,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	div
+	bl	div_from_thumb
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x20
@@ -241,7 +241,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	div
+	bl	div_from_thumb
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x10
@@ -310,7 +310,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	div
+	bl	div_from_thumb
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x10
@@ -381,7 +381,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	div
+	bl	div_from_thumb
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x20
@@ -906,7 +906,7 @@
 	ldr	r5, [r1, #0xc]
 	mov	r1, #3
 	mov	r0, r5
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	cmp	r0, #0
 	bne	.Lf280a
 	mov	r0, r10
@@ -980,7 +980,7 @@
 	strh	r2, [r3]
 	sub	r0, r1
 	mov	r1, #0xa0
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	lsl	r1, r0, #4
 	sub	r1, r0
 	ldr	r2, =0x6004ec0
@@ -1243,7 +1243,7 @@
 	bls	.Lf2aa8
 	mov	r1, #0x3c
 	mov	r0, r7
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	ldr	r2, =.Lf39b1
 	b	.Lf2af0
 
@@ -1689,7 +1689,7 @@
 	mov	r8, r3
 	cmp	r3, #0
 	ble	.Lf2efa
-	ldr	r1, =Func_af0
+	ldr	r1, =div
 	ldr	r2, =0x5ff
 	mov	r10, r1
 .Lf2ed8:
@@ -2012,7 +2012,7 @@
 	bcc	.Lf3160
 	b	.Lf3766
 .Lf3160:
-	ldr	r6, =Func_af0
+	ldr	r6, =div
 	mov	r5, r8
 .Lf3164:
 	mov	r1, r10
@@ -2072,7 +2072,7 @@
 	add	r0, r7, r0
 	add	r0, r3
 	str	r2, [sp]
-	ldr	r3, =Func_af0
+	ldr	r3, =div
 	mov	r1, #0xa
 	bl	_call_via_r3
 	mov	r4, r0
@@ -2156,7 +2156,7 @@
 	lsr	r3, r7, #1
 	sub	r7, r3
 	add	r10, r2
-	bl	div
+	bl	div_from_thumb
 	add	r7, #6
 	sub	r6, r0
 	mov	r0, r7
@@ -2300,7 +2300,7 @@
 	mov	r3, #2
 	add	r0, r5
 	add	r10, r3
-	bl	div
+	bl	div_from_thumb
 	bl	Func_f3898
 	asr	r3, r7, #1
 	add	r7, r3, r0
@@ -2369,11 +2369,11 @@
 	mov	r1, #3
 	mov	r7, r0
 	mov	r0, r6
-	bl	div
+	bl	div_from_thumb
 	mov	r1, #3
 	sub	r6, r0
 	mov	r0, r5
-	bl	div
+	bl	div_from_thumb
 	ldr	r1, =.Lf39ee
 	sub	r5, r0
 	lsl	r3, r5, #1
@@ -2426,7 +2426,7 @@
 	mov	r1, #3
 	and	r5, r2
 	sub	r7, r3
-	bl	div
+	bl	div_from_thumb
 	add	r7, #6
 	sub	r6, r0
 	mov	r0, r7
@@ -2547,7 +2547,7 @@
 	add	r0, r2
 	add	r0, r3
 	mov	r1, #0x60
-	ldr	r3, =Func_af0
+	ldr	r3, =div
 	bl	_call_via_r3
 	ldr	r1, [sp, #0x20]
 	mov	r4, r0
@@ -2637,7 +2637,7 @@
 	ldr	r1, [sp, #4]
 	add	r0, r3
 	add	r1, r11
-	ldr	r3, =Func_af0
+	ldr	r3, =div
 	lsl	r0, #4
 	bl	_call_via_r3
 	ldr	r3, [sp, #0x18]

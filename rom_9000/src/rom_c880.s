@@ -56,7 +56,7 @@
 	asr	r0, #16
 	strh	r3, [r2]
 	mov	r9, r0
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, =0x16b
 	bl	_Func_79338
 	cmp	r0, #0
@@ -64,7 +64,7 @@
 	ldr	r3, =0xffffe000
 	ldr	r0, =.L13190
 	add	r9, r3
-	ldr	r3, =Func_a30
+	ldr	r3, =MatrixMultiply
 	bl	_call_via_r3
 	mov	r0, r5
 	mov	r1, r6

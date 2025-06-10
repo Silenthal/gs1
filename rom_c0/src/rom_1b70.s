@@ -550,10 +550,10 @@
 	b	.L22a4
 .func_end Func_2298
 
-.thumb_stub div, Func_af0, r3
-.thumb_stub Func_b60_from_thumb, Func_b60, r3
-.thumb_stub Func_b1c_from_thumb, Func_b1c, r3
-.thumb_stub Func_b50_from_thumb, Func_b50, r3
+.thumb_stub div_from_thumb, div, r3
+.thumb_stub udiv_from_thumb, udiv, r3
+.thumb_stub mod_from_thumb, mod, r3
+.thumb_stub umod_from_thumb, umod, r3
 
 .L230c:
 .thumb
@@ -567,13 +567,25 @@
 .L231a:
 	bx	lr
 
-.thumb_func_start_noalign Func_231c
+
+@@ Returns the cosine of the given angle.
+@@ In:
+@@ r0 - FIXED angle - The angle, in radians.
+@@ Out:
+@@ r0 - FIXED cos - The cosine of the given angle.
+.thumb_func_start_noalign Cos
 	mov	r1, #0x40
 	lsl	r1, #8
 	add	r0, r1
 
-.thumb_func_start_noalign Func_2322
-Func_2322:
+
+@@ Returns the sine of the given angle.
+@@ In:
+@@ r0 - FIXED angle - The angle, in radians.
+@@ Out:
+@@ r0 - FIXED sin - The sine of the given angle.
+.thumb_func_start_noalign Sin
+Sin:
 	add	r0, #0x20
 	lsl	r1, r0, #18
 	lsr	r1, #24

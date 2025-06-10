@@ -9359,14 +9359,14 @@
 	mov	r6, r0
 	ldr	r0, [r6, #0x30]
 	ldr	r7, [r6, #0x50]
-	bl	__Func_2322
+	bl	__Sin
 	lsl	r5, r0, #1
 	cmp	r5, #0
 	ble	.L5af4
 	neg	r5, r5
 .L5af4:
 	ldr	r0, [r6, #0x30]
-	bl	__Func_231c
+	bl	__Cos
 	ldr	r3, [r6, #0x38]
 	lsl	r0, #1
 	add	r3, r0
@@ -9378,7 +9378,7 @@
 	add	r3, r5
 	add	r0, r2
 	str	r3, [r6, #0xc]
-	bl	__Func_231c
+	bl	__Cos
 	cmp	r0, #0
 	bge	.L5b1a
 	add	r0, #7
@@ -9549,7 +9549,7 @@
 	ldr	r0, [r5]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_b50
+	bl	_umod
 	mov	r1, r0
 	mov	r0, r6
 	bl	__Func_c598
@@ -9579,7 +9579,7 @@
 	ldr	r0, [r0]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_b50
+	bl	_umod
 	mov	r1, r0
 	mov	r0, r5
 	bl	__Func_c598
@@ -9607,7 +9607,7 @@
 	b	.L5d0e
 .L5ce4:
 	lsl	r0, #10
-	bl	__Func_2322
+	bl	__Sin
 	str	r0, [r5, #0x18]
 	str	r0, [r5, #0x1c]
 	ldr	r3, [r6, #8]
@@ -9650,7 +9650,7 @@
 	b	.L5d60
 .L5d34:
 	lsl	r0, #10
-	bl	__Func_2322
+	bl	__Sin
 	neg	r3, r0
 	str	r0, [r5, #0x18]
 	str	r3, [r5, #0x1c]

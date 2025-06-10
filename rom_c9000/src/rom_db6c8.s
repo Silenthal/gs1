@@ -215,7 +215,7 @@
 .Ldb86a:
 	ldr	r3, =iwram_1e80
 	ldr	r5, [r3]
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r1, r5
 	mov	r0, r5
 	add	r1, #0xc
@@ -367,7 +367,7 @@
 	cmp	r0, #0x14
 	bhi	.Ldb9c2
 	mov	r1, #3
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, =.Leeaec
 	lsl	r0, #1
 	ldrh	r1, [r3, r0]

@@ -1668,7 +1668,7 @@
 	lsl	r0, #16
 	add	r0, r3
 	mov	r1, #0xa
-	bl	_Func_af0
+	bl	_div
 	ldr	r3, =0x90001
 	mov	r2, r10
 	str	r0, [sp]

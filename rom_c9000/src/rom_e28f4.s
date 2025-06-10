@@ -735,7 +735,7 @@
 	bl	Func_2dd8
 	mov	r0, #0x2e
 	bl	Func_2dd8
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x40]
 	ldr	r1, [sp, #0x14]
 	bl	Func_51d8
@@ -1401,7 +1401,7 @@
 	mov	r0, r11
 	sub	r0, #0x40
 	mov	r1, #3
-	bl	div
+	bl	div_from_thumb
 	mov	r5, r0
 	cmp	r5, #0
 	bge	.Le3494
@@ -1469,7 +1469,7 @@
 	cmp	r0, #0x17
 	bhi	.Le358c
 	mov	r1, #3
-	bl	div
+	bl	div_from_thumb
 	mov	r3, #7
 	sub	r5, r3, r0
 	cmp	r5, #0
@@ -1720,7 +1720,7 @@
 	str	r3, [r6, #4]
 	add	r0, r8
 	mov	r1, #0xb
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r4, #1
 	neg	r4, r4
 	cmp	r0, r4
@@ -1777,7 +1777,7 @@
 	bne	.Le3770
 	bl	Func_4458
 	mov	r1, #0x60
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	add	r0, #0x2a
 	b	.Le378e
 .Le3770:
@@ -1785,13 +1785,13 @@
 	bne	.Le3782
 	bl	Func_4458
 	mov	r1, #0x70
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	add	r0, #0x22
 	b	.Le378e
 .Le3782:
 	bl	Func_4458
 	mov	r1, #0xa0
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	add	r0, #0xa
 .Le378e:
 	str	r0, [r5]
@@ -1836,7 +1836,7 @@
 	cmp	r0, #0x55
 	ble	.Le3826
 	mov	r1, #0xc
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	cmp	r0, #0
 	bne	.Le3816
 	ldr	r3, [r5]

@@ -6664,7 +6664,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r6, #16
 	lsl	r1, #2
-	bl	_Func_b60
+	bl	_udiv
 	mov	r6, r0
 	b	.L45ca
 .L45c8:
@@ -6675,7 +6675,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r7, #16
 	lsl	r1, #2
-	bl	_Func_b60
+	bl	_udiv
 	mov	r9, r0
 	b	.L45e0
 .L45dc:
@@ -6688,7 +6688,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r3, #16
 	lsl	r1, #2
-	bl	_Func_b60
+	bl	_udiv
 	b	.L45f4
 .L45f2:
 	mov	r0, #0
@@ -6759,21 +6759,21 @@
 	ldrb	r3, [r4]
 	mov	r0, r3
 	mul	r0, r1
-	bl	__Func_2322
+	bl	__Sin
 	ldr	r2, [sp]
 	ldr	r4, [sp, #0x30]
 	ldrb	r3, [r2, #1]
 	lsl	r6, r0, #1
 	mov	r0, r3
 	mul	r0, r4
-	bl	__Func_2322
+	bl	__Sin
 	lsl	r7, r0, #1
 	ldr	r0, [sp]
 	ldr	r1, [sp, #0x2c]
 	ldrb	r3, [r0, #2]
 	mov	r0, r3
 	mul	r0, r1
-	bl	__Func_231c
+	bl	__Cos
 	mov	r2, r11
 	lsl	r0, #1
 	cmp	r2, #0

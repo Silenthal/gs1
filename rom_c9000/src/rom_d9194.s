@@ -123,7 +123,7 @@
 	ldr	r0, [sp, #0x50]
 	mov	r1, #5
 	lsl	r0, #2
-	bl	div
+	bl	div_from_thumb
 	str	r0, [sp, #0x50]
 .Ld9272:
 	ldr	r2, =REG_BG2PA
@@ -281,19 +281,19 @@
 .Ld93a6:
 	bl	Func_4458
 	mov	r1, #0xc8
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	sub	r0, #0x64
 	lsl	r0, #14
 	str	r0, [r5]
 	bl	Func_4458
 	mov	r1, #0xc8
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	sub	r0, #0x64
 	lsl	r0, #15
 	str	r0, [r5, #4]
 	bl	Func_4458
 	mov	r1, #0xc8
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	mov	r1, #1
 	sub	r0, #0x64
 	mov	r2, #0x80
@@ -322,7 +322,7 @@
 	neg	r0, r0
 	lsl	r0, #2
 	mov	r1, #5
-	bl	div
+	bl	div_from_thumb
 	add	r0, #0x40
 	str	r0, [sp, #0x30]
 	b	.Ld9424
@@ -403,7 +403,7 @@
 	mov	r0, r11
 	lsl	r5, r0, #11
 	mov	r0, r5
-	bl	Func_2322
+	bl	Sin
 	lsl	r3, r0, #2
 	add	r3, r0
 	ldr	r2, [sp, #0x50]
@@ -415,7 +415,7 @@
 	sub	r3, #0x14
 	mov	r0, r5
 	mov	r10, r3
-	bl	Func_231c
+	bl	Cos
 	ldr	r3, [sp, #0x4c]
 	ldr	r2, [sp, #0x2c]
 	lsl	r0, #2
@@ -525,7 +525,7 @@
 	bl	_Func_b8530
 	mov	r1, #3
 	lsl	r0, #1
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, [sp, #0x10]
 	add	r3, #0x50
 	mov	r7, r0
@@ -534,7 +534,7 @@
 	mov	r0, #0xd4
 	bl	_Func_f9080
 .Ld95ba:
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x28]
 	ldr	r1, [sp, #0x20]
 	bl	Func_51d8
@@ -545,7 +545,7 @@
 	ldr	r3, [r5, #0x10]
 	str	r3, [r2, #8]
 	ldr	r0, [sp, #0x1c]
-	bl	Func_4cb4
+	bl	MatrixTranslateV
 	ldr	r3, [sp, #0x10]
 	add	r3, #0x30
 	cmp	r11, r3
@@ -592,7 +592,7 @@
 	mov	r1, r11
 	neg	r0, r1
 	lsl	r0, #10
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	b	.Ld96a8
 .Ld963c:
 	ldr	r2, [sp, #0x48]
@@ -602,7 +602,7 @@
 	bne	.Ld9698
 	mov	r3, r11
 	lsl	r0, r3, #10
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	b	.Ld96a8
 
 	.pool_aligned
@@ -611,9 +611,9 @@
 	mov	r4, r11
 	lsl	r5, r4, #10
 	mov	r0, r5
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	mov	r0, r5
-	bl	Func_4c6c
+	bl	MatrixRotateZ
 .Ld96a8:
 	ldr	r0, [sp, #0x34]
 	lsl	r2, r0, #6
@@ -658,7 +658,7 @@
 	ldr	r0, [r5]
 	mov	r1, #5
 	lsl	r0, #2
-	bl	div
+	bl	div_from_thumb
 	ldr	r1, [sp, #0x30]
 	ldr	r2, [r5, #8]
 	ldr	r3, =0x139
@@ -707,19 +707,19 @@
 	ldr	r5, [r6]
 	mov	r1, r7
 	mov	r0, r5
-	bl	div
+	bl	div_from_thumb
 	sub	r5, r0
 	str	r5, [r6]
 	ldr	r5, [r6, #4]
 	mov	r1, r7
 	mov	r0, r5
-	bl	div
+	bl	div_from_thumb
 	sub	r5, r0
 	str	r5, [r6, #4]
 	ldr	r5, [r6, #8]
 	mov	r1, r7
 	mov	r0, r5
-	bl	div
+	bl	div_from_thumb
 	sub	r5, r0
 	str	r5, [r6, #8]
 .Ld9784:
@@ -746,7 +746,7 @@
 	ldr	r0, [sp, #0x60]
 	mov	r1, #5
 	lsl	r0, #2
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, [sp, #0x30]
 	add	r0, r3
 	ldr	r3, [sp, #0x10]
@@ -766,7 +766,7 @@
 .Ld97da:
 	asr	r0, r3, #2
 	mov	r1, #6
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r4, #2
 	mov	r5, r0
 	ldr	r3, [sp, #0x2c]
@@ -823,7 +823,7 @@
 .Ld984c:
 	asr	r0, r3, #2
 	mov	r1, #7
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r1, #2
 	mov	r5, r0
 	str	r1, [sp]
@@ -880,7 +880,7 @@
 .Ld98ba:
 	asr	r0, r3, #2
 	mov	r1, #6
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r1, #2
 	str	r1, [sp]
 	ldr	r3, [sp, #0x2c]
@@ -931,7 +931,7 @@
 	add	r0, r3
 	mov	r1, #6
 	asr	r0, #1
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r2, #2
 	str	r2, [sp]
 	ldr	r3, [sp, #0x2c]
@@ -1010,7 +1010,7 @@
 .Ld99ea:
 	asr	r0, r3, #2
 	mov	r1, #6
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r3, #3
 	mov	r5, r0
 	str	r3, [sp]

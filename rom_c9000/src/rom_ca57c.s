@@ -544,9 +544,9 @@
 .Lca9a4:
 	mov	r1, r4
 	mov	r0, r5
-	bl	div
+	bl	div_from_thumb
 	mov	r1, #6
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r6, r0
 	ldr	r0, [sp, #0x30]
 	ldr	r3, [r0]
@@ -635,7 +635,7 @@
 	add	r1, r5
 	lsl	r1, #1
 	ldr	r0, [sp, #0x58]
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	lsl	r5, #2
 	cmp	r0, r5
 	beq	.Lcaaca
@@ -723,7 +723,7 @@
 	add	r1, r3
 	lsl	r1, #1
 	ldr	r0, [sp, #0x58]
-	bl	div
+	bl	div_from_thumb
 	lsl	r0, #5
 	add	r0, r8
 	lsl	r5, r0, #3
@@ -753,7 +753,7 @@
 .Lcabaa:
 	ldr	r0, [sp, #0x58]
 	mov	r1, r5
-	bl	div
+	bl	div_from_thumb
 	lsl	r0, #4
 	add	r0, r8
 	lsl	r3, r0, #3
@@ -792,7 +792,7 @@
 	bge	.Lcac0c
 	mov	r0, r5
 	mov	r1, r4
-	bl	div
+	bl	div_from_thumb
 	cmp	r0, #4
 	ble	.Lcac04
 .Lcabfe:
@@ -881,7 +881,7 @@
 	ldrb	r5, [r1, r6]
 	ldr	r0, [sp, #0x58]
 	lsl	r1, r5, #2
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	lsl	r3, r5, #1
 	add	r3, r5
 	cmp	r0, r3
@@ -933,7 +933,7 @@
 	add	r1, r3
 	lsl	r1, #1
 	ldr	r0, [sp, #0x58]
-	bl	div
+	bl	div_from_thumb
 	lsl	r0, #6
 	add	r0, r8
 	lsl	r5, r0, #3
@@ -962,7 +962,7 @@
 .Lcad72:
 	ldr	r0, [sp, #0x58]
 	mov	r1, r5
-	bl	div
+	bl	div_from_thumb
 	lsl	r0, #4
 	add	r0, r8
 	lsl	r3, r0, #3
@@ -989,7 +989,7 @@
 .Lcada8:
 	ldr	r0, [sp, #0x58]
 	mov	r1, r5
-	bl	div
+	bl	div_from_thumb
 	lsl	r0, #4
 	add	r0, r8
 	lsl	r3, r0, #3
@@ -1041,7 +1041,7 @@
 	mov	r5, #0x1f
 	and	r5, r0
 	mov	r0, r2
-	bl	Func_2322
+	bl	Sin
 	mov	r3, r10
 	ldr	r6, [r3]
 	add	r5, #4
@@ -1058,7 +1058,7 @@
 	mov	r0, r2
 	lsr	r3, #1
 	sub	r6, r3
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r5
 	mul	r3, r0
 	mov	r1, r10
@@ -1105,7 +1105,7 @@
 	cmp	r5, #3
 	bne	.Lcadfa
 .Lcae9c:
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x4c]
 	ldr	r1, [sp, #0x14]
 	bl	Func_51d8

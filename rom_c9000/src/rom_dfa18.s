@@ -346,7 +346,7 @@
 .Ldfcca:
 	cmp	r5, #0x37
 	bhi	.Ldfd40
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x14]
 	mov	r1, r0
 	add	r1, #0xc
@@ -660,13 +660,13 @@
 	and	r5, r0
 	mov	r0, r6
 	add	r5, r1
-	bl	Func_2322
+	bl	Sin
 	mov	r3, r5
 	mul	r3, r0
 	asr	r3, #8
 	str	r3, [r7, #0xc]
 	mov	r0, r6
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r5
 	mul	r3, r0
 	asr	r3, #7
@@ -699,7 +699,7 @@
 .Ldffea:
 	lsl	r6, r2, #11
 	mov	r0, r6
-	bl	Func_2322
+	bl	Sin
 	ldr	r7, [sp, #0x14]
 	mov	r5, #0x40
 	lsl	r3, r7, #1
@@ -711,7 +711,7 @@
 	add	r0, r7
 	mov	r8, r0
 	mov	r0, r6
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r5
 	mul	r3, r0
 	mov	r1, #0x3c
@@ -1035,7 +1035,7 @@
 	cmp	r3, #0x5f
 	bgt	.Le0326
 	ldr	r0, [sp, #0x10]
-	bl	Func_2322
+	bl	Sin
 	mov	r7, r11
 	lsl	r3, r7, #1
 	mov	r5, #0x40
@@ -1043,7 +1043,7 @@
 	mov	r6, r5
 	mul	r6, r0
 	ldr	r0, [sp, #0x10]
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r5
 	mul	r3, r0
 	mov	r2, #0x14
@@ -1122,13 +1122,13 @@
 	str	r3, [r7, #4]
 	mov	r0, r6
 	add	r5, r2
-	bl	Func_2322
+	bl	Sin
 	mov	r3, r5
 	mul	r3, r0
 	asr	r3, #7
 	str	r3, [r7, #0xc]
 	mov	r0, r6
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r5
 	mul	r3, r0
 	asr	r3, #6

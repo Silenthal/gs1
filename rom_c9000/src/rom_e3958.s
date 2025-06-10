@@ -55,7 +55,7 @@
 	mov	r0, r5
 	bl	_Func_b7f70
 	mov	r10, r0
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r1, r6
 	mov	r0, r6
 	add	r1, #0xc
@@ -675,7 +675,7 @@
 	bgt	.Le3f6e
 	mov	r0, r9
 	mov	r1, #3
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, [r6]
 	ldr	r3, [r3, #4]
 	mov	r5, r0
@@ -759,7 +759,7 @@
 	ldr	r0, [sp, #0x2c]
 	bl	_call_via_r4
 .Le3fa0:
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x20]
 	ldr	r1, [sp, #8]
 	bl	Func_51d8
@@ -1150,13 +1150,13 @@
 	mov	r3, #1
 	and	r3, r5
 	add	r7, r3, #5
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [r6, #0x14]
-	bl	Func_4c6c
+	bl	MatrixRotateZ
 	ldr	r0, [r6, #0xc]
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	ldr	r0, [r6, #0x10]
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	add	r5, sp, #0x4c
 	mov	r0, r6
 	mov	r1, r5
@@ -1455,7 +1455,7 @@
 	mov	r3, #0
 	bl	_call_via_r4
 .Le45c4:
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x28]
 	ldr	r1, [sp, #8]
 	bl	Func_51d8

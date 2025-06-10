@@ -60,7 +60,7 @@
 	b	.L96d78
 .L96d4e:
 	lsl	r0, #10
-	bl	Func_2322
+	bl	Sin
 	str	r0, [r5, #0x18]
 	str	r0, [r5, #0x1c]
 	ldr	r3, [r6, #8]
@@ -104,7 +104,7 @@
 	b	.L96dd2
 .L96da6:
 	lsl	r0, #10
-	bl	Func_2322
+	bl	Sin
 	neg	r3, r0
 	str	r0, [r5, #0x18]
 	str	r3, [r5, #0x1c]
@@ -327,7 +327,7 @@
 	ldr	r0, [r5]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	mov	r1, r0
 	mov	r0, r6
 	bl	_Func_c598

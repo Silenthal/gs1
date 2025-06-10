@@ -5903,14 +5903,14 @@
 	mov	r6, r0
 	ldr	r0, [r6, #0x30]
 	ldr	r7, [r6, #0x50]
-	bl	__Func_2322
+	bl	__Sin
 	lsl	r5, r0, #1
 	cmp	r5, #0
 	ble	.L3926
 	neg	r5, r5
 .L3926:
 	ldr	r0, [r6, #0x30]
-	bl	__Func_231c
+	bl	__Cos
 	ldr	r3, [r6, #0x38]
 	lsl	r0, #1
 	add	r3, r0
@@ -5922,7 +5922,7 @@
 	lsl	r2, #8
 	str	r3, [r6, #0xc]
 	add	r0, r2
-	bl	__Func_231c
+	bl	__Cos
 	asr	r0, #3
 	strh	r0, [r7, #0x1e]
 	bl	__Func_4458
@@ -5994,14 +5994,14 @@
 	mov	r6, r0
 	ldr	r0, [r6, #0x30]
 	ldr	r7, [r6, #0x50]
-	bl	__Func_2322
+	bl	__Sin
 	lsl	r5, r0, #1
 	cmp	r5, #0
 	ble	.L39e8
 	neg	r5, r5
 .L39e8:
 	ldr	r0, [r6, #0x30]
-	bl	__Func_231c
+	bl	__Cos
 	ldr	r3, [r6, #0x38]
 	lsl	r0, #1
 	add	r3, r0
@@ -6013,7 +6013,7 @@
 	add	r3, r5
 	add	r0, r2
 	str	r3, [r6, #0xc]
-	bl	__Func_231c
+	bl	__Cos
 	cmp	r0, #0
 	bge	.L3a0e
 	add	r0, #7

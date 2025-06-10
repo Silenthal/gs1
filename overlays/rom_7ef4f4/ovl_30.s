@@ -1506,7 +1506,7 @@
 	ldr	r3, [r6, #0x18]
 	ldr	r1, [r5, #0xc]
 	sub	r0, r3
-	bl	_Func_af0
+	bl	_div
 	str	r0, [r6, #0x30]
 	ldr	r0, [r7, #0x14]
 	ldr	r3, [r6, #0x1c]
@@ -1518,14 +1518,14 @@
 	ldr	r2, =0xffff0000
 	ldr	r1, [r5, #0xc]
 	add	r0, r2
-	bl	_Func_af0
+	bl	_div
 	str	r0, [r6, #0x30]
 	ldr	r0, [r7, #0x14]
 	ldr	r3, =0xffff0000
 	ldr	r1, [r5, #0xc]
 	add	r0, r3
 .Lc4c:
-	bl	_Func_af0
+	bl	_div
 	str	r0, [r6, #0x34]
 .Lc52:
 	mov	r3, #0x80
@@ -1626,7 +1626,7 @@
 	add	r3, r7
 	mov	r1, #0x12
 	str	r3, [r6, #0x10]
-	bl	_Func_af0
+	bl	_div
 	sub	r5, r0
 	str	r5, [r6, #0x44]
 	mov	r3, r7
@@ -1723,12 +1723,12 @@
 .Lde6:
 	lsl	r5, r7, #12
 	mov	r0, r5
-	bl	__Func_231c
+	bl	__Cos
 	mov	r3, #0
 	str	r0, [r6]
 	mov	r0, r5
 	str	r3, [r6, #4]
-	bl	__Func_2322
+	bl	__Sin
 	ldr	r3, [r6]
 	lsr	r2, r3, #31
 	add	r2, r3, r2

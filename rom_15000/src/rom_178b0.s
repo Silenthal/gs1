@@ -638,12 +638,12 @@
 .L17e00:
 	mov	r0, r6
 	mov	r1, #0xa
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	add	r0, #0x30
 	strb	r0, [r5]
 	mov	r1, #0xa
 	mov	r0, r6
-	bl	div
+	bl	div_from_thumb
 	sub	r5, #1
 	mov	r6, r0
 	cmp	r5, r10

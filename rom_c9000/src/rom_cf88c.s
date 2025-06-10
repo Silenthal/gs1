@@ -404,7 +404,7 @@
 	add	r2, #0xc
 	str	r2, [sp, #0x14]
 .Lcfba0:
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x24]
 	ldr	r1, [sp, #0x14]
 	bl	Func_51d8
@@ -460,7 +460,7 @@
 	ldr	r4, [sp, #0xc]
 	mov	r1, #3
 	sub	r0, r3, r4
-	bl	div
+	bl	div_from_thumb
 	mov	r5, r0
 	cmp	r5, #9
 	ble	.Lcfc1a
@@ -678,7 +678,7 @@
 	mov	r1, r8
 	ldr	r0, [r1, #0x18]
 	mov	r1, #5
-	bl	div
+	bl	div_from_thumb
 	mov	r1, #1
 	mov	r3, r10
 	and	r3, r1

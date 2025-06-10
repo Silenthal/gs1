@@ -647,7 +647,7 @@
 	bl	__Func_9163c
 	mov	r0, r8
 	mov	r1, #0x14
-	bl	_Func_b1c
+	bl	_mod
 	cmp	r0, #0
 	bne	.L842
 	sub	r6, #1
@@ -928,7 +928,7 @@
 	ldr	r5, =.L2230
 	bl	__Func_4458
 	mov	r1, #6
-	bl	_Func_b50
+	bl	_umod
 	str	r0, [r5]
 	add	r0, #0xa
 	bl	__Func_92054

@@ -273,7 +273,7 @@
 	lsl	r0, #9
 	mov	r1, #3
 	sub	r0, r5
-	bl	div
+	bl	div_from_thumb
 	mov	r4, r11
 	add	r0, r5, r0
 	str	r0, [sp, #0xc]
@@ -931,7 +931,7 @@
 	ldr	r0, [sp, #0x78]
 	mov	r1, #5
 	sub	r0, #1
-	bl	div
+	bl	div_from_thumb
 	add	r0, #1
 	str	r0, [sp, #0x78]
 	cmp	r0, #0
@@ -943,7 +943,7 @@
 	ldr	r0, [r2, #4]
 	mov	r1, #5
 	sub	r0, #1
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, [sp, #0x1c]
 	add	r0, #1
 	str	r0, [r3, #4]
@@ -1673,7 +1673,7 @@
 	str	r1, [sp, #0x5c]
 	mov	r0, r1
 	mov	r1, #0x3c
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	sub	r6, r0, #5
 	cmp	r6, #0
 	bge	.Lae066
@@ -1695,14 +1695,14 @@
 	bhi	.Lae0ec
 	mov	r1, #0x1e
 	mov	r0, r6
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r3, r0
 	lsl	r0, r3, #4
 	add	r0, r3
 	lsl	r0, #4
 	add	r0, r3
 	lsl	r0, #2
-	bl	Func_2322
+	bl	Sin
 	ldr	r3, =Func_888
 	mov	r1, r0
 	mov	r0, #0x10
@@ -1720,7 +1720,7 @@
 .Lae0ba:
 	mov	r0, r6
 	mov	r1, #0x23
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	lsl	r6, r0, #1
 	mov	r1, r6
 	mov	r2, r5
@@ -1825,7 +1825,7 @@
 	ldr	r0, [sp, #0x58]
 	mov	r1, #3
 	add	r0, #1
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r3, #2
 	str	r0, [sp, #0x58]
 	mov	r0, #0x6f
@@ -2040,7 +2040,7 @@
 	ldr	r0, [sp, #0x44]
 	mov	r1, #6
 	sub	r0, #1
-	bl	div
+	bl	div_from_thumb
 	add	r0, #1
 	str	r0, [sp, #0x44]
 	cmp	r0, #0
@@ -2051,7 +2051,7 @@
 	ldr	r0, [r1, #4]
 	mov	r1, #6
 	sub	r0, #1
-	bl	div
+	bl	div_from_thumb
 	mov	r2, r11
 	add	r0, #1
 	str	r0, [r2, #4]
@@ -2250,7 +2250,7 @@
 	mov	r0, r3
 	mov	r1, #0x3c
 	str	r3, [sp, #0x30]
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	sub	r0, #5
 	mov	r0, #0
 	mov	r1, #0x20

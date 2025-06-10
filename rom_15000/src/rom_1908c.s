@@ -133,7 +133,7 @@
 	mov	r1, #0x50
 	str	r2, [sp, #4]
 	str	r4, [sp]
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	ldr	r2, [sp, #4]
 	ldrb	r3, [r2, r0]
 	mov	r2, r8
@@ -294,7 +294,7 @@
 	mov	r3, #0xe8
 	lsl	r3, #8
 	add	r0, r3
-	bl	Func_2322
+	bl	Sin
 	ldrh	r2, [r6, #6]
 	asr	r0, #14
 	sub	r2, r0
@@ -310,7 +310,7 @@
 	lsl	r2, #7
 	strh	r3, [r7, #6]
 	add	r0, r2
-	bl	Func_231c
+	bl	Cos
 	ldrb	r3, [r6, #8]
 	asr	r0, #14
 	sub	r3, r0
@@ -335,7 +335,7 @@
 	ldrh	r0, [r6, #0xc]
 	mov	r1, #0x14
 	str	r4, [sp]
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	ldr	r4, [sp]
 	lsl	r0, #16
 	lsr	r0, #15
@@ -351,7 +351,7 @@
 	strh	r3, [r7, #6]
 	mov	r1, #0x14
 	ldrh	r0, [r6, #0xc]
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	lsl	r0, #16
 	lsr	r0, #15
 	ldr	r4, [sp]

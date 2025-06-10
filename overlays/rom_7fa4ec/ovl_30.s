@@ -79,7 +79,7 @@
 	ldr	r5, =.L181c
 	mov	r1, #6
 	ldrh	r0, [r5]
-	bl	_Func_b60
+	bl	_udiv
 	ldr	r2, =.L14ac
 	lsl	r0, #16
 	lsr	r0, #15
@@ -197,7 +197,7 @@
 	ldr	r5, =.L17ec
 	ldr	r0, [r5]
 	lsl	r0, #9
-	bl	__Func_2322
+	bl	__Sin
 	ldr	r3, =Func_888
 	mov	r1, #3
 	.call_via r3
@@ -224,7 +224,7 @@
 	ldr	r0, [r2]
 	lsl	r0, #9
 	mov	r11, r2
-	bl	__Func_2322
+	bl	__Sin
 	ldr	r3, =Func_888
 	mov	r1, #2
 	.call_via r3

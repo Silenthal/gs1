@@ -1,13 +1,13 @@
 	.include "macros.inc"
 
-	.export_func Func_af0
-	.export_func Func_b50
+	.export_func div
+	.export_func umod
 	.export_func _Func_30f8
 	.export_func _Func_41d8
 	.export_func _Func_4278
 	.export_func _Func_4458
 	.export_func _Func_45d4
-	.export_func _Func_2322
+	.export_func _Sin
 	.export_func _Func_447c
 	.export_func _AllocEwramAtIndex
 	.export_func _Func_ba30

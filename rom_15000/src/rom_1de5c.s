@@ -2686,7 +2686,7 @@
 	lsl	r0, r6, #2
 	add	r0, r6
 	lsl	r0, #3
-	bl	div
+	bl	div_from_thumb
 	mov	r3, r0
 	cmp	r3, #0
 	bne	.L1f460
@@ -2735,7 +2735,7 @@
 	lsl	r0, r6, #2
 	add	r0, r6
 	lsl	r0, #3
-	bl	div
+	bl	div_from_thumb
 	mov	r3, r0
 	cmp	r3, #0
 	bne	.L1f4c2
@@ -2961,7 +2961,7 @@
 	mov	r1, #0xe1
 	lsl	r1, #4
 	sub	sp, #0x40
-	bl	Func_b60_from_thumb
+	bl	udiv_from_thumb
 	ldr	r3, =0xea5f
 	mov	r6, r0
 	cmp	r6, r3
@@ -2970,11 +2970,11 @@
 .L1f69c:
 	mov	r0, r6
 	mov	r1, #0x3c
-	bl	Func_b60_from_thumb
+	bl	udiv_from_thumb
 	mov	r1, #0x3c
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	mov	r8, sp
 	mov	r1, r5
 	mov	r6, r0
@@ -3732,7 +3732,7 @@
 	lsl	r0, r3, #1
 	add	r0, r3
 	lsl	r0, #8
-	bl	Func_2322
+	bl	Sin
 	cmp	r0, #0
 	bge	.L1fd54
 	ldr	r3, =0x3fff

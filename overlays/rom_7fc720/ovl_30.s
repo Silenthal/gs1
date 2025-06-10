@@ -276,7 +276,7 @@
 	add	r0, r6, r3
 	lsl	r1, #1
 	mov	r10, r2
-	bl	_Func_b1c
+	bl	_mod
 	mov	r6, r0
 	mov	r0, r7
 	bl	__Func_16498
@@ -453,7 +453,7 @@
 	add	r0, r6, r2
 .L3f2:
 	lsl	r1, #1
-	bl	_Func_b1c
+	bl	_mod
 	mov	r6, r0
 	ldr	r0, =0x1ff
 	and	r0, r6
@@ -477,7 +477,7 @@
 	add	r0, r6, r3
 .L420:
 	lsl	r1, #1
-	bl	_Func_b1c
+	bl	_mod
 	mov	r6, r0
 	ldr	r0, =0x1ff
 	and	r0, r6
@@ -557,7 +557,7 @@
 	add	r0, r6, r3
 	lsl	r1, #1
 	mov	r10, r2
-	bl	_Func_b1c
+	bl	_mod
 	mov	r6, r0
 	mov	r0, r7
 	bl	__Func_16498
@@ -724,7 +724,7 @@
 	add	r0, r6, r2
 .L66c:
 	lsl	r1, #1
-	bl	_Func_b1c
+	bl	_mod
 	mov	r6, r0
 	ldr	r0, =0x3fff
 	and	r0, r6
@@ -748,7 +748,7 @@
 	add	r0, r6, r3
 .L69a:
 	lsl	r1, #1
-	bl	_Func_b1c
+	bl	_mod
 	mov	r6, r0
 	ldr	r0, =0x3fff
 	and	r0, r6

@@ -358,7 +358,7 @@
 	mov	r5, #0x3f
 	and	r5, r0
 	mov	r0, r6
-	bl	Func_2322
+	bl	Sin
 	add	r5, #0x20
 	mov	r3, r5
 	mul	r3, r0
@@ -366,7 +366,7 @@
 	ldr	r3, =0xffce0000
 	mov	r0, r6
 	str	r3, [r7, #4]
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r5
 	mul	r3, r0
 	str	r3, [r7, #8]
@@ -533,7 +533,7 @@
 	cmp	r2, #0
 	bne	.Ld8e08
 	ldr	r0, [sp, #0xc]
-	bl	Func_2322
+	bl	Sin
 	lsl	r3, r0, #2
 	add	r3, r0
 	ldr	r2, [sp, #0x58]
@@ -545,7 +545,7 @@
 	sub	r3, #0x14
 	ldr	r0, [sp, #0xc]
 	mov	r8, r3
-	bl	Func_231c
+	bl	Cos
 	lsl	r0, #2
 	ldr	r3, [sp, #0x54]
 	asr	r0, #16
@@ -591,7 +591,7 @@
 
 .Ld8e08:
 	ldr	r0, [sp, #0xc]
-	bl	Func_2322
+	bl	Sin
 	ldr	r3, [sp, #0x58]
 	lsl	r2, r0, #2
 	add	r2, r0
@@ -604,7 +604,7 @@
 	sub	r2, #0xa
 	ldr	r0, [sp, #0xc]
 	mov	r9, r2
-	bl	Func_231c
+	bl	Cos
 	lsl	r0, #2
 	ldr	r3, [sp, #0x54]
 	asr	r0, #16
@@ -682,7 +682,7 @@
 	lsl	r3, #3
 	ldr	r5, [r0]
 	mov	r9, r3
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x24]
 	ldr	r1, [sp, #0x20]
 	bl	Func_51d8
@@ -695,7 +695,7 @@
 	ldr	r3, [r5, #0x10]
 	str	r3, [r0, #8]
 	ldr	r0, [sp, #0x1c]
-	bl	Func_4cb4
+	bl	MatrixTranslateV
 	mov	r3, r9
 	add	r3, #0x14
 	cmp	r11, r3
@@ -733,9 +733,9 @@
 	mov	r1, r11
 	lsl	r5, r1, #9
 	mov	r0, r5
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	mov	r0, r5
-	bl	Func_4c6c
+	bl	MatrixRotateZ
 	b	.Ld8f6c
 .Ld8f38:
 	mov	r2, r10
@@ -748,7 +748,7 @@
 	mov	r1, r11
 	sub	r0, r1, r0
 	lsl	r0, #9
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	b	.Ld8f6c
 .Ld8f52:
 	mov	r2, r10
@@ -756,13 +756,13 @@
 	bne	.Ld8f60
 .Ld8f58:
 	ldr	r0, [sp, #0x14]
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	b	.Ld8f6c
 .Ld8f60:
 	ldr	r0, [sp, #0x14]
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	ldr	r0, [sp, #0x14]
-	bl	Func_4bd4
+	bl	MatrixRotateX
 .Ld8f6c:
 	ldr	r0, [sp, #0x34]
 	mov	r3, #0
@@ -878,7 +878,7 @@
 	lsl	r0, r2, #2
 	add	r0, r11
 	mov	r1, #9
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	mov	r4, r0
 	b	.Ld9052
 .Ld9044:
@@ -939,19 +939,19 @@
 	ldr	r5, [r6]
 	mov	r1, r7
 	mov	r0, r5
-	bl	div
+	bl	div_from_thumb
 	sub	r5, r0
 	str	r5, [r6]
 	ldr	r5, [r6, #4]
 	mov	r1, r7
 	mov	r0, r5
-	bl	div
+	bl	div_from_thumb
 	sub	r5, r0
 	str	r5, [r6, #4]
 	ldr	r5, [r6, #8]
 	mov	r1, r7
 	mov	r0, r5
-	bl	div
+	bl	div_from_thumb
 	sub	r5, r0
 	str	r5, [r6, #8]
 .Ld90d6:

@@ -14,8 +14,8 @@ Exports_c0:
 	.export_func Func_44d0
 	.export_func Func_45a4
 	.export_func Func_45d4
-	.export_func Func_2322
-	.export_func Func_231c
+	.export_func Sin
+	.export_func Cos
 	.export_func Func_447c
 	.export_func SetInterruptFunc
 	.export_func InitHeap
@@ -43,18 +43,18 @@ Exports_c0:
 	.export_func Func_3dec
 	.export_func Func_479c
 	.export_func Func_4838
-	.export_func Func_49ac
-	.export_func Func_4a94
-	.export_func Func_49e8
-	.export_func Func_4a5c
-	.export_func Func_4ab0
-	.export_func Func_4bd4
-	.export_func Func_4c1c
-	.export_func Func_4c6c
-	.export_func Func_4cb4
-	.export_func Func_4cf0
-	.export_func Func_4d2c
-	.export_func Func_4e54
+	.export_func InitMatrixStack
+	.export_func MatrixReset
+	.export_func MatrixPush
+	.export_func MatrixPop
+	.export_func MatrixRotate
+	.export_func MatrixRotateX
+	.export_func MatrixRotateY
+	.export_func MatrixRotateZ
+	.export_func MatrixTranslateV
+	.export_func MatrixScaleV
+	.export_func MatrixRotateTrans
+	.export_func MatrixRotateTransScale
 	.export_func Func_51d8
 	.export_func Func_5268
 	.export_func Func_5208

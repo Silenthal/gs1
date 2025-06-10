@@ -217,7 +217,7 @@
 	mov	r0, #0x85
 	bl	_Func_bd7dc
 .Lcecdc:
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x2c]
 	ldr	r1, [sp, #0x18]
 	bl	Func_51d8
@@ -232,7 +232,7 @@
 .Lcecf8:
 	mov	r0, r5
 	str	r3, [sp, #8]
-	bl	Func_2322
+	bl	Sin
 	ldr	r3, [sp, #8]
 	lsl	r0, #4
 	sub	r0, r3, r0
@@ -350,7 +350,7 @@
 	str	r5, [r2]
 	mov	r1, #3
 	mov	r0, r7
-	bl	Func_b1c_from_thumb
+	bl	mod_from_thumb
 	lsl	r1, r0, #2
 	add	r1, r0
 	mov	r0, r8

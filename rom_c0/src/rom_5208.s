@@ -12,10 +12,10 @@
 	mov	r0, r5
 	mov	r10, r2
 	mov	r8, r1
-	bl	Func_2322
+	bl	Sin
 	mov	r6, r0
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	lsl	r1, r0, #2
 	add	r1, r0
 	lsl	r1, #4
@@ -66,7 +66,7 @@
 	beq	.L529e
 	lsr	r1, #11
 	lsl	r0, #5
-	ldr	r3, =Func_b60
+	ldr	r3, =udiv
 	bl	_call_via_r3
 	mov	r4, r0
 	b	.L52a0

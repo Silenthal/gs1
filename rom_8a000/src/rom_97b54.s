@@ -2765,7 +2765,7 @@
 	mov	r3, #0
 	ldrsh	r0, [r6, r3]
 	lsl	r0, #9
-	bl	Func_2322
+	bl	Sin
 	mov	r1, r0
 	mov	r0, #0x80
 	ldr	r3, =Func_888
@@ -2865,7 +2865,7 @@
 	cmp	r0, r3
 	beq	.L99410
 	lsl	r0, #10
-	bl	Func_2322
+	bl	Sin
 	mov	r1, r0
 	mov	r0, #0xc0
 	ldr	r3, =Func_888
@@ -2902,7 +2902,7 @@
 	ldr	r3, =iwram_1e40
 	mov	r1, #3
 	ldr	r0, [r3]
-	bl	Func_b50_from_thumb
+	bl	umod_from_thumb
 	cmp	r0, #0
 	bne	.L9949c
 	ldr	r3, [r5, #8]
@@ -3682,7 +3682,7 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	add	r5, r0
 	str	r5, [r7, #8]
 	mov	r2, r10
@@ -3693,7 +3693,7 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	add	r5, r0
 	str	r5, [r7, #0xc]
 	mov	r2, r9
@@ -3704,7 +3704,7 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	mov	r3, #0xc0
 	lsl	r3, #8
 	add	r5, r0
@@ -3712,7 +3712,7 @@
 	mov	r0, r8
 	mul	r0, r3
 	str	r5, [r7, #0x10]
-	bl	div
+	bl	div_from_thumb
 	mov	r3, #0x80
 	lsl	r3, #7
 	add	r0, r3
@@ -3908,7 +3908,7 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	add	r5, r0
 	str	r5, [r7, #8]
 	mov	r1, r10
@@ -3918,7 +3918,7 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	add	r5, r0
 	str	r5, [r7, #0xc]
 	mov	r2, r10
@@ -3928,14 +3928,14 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	div
+	bl	div_from_thumb
 	ldr	r3, =0xffff4000
 	add	r5, r0
 	mov	r1, #0xa
 	mov	r0, r8
 	mul	r0, r3
 	str	r5, [r7, #0x10]
-	bl	div
+	bl	div_from_thumb
 	mov	r3, #0x80
 	lsl	r3, #9
 	add	r0, r3

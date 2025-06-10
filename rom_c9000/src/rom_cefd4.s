@@ -113,7 +113,7 @@
 	neg	r0, r0
 	lsl	r0, #2
 	mov	r1, #5
-	bl	div
+	bl	div_from_thumb
 	ldr	r2, =REG_BG2X
 	add	r0, #0x40
 .Lcf0d4:

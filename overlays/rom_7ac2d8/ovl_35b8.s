@@ -3008,7 +3008,7 @@
 	b	.L51ea
 .L51cc:
 	lsl	r0, #10
-	bl	__Func_2322
+	bl	__Sin
 	str	r0, [r5, #0x18]
 	str	r0, [r5, #0x1c]
 	ldr	r3, [r6, #8]

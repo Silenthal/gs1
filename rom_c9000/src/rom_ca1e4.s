@@ -136,7 +136,7 @@
 	ldr	r3, [r4, #0x10]
 	mov	r0, r6
 	str	r3, [r7, #8]
-	bl	Func_2322
+	bl	Sin
 	add	r5, #0x20
 	mov	r3, r5
 	mul	r3, r0
@@ -149,7 +149,7 @@
 	lsl	r3, #9
 	str	r3, [r7, #0x10]
 	mov	r0, r6
-	bl	Func_231c
+	bl	Cos
 	mov	r3, r5
 	mul	r3, r0
 	lsl	r3, #1
@@ -191,7 +191,7 @@
 	mov	r11, r1
 	mov	r9, r3
 .Lca368:
-	bl	Func_49ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x14]
 	ldr	r1, [sp, #8]
 	bl	Func_51d8
@@ -215,7 +215,7 @@
 	lsl	r0, r1, #2
 	add	r0, r3
 	lsl	r0, #10
-	bl	Func_2322
+	bl	Sin
 	ldr	r3, [r6]
 	lsl	r0, #4
 	mov	r2, r9

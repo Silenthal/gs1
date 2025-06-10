@@ -1569,13 +1569,13 @@
 	add	r3, r5, r0
 	strh	r3, [r2, #0x1e]
 	mov	r0, r5
-	bl	__Func_231c
+	bl	__Cos
 	mov	r1, #0x80
 	lsl	r1, #17
 	.call_via r10
 	mov	r8, r0
 	mov	r0, r5
-	bl	__Func_2322
+	bl	__Sin
 	mov	r1, #0x80
 	lsl	r1, #17
 	.call_via r10
@@ -1670,7 +1670,7 @@
 	mov	r1, #0xa
 	ldr	r0, [r3]
 	sub	sp, #4
-	bl	_Func_b60
+	bl	_udiv
 	cmp	r0, #0
 	beq	.L10fc
 	ldr	r1, =0x40c
@@ -1793,7 +1793,7 @@
 .L11c8:
 	bl	__Func_4458
 	ldr	r1, =0xffff
-	bl	_Func_b50
+	bl	_umod
 	lsl	r0, #16
 	asr	r0, #16
 	mov	r11, r0
@@ -1850,7 +1850,7 @@
 	lsl	r6, r1, #16
 	lsr	r6, #16
 	mov	r0, r6
-	bl	__Func_231c
+	bl	__Cos
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, r0
@@ -1868,7 +1868,7 @@
 	mov	r0, r10
 	str	r0, [r7, #0xc]
 	mov	r0, r6
-	bl	__Func_2322
+	bl	__Sin
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, r0
@@ -1885,7 +1885,7 @@
 	add	r0, r3
 	str	r0, [r7, #0x10]
 	mov	r0, r6
-	bl	__Func_231c
+	bl	__Cos
 	mov	r5, r0
 	bl	__Func_4458
 	mov	r1, r0
@@ -1899,7 +1899,7 @@
 	.call_via r9
 	mov	r5, r0
 	mov	r0, r6
-	bl	__Func_2322
+	bl	__Sin
 	mov	r6, r0
 	bl	__Func_4458
 	mov	r3, #0x3f
@@ -4156,7 +4156,7 @@
 	bne	.L2966
 	bl	__Func_4458
 	mov	r1, #0x64
-	bl	_Func_b50
+	bl	_umod
 	cmp	r0, #0x32
 	bls	.L2960
 	mov	r0, #1
@@ -4180,7 +4180,7 @@
 	bne	.L299a
 	bl	__Func_4458
 	mov	r1, #0x64
-	bl	_Func_b50
+	bl	_umod
 	cmp	r0, #0x32
 	bls	.L2994
 	mov	r0, #1
@@ -4696,7 +4696,7 @@
 	ldr	r0, [r5]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_b50
+	bl	_umod
 	mov	r1, r0
 	mov	r0, r6
 	bl	__Func_c598
@@ -4732,7 +4732,7 @@
 	b	.L2e56
 .L2e2c:
 	lsl	r0, #10
-	bl	__Func_2322
+	bl	__Sin
 	str	r0, [r5, #0x18]
 	str	r0, [r5, #0x1c]
 	ldr	r3, [r6, #8]
@@ -4775,7 +4775,7 @@
 	b	.L2ea8
 .L2e7c:
 	lsl	r0, #10
-	bl	__Func_2322
+	bl	__Sin
 	neg	r3, r0
 	str	r0, [r5, #0x18]
 	str	r3, [r5, #0x1c]
@@ -5134,7 +5134,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r6, #16
 	lsl	r1, #2
-	bl	_Func_b60
+	bl	_udiv
 	mov	r6, r0
 	b	.L314a
 .L3148:
@@ -5145,7 +5145,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r7, #16
 	lsl	r1, #2
-	bl	_Func_b60
+	bl	_udiv
 	mov	r9, r0
 	b	.L3160
 .L315c:
@@ -5158,7 +5158,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r3, #16
 	lsl	r1, #2
-	bl	_Func_b60
+	bl	_udiv
 	b	.L3174
 .L3172:
 	mov	r0, #0
@@ -5229,21 +5229,21 @@
 	ldrb	r3, [r4]
 	mov	r0, r3
 	mul	r0, r1
-	bl	__Func_2322
+	bl	__Sin
 	ldr	r2, [sp]
 	ldr	r4, [sp, #0x30]
 	ldrb	r3, [r2, #1]
 	lsl	r6, r0, #1
 	mov	r0, r3
 	mul	r0, r4
-	bl	__Func_2322
+	bl	__Sin
 	lsl	r7, r0, #1
 	ldr	r0, [sp]
 	ldr	r1, [sp, #0x2c]
 	ldrb	r3, [r0, #2]
 	mov	r0, r3
 	mul	r0, r1
-	bl	__Func_231c
+	bl	__Cos
 	mov	r2, r11
 	lsl	r0, #1
 	cmp	r2, #0

@@ -699,15 +699,15 @@
 	beq	.Lb58fa
 	mov	r5, r3
 .Lb58fa:
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r0, r5
-	bl	Func_4cb4
+	bl	MatrixTranslateV
 	mov	r3, #0x36
 	ldrsh	r0, [r6, r3]
-	bl	Func_4c1c
+	bl	MatrixRotateY
 	mov	r2, #0x34
 	ldrsh	r0, [r6, r2]
-	bl	Func_4bd4
+	bl	MatrixRotateX
 	mov	r3, #0
 	add	r0, sp, #4
 	str	r3, [r0]

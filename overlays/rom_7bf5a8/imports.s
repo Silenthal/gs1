@@ -1,7 +1,7 @@
 	.include "macros.inc"
 
-	.export_func Func_b1c
-	.export_func Func_b50
+	.export_func mod
+	.export_func umod
 	.export_func _Func_30f8
 	.export_func _Func_41d8
 	.export_func _Func_4458

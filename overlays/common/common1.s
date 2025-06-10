@@ -94,7 +94,7 @@
 	mov	r3, #0x34
 	ldrsh	r1, [r5, r3]
 	lsl	r0, #14
-	bl	_Func_af0
+	bl	_div
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -127,7 +127,7 @@
 	mov	r3, #0x36
 	ldrsh	r1, [r5, r3]
 	lsl	r0, #14
-	bl	_Func_af0
+	bl	_div
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -1196,7 +1196,7 @@
 	mov	r0, r5
 	mul	r0, r3
 	mov	r1, r7
-	bl	_Func_af0
+	bl	_div
 	add	r6, r0
 	mov	r11, r6
 	cmp	r5, r7
@@ -1239,7 +1239,7 @@
 	mov	r0, r5
 	mul	r0, r3
 	mov	r1, r7
-	bl	_Func_af0
+	bl	_div
 	add	r6, r0
 	str	r6, [sp, #4]
 	cmp	r5, r7
@@ -1281,7 +1281,7 @@
 	mov	r0, r5
 	mul	r0, r3
 	mov	r1, r7
-	bl	_Func_af0
+	bl	_div
 	add	r6, r0
 	cmp	r5, r7
 	blt	.Lb64
@@ -2233,7 +2233,7 @@
 	mov	r0, r5
 	mul	r0, r2
 	mov	r1, r7
-	bl	_Func_af0
+	bl	_div
 	ldr	r2, =.L29
 	add	r6, r0
 	mov	r1, r8
@@ -2250,7 +2250,7 @@
 	mov	r0, r5
 	mul	r0, r3
 	mov	r1, r7
-	bl	_Func_af0
+	bl	_div
 	mov	r2, r8
 	add	r6, r0
 	strh	r6, [r2]
@@ -3438,7 +3438,7 @@
 	lsl	r5, #12
 	sub	r0, r3
 	mov	r1, r5
-	bl	_Func_af0
+	bl	_div
 	ldr	r3, [sp, #0x10]
 	add	r3, #0xec
 	ldr	r3, [r3]
@@ -3448,7 +3448,7 @@
 	mov	r1, r5
 	sub	r0, r3
 	str	r4, [sp]
-	bl	_Func_af0
+	bl	_div
 	ldr	r3, [sp, #0x10]
 	add	r3, #0xda
 	mov	r1, #0
@@ -3503,7 +3503,7 @@
 	lsl	r5, #12
 	sub	r0, r3
 	mov	r1, r5
-	bl	_Func_af0
+	bl	_div
 	ldr	r3, [sp, #0x10]
 	add	r3, #0xec
 	ldr	r3, [r3]
@@ -3513,7 +3513,7 @@
 	mov	r1, r5
 	sub	r0, r3
 	str	r4, [sp]
-	bl	_Func_af0
+	bl	_div
 	ldr	r3, [sp, #0x10]
 	add	r3, #0xda
 	mov	r1, #0

@@ -5,7 +5,9 @@
 	bx	lr
 .func_end Func_49a8
 
-.thumb_func_start Func_49ac
+
+@@ Initializes the matrix stack and sets the active matrix to the identity.
+.thumb_func_start InitMatrixStack
 	push	{r5, lr}
 	mov	r1, #0x30
 	mov	r0, #2
@@ -15,7 +17,7 @@
 	mov	r3, #0
 	str	r3, [r2]
 	str	r0, [r5]
-	ldr	r3, =Data_ac0
+	ldr	r3, =gMatrix
 	mov	r0, r3
 	mov	r1, #0x80
 	mov	r2, #0
@@ -28,9 +30,11 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_49ac
+.func_end InitMatrixStack
 
-.thumb_func_start Func_49e8
+
+@@ Saves the active matrix to the stack.
+.thumb_func_start MatrixPush
 	push	{r5, lr}
 	ldr	r5, =iwram_1cc4
 	ldr	r3, [r5]
@@ -38,7 +42,7 @@
 	bgt	.L4a0c
 	ldr	r4, =iwram_1d2c
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =Data_ac0
+	ldr	r0, =gMatrix
 	ldr	r1, [r4]
 	ldr	r2, =0x8400000c
 	stmia	r3!, {r0, r1, r2}
@@ -53,28 +57,38 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_49e8
+.func_end MatrixPush
 
-.thumb_func_start Func_4a28
+
+@@ Gets the active matrix.
+@@ In:
+@@ r0 - Matrix4x3* outMat - A pointer that will hold a copy of the active matrix.
+.thumb_func_start MatrixGet
 	mov	r1, r0
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =Data_ac0
+	ldr	r0, =gMatrix
 	ldr	r2, =0x8400000c
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	bx	lr
-.func_end Func_4a28
+.func_end MatrixGet
 
-.thumb_func_start Func_4a44
+
+@@ Sets the active matrix to the given value.
+@@ In:
+@@ r0 - Matrix4x3* inMat - A pointer to the matrix.
+.thumb_func_start MatrixSet
 	ldr	r3, =REG_DMA3SAD
-	ldr	r1, =Data_ac0
+	ldr	r1, =gMatrix
 	ldr	r2, =0x8400000c
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	bx	lr
-.func_end Func_4a44
+.func_end MatrixSet
 
-.thumb_func_start Func_4a5c
+
+@@ Pops the saved matrix to the active matrix.
+.thumb_func_start MatrixPop
 	push	{lr}
 	ldr	r2, =iwram_1cc4
 	ldr	r3, [r2]
@@ -86,7 +100,7 @@
 	ldr	r0, [r3]
 	sub	r0, #0x30
 	str	r0, [r3]
-	ldr	r1, =Data_ac0
+	ldr	r1, =gMatrix
 	ldr	r3, =REG_DMA3SAD
 	ldr	r2, =0x8400000c
 	stmia	r3!, {r0, r1, r2}
@@ -94,10 +108,12 @@
 .L4a7c:
 	pop	{r0}
 	bx	r0
-.func_end Func_4a5c
+.func_end MatrixPop
 
-.thumb_func_start Func_4a94
-	ldr	r3, =Data_ac0
+
+@@ Sets the active matrix to the identity.
+.thumb_func_start MatrixReset
+	ldr	r3, =gMatrix
 	mov	r0, r3
 	mov	r1, #0x80
 	mov	r2, #0
@@ -108,9 +124,22 @@
 	stmia	r0!, {r1, r2, r3, r4}
 	stmia	r0!, {r1, r2, r3, r4}
 	bx	lr
-.func_end Func_4a94
+.func_end MatrixReset
 
-.thumb_func_start Func_4ab0
+
+@@ Rotates the active matrix by given X, Y, and Z angles.
+@@ In:
+@@ r0 - Vector3* vec - The vector containing the three angles to rotate by.
+@@
+@@ Notes:
+@@ vec = [a, b, y]
+@@ sa = sin(a), sb = sin(b), sy = sin(y)
+@@ ca = cos(a), cb = cos(b), cy = cos(y)
+@@
+@@ mat = |  cb * cy | sa * sb * cy - ca * sy | ca * sb * cy + sa * sy | 0
+@@       |  cb * sy | sa * sb * sy + ca * cy | ca * sb * sy - sa * cy | 0
+@@       | -sb      | sa * cb                | ca * cb                | 0
+.thumb_func_start MatrixRotate
 	push	{r5, r6, lr}
 	mov	r6, r11
 	mov	r5, r10
@@ -121,22 +150,22 @@
 	mov	r5, r0
 	ldr	r0, [r5]
 	sub	sp, #0x30
-	bl	Func_2322
+	bl	Sin
 	mov	r10, r0
 	ldr	r0, [r5]
-	bl	Func_231c
+	bl	Cos
 	mov	r9, r0
 	ldr	r0, [r5, #4]
-	bl	Func_2322
+	bl	Sin
 	mov	r8, r0
 	ldr	r0, [r5, #4]
-	bl	Func_231c
+	bl	Cos
 	mov	r11, r0
 	ldr	r0, [r5, #8]
-	bl	Func_2322
+	bl	Sin
 	mov	r6, r0
 	ldr	r0, [r5, #8]
-	bl	Func_231c
+	bl	Cos
 	mov	r14, r0
 	ldr	r3, =Func_888
 	mov	r0, r11
@@ -207,7 +236,7 @@
 	str	r3, [r5, #0x28]
 	str	r3, [r5, #0x2c]
 	mov	r0, r5
-	ldr	r3, =Func_a30
+	ldr	r3, =MatrixMultiply
 	bl	_call_via_r3
 	add	sp, #0x30
 	pop	{r3, r5, r6}
@@ -219,16 +248,29 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_4ab0
+.func_end MatrixRotate
 
-.thumb_func_start Func_4bd4
+
+@@ Rotates the active matrix around the X axis by the given angle
+@@ In:
+@@ r0 - FIXED angle - The angle to rotate by.
+@@
+@@ Notes:
+@@ angle = a
+@@ s = sin(a)
+@@ c = cos(a)
+@@
+@@ mat = | 1 | 0 |  0 | 0
+@@       | 0 | c | -s | 0
+@@       | 0 | s |  c | 0
+.thumb_func_start MatrixRotateX
 	push	{r5, r6, lr}
 	sub	sp, #0x30
 	mov	r5, r0
-	bl	Func_2322
+	bl	Sin
 	mov	r6, r0
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	mov	r12, r0
 	mov	r5, sp
 	mov	r0, r5
@@ -246,25 +288,38 @@
 	str	r3, [r5, #0x10]
 	str	r3, [r5, #0x20]
 	str	r6, [r5, #0x1c]
-	ldr	r3, =Func_a30
+	ldr	r3, =MatrixMultiply
 	mov	r0, r5
 	bl	_call_via_r3
 	add	sp, #0x30
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_4bd4
+.func_end MatrixRotateX
 
-.thumb_func_start Func_4c1c
+
+@@ Rotates the active matrix around the Y axis by the given angle
+@@ In:
+@@ r0 - FIXED angle - The angle to rotate by.
+@@
+@@ Notes:
+@@ angle = a
+@@ s = sin(a)
+@@ c = cos(a)
+@@
+@@ mat = |  c | 0 | s | 0
+@@       |  0 | 1 | 0 | 0
+@@       | -s | 0 | c | 0
+.thumb_func_start MatrixRotateY
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
 	sub	sp, #0x30
 	mov	r5, r0
-	bl	Func_2322
+	bl	Sin
 	mov	r8, r0
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	mov	r6, r0
 	mov	r5, sp
 	mov	r0, r5
@@ -282,7 +337,7 @@
 	str	r6, [r5]
 	str	r2, [r5, #0x18]
 	str	r6, [r5, #0x20]
-	ldr	r3, =Func_a30
+	ldr	r3, =MatrixMultiply
 	mov	r0, r5
 	bl	_call_via_r3
 	add	sp, #0x30
@@ -291,16 +346,29 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_4c1c
+.func_end MatrixRotateY
 
-.thumb_func_start Func_4c6c
+
+@@ Rotates the active matrix around the Z axis by the given angle
+@@ In:
+@@ r0 - FIXED angle - The angle to rotate by.
+@@
+@@ Notes:
+@@ angle = a
+@@ s = sin(a)
+@@ c = cos(a)
+@@
+@@ mat = | c | -s | 0 | 0
+@@       | s |  c | 0 | 0
+@@       | 0 |  0 | 1 | 0
+.thumb_func_start MatrixRotateZ
 	push	{r5, r6, lr}
 	sub	sp, #0x30
 	mov	r5, r0
-	bl	Func_2322
+	bl	Sin
 	mov	r6, r0
 	mov	r0, r5
-	bl	Func_231c
+	bl	Cos
 	mov	r12, r0
 	mov	r5, sp
 	mov	r0, r5
@@ -318,16 +386,27 @@
 	str	r3, [r5]
 	str	r3, [r5, #0x10]
 	str	r6, [r5, #0xc]
-	ldr	r3, =Func_a30
+	ldr	r3, =MatrixMultiply
 	mov	r0, r5
 	bl	_call_via_r3
 	add	sp, #0x30
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_4c6c
+.func_end MatrixRotateZ
 
-.thumb_func_start Func_4cb4
+
+@@ Translates the active matrix by the given X, Y, and Z offsets.
+@@ In:
+@@ r0 - Vector3* vec - The units the matrix is to be scaled in the X, Y, and Z axis.
+@@
+@@ Notes:
+@@ vec = [x, y, z]
+@@
+@@ mat = | 1 | 0 | 0 | x
+@@       | 0 | 1 | 0 | y
+@@       | 0 | 0 | 1 | z
+.thumb_func_start MatrixTranslateV
 	push	{r5, r6, lr}
 	sub	sp, #0x30
 	mov	r6, r0
@@ -348,15 +427,26 @@
 	ldr	r3, [r6, #8]
 	mov	r0, r5
 	str	r3, [r5, #0x2c]
-	ldr	r3, =Func_a30
+	ldr	r3, =MatrixMultiply
 	bl	_call_via_r3
 	add	sp, #0x30
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_4cb4
+.func_end MatrixTranslateV
 
-.thumb_func_start Func_4cf0
+
+@@ Scales the active matrix by the given X, Y, and Z amounts.
+@@ In:
+@@ r0 - Vector3* vec - The amount to scale in the X, Y, and Z axis.
+@@
+@@ Notes:
+@@ vec = [x, y, z]
+@@
+@@ mat = | x | 0 | 0 | 0
+@@       | 0 | y | 0 | 0
+@@       | 0 | 0 | z | 0
+.thumb_func_start MatrixScaleV
 	push	{r5, r6, lr}
 	sub	sp, #0x30
 	mov	r6, r0
@@ -377,15 +467,30 @@
 	ldr	r3, [r6, #8]
 	mov	r0, r5
 	str	r3, [r5, #0x20]
-	ldr	r3, =Func_a30
+	ldr	r3, =MatrixMultiply
 	bl	_call_via_r3
 	add	sp, #0x30
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_4cf0
+.func_end MatrixScaleV
 
-.thumb_func_start Func_4d2c
+
+@@ Rotates and translates the active matrix by given X, Y, and Z angles.
+@@ In:
+@@ r0 - Vector3* rot - The vector containing the three angles to rotate by.
+@@ r1 - Vector3* trans - The units the matrix is to be scaled in the X, Y, and Z axis.
+@@
+@@ Notes:
+@@ rot = [a, b, y]
+@@ trans = [x, y, z]
+@@ sa = sin(a), sb = sin(b), sy = sin(y)
+@@ ca = cos(a), cb = cos(b), cy = cos(y)
+@@
+@@ mat = |  cb * cy | sa * sb * cy - ca * sy | ca * sb * cy + sa * sy | x
+@@       |  cb * sy | sa * sb * sy + ca * cy | ca * sb * sy - sa * cy | y
+@@       | -sb      | sa * cb                | ca * cb                | z
+.thumb_func_start MatrixRotateTrans
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -397,22 +502,22 @@
 	ldr	r0, [r5]
 	mov	r7, r1
 	sub	sp, #0x30
-	bl	Func_2322
+	bl	Sin
 	mov	r10, r0
 	ldr	r0, [r5]
-	bl	Func_231c
+	bl	Cos
 	mov	r9, r0
 	ldr	r0, [r5, #4]
-	bl	Func_2322
+	bl	Sin
 	mov	r8, r0
 	ldr	r0, [r5, #4]
-	bl	Func_231c
+	bl	Cos
 	mov	r11, r0
 	ldr	r0, [r5, #8]
-	bl	Func_2322
+	bl	Sin
 	mov	r6, r0
 	ldr	r0, [r5, #8]
-	bl	Func_231c
+	bl	Cos
 	mov	r14, r0
 	ldr	r3, =Func_888
 	mov	r0, r11
@@ -485,7 +590,7 @@
 	ldr	r3, [r7, #8]
 	mov	r0, r5
 	str	r3, [r5, #0x2c]
-	ldr	r3, =Func_a30
+	ldr	r3, =MatrixMultiply
 	bl	_call_via_r3
 	add	sp, #0x30
 	pop	{r3, r5, r6, r7}
@@ -496,9 +601,15 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_4d2c
+.func_end MatrixRotateTrans
 
-.thumb_func_start Func_4e54
+
+@@ Applies rotation, translation, and scaling to the active matrix.
+@@ In:
+@@ r0 - Vector3* rot - The vector containing the three angles to rotate by.
+@@ r1 - Vector3* trans - The units the matrix is to be scaled in the X, Y, and Z axis.
+@@ r2 - Vector3* scale - The amount to scale in the X, Y, and Z axis.
+.thumb_func_start MatrixRotateTransScale
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -511,22 +622,22 @@
 	str	r2, [sp]
 	mov	r5, r0
 	ldr	r0, [r5]
-	bl	Func_2322
+	bl	Sin
 	mov	r10, r0
 	ldr	r0, [r5]
-	bl	Func_231c
+	bl	Cos
 	mov	r9, r0
 	ldr	r0, [r5, #4]
-	bl	Func_2322
+	bl	Sin
 	mov	r8, r0
 	ldr	r0, [r5, #4]
-	bl	Func_231c
+	bl	Cos
 	mov	r11, r0
 	ldr	r0, [r5, #8]
-	bl	Func_2322
+	bl	Sin
 	mov	r6, r0
 	ldr	r0, [r5, #8]
-	bl	Func_231c
+	bl	Cos
 	ldr	r2, [sp]
 	mov	r14, r0
 	ldr	r7, [r2]
@@ -633,7 +744,7 @@
 	ldr	r3, [r2, #8]
 	mov	r0, r5
 	str	r3, [r5, #0x2c]
-	ldr	r3, =Func_a30
+	ldr	r3, =MatrixMultiply
 	bl	_call_via_r3
 	add	sp, #0x38
 	pop	{r3, r5, r6, r7}
@@ -644,7 +755,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_4e54
+.func_end MatrixRotateTransScale
 
 .thumb_func_start Func_4fe4
 	push	{r5, r6, r7, lr}
@@ -695,7 +806,7 @@
 	ldr	r3, =Func_948
 	bl	_call_via_r3
 	mov	r1, r0
-	ldr	r0, =Func_b60
+	ldr	r0, =udiv
 	mov	r11, r0
 	mov	r0, #0x80
 	lsl	r0, #24
@@ -854,7 +965,7 @@
 
 .thumb_func_start Func_51d8
 	push	{lr}
-	ldr	r2, =Data_ac0
+	ldr	r2, =gMatrix
 	bl	Func_4fe4
 	pop	{r0}
 	bx	r0
@@ -866,7 +977,7 @@
 	mov	r5, sp
 	mov	r2, r5
 	bl	Func_4fe4
-	ldr	r3, =Func_a30
+	ldr	r3, =MatrixMultiply
 	mov	r0, r5
 	bl	_call_via_r3
 	add	sp, #0x30

@@ -317,7 +317,7 @@
 .L322:
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	_Func_b50
+	bl	_umod
 	cmp	r0, #0
 	bne	.L348
 	mov	r3, #1
@@ -3458,7 +3458,7 @@
 	ldr	r0, [r5]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_b50
+	bl	_umod
 	mov	r1, r0
 	mov	r0, r6
 	bl	__Func_c598
@@ -3488,7 +3488,7 @@
 	ldr	r0, [r0]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_b50
+	bl	_umod
 	mov	r1, r0
 	mov	r0, r5
 	bl	__Func_c598
@@ -3516,7 +3516,7 @@
 	b	.L23e6
 .L23bc:
 	lsl	r0, #10
-	bl	__Func_2322
+	bl	__Sin
 	str	r0, [r5, #0x18]
 	str	r0, [r5, #0x1c]
 	ldr	r3, [r6, #8]
@@ -3559,7 +3559,7 @@
 	b	.L2438
 .L240c:
 	lsl	r0, #10
-	bl	__Func_2322
+	bl	__Sin
 	neg	r3, r0
 	str	r0, [r5, #0x18]
 	str	r3, [r5, #0x1c]

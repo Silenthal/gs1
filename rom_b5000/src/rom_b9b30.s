@@ -53,7 +53,7 @@
 	ldr	r5, [r2]
 	lsl	r3, #9
 	str	r3, [r1]
-	bl	Func_49ac
+	bl	InitMatrixStack
 	mov	r1, r5
 	add	r1, #0xc
 	mov	r0, r5
@@ -1211,7 +1211,7 @@
 	mov	r0, r10
 	ldr	r5, [r3, #8]
 	ldr	r6, [r3, #0xc]
-	bl	div
+	bl	div_from_thumb
 	mov	r2, r0
 	add	r2, #0x64
 	mov	r0, r5

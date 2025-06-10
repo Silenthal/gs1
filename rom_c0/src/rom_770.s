@@ -98,7 +98,7 @@ interruptVector_Timer2:
 	mov	r4, r1
 	mov	r1, r0
 	mov	r0, #0x40000000
-	bl	Func_af0
+	bl	div
 	smull	r3, r0, r4, r0
 	ldmfd	sp!, {lr}
 	lsl	r0, #18
@@ -187,7 +187,7 @@ interruptVector_Timer2:
 .arm_func_start Func_9c0
 	push	{r5, r6, r7, r8, r9, r10, r11, lr}
 	ldm	r0, {r2, r3, r4}
-	adr	r0, Data_ac0
+	adr	r0, gMatrix
 	ldm	r0!, {r5, r6, r7}
 	smull	r8, r9, r2, r5
 	smull	r10, r11, r2, r6
@@ -215,12 +215,12 @@ interruptVector_Timer2:
 	bx	lr
 .func_end Func_9c0
 
-.arm_func_start Func_a30
+.arm_func_start MatrixMultiply
 	push	{r5, r6, r7, r8, r9, r10, r11, lr}
 	sub	sp, #0x24
 	mov	r4, sp
 .La3c:
-	adr	r1, Data_ac0
+	adr	r1, gMatrix
 	ldm	r0!, {r2, r3}
 	ldm	r1!, {r5, r6, r7}
 	smull	r8, r9, r5, r2
@@ -253,30 +253,29 @@ interruptVector_Timer2:
 	stmdb	r1, {r0, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12}
 	pop	{r5, r6, r7, r8, r9, r10, r11, lr}
 	bx	lr
-.func_end Func_a30
+.func_end MatrixMultiply
 
-	.global	Data_ac0
-Data_ac0:
+global_label gMatrix
 	.word	0x10000, 0, 0, 0
 	.word	0x10000, 0, 0, 0
 	.word	0x10000, 0, 0, 0
-	.ssize	Data_ac0
+	.ssize	gMatrix
 
-.arm_func_start Func_af0
+.arm_func_start div
 	eor	r12, r0, r1
 	movs	r2, r1
 	rsbmi	r2, #0
 	movs	r1, r0
 	rsbmi	r1, #0
 	lsrs	r0, r12, #32
-	bcc	Func_b6c
+	bcc	div_impl
 	mov	r12, lr
-	bl	Func_b6c
+	bl	div_impl
 	rsb	r0, #0
 	bx	r12
-.func_end Func_af0
+.func_end div
 
-.arm_func_start Func_b1c
+.arm_func_start mod
 	stmfd	sp!, {lr}
 	eor	r12, r0, r1
 	movs	r2, r1
@@ -284,26 +283,26 @@ Data_ac0:
 	movs	r1, r0
 	rsbmi	r1, #0
 	mov	r0, #0
-	bl	Func_b6c
+	bl	div_impl
 	mov	r0, r1
 	movs	r12, r12
 	rsbmi	r0, #0
 	ldmfd	sp!, {lr}
 	bx	lr
-.func_end Func_b1c
+.func_end mod
 
-.arm_func_start Func_b50
+.arm_func_start umod
 	mov	r12, lr
-	bl	Func_b60
+	bl	udiv
 	mov	r0, r1
 	bx	r12
-.func_end Func_b50
+.func_end umod
 
-.arm_func_start Func_b60
+.arm_func_start udiv
 	mov	r2, r1
 	mov	r1, r0
 	mov	r0, #0
-.arm_func_start Func_b6c
+.arm_func_start div_impl
 	rsbs	r3, r2, r1, lsr #28
 	bcc	.Lba4
 	rsbs	r3, r2, r1, lsr #31
@@ -424,8 +423,8 @@ Data_ac0:
 	orrcs	r0, #1
 	subcs	r1, r2
 	bx	lr
-.func_end Func_b6c
-.func_end Func_b60
+.func_end div_impl
+.func_end udiv
 
 .arm_func_start Func_d30
 	ldrb	r2, [r0], #1
